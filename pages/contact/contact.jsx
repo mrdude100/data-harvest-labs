@@ -11,7 +11,7 @@ import {
   ContactInfo,
   InfoItem,
   InfoLink,
-} from './styles';
+} from '../../styles/styles';
 
 const Contact = () => {
   return (
