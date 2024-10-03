@@ -20,6 +20,15 @@ export const BannerSection = styled.section`
   ${({ theme }) => theme.breakpoints.tablet`
     margin-bottom: 90px;
   `};
+
+  // Add mobile-specific styling
+  @media (max-width: 768px) {
+    margin-bottom: 50px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 30px;
+  }
 `;
 
 export const VideoContainer = styled.div`
@@ -28,6 +37,8 @@ export const VideoContainer = styled.div`
 
   & video {
     object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -62,4 +73,19 @@ export const BannerTitle = styled(motion.h1)`
     line-height: .68125;
     overflow: hidden;
   `};
+
+  // Add responsive font sizes for smaller screens
+  @media (max-width: 768px) {
+    left: 0;
+    bottom: 20px;
+    font-size: 6rem;
+    line-height: 1;
+  }
+
+  @media (max-width: 480px) {
+    left: 0;
+    bottom: 20px;
+    font-size: 4rem;
+    line-height: 1;
+  }
 `;
