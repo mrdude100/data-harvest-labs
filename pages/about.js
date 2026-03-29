@@ -73,10 +73,15 @@ const Divider = styled.div`
 
 const TeamGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 48px;
 
   ${({ theme }) => theme.breakpoints.small`
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  `}
+
+  ${({ theme }) => theme.breakpoints.tablet`
     grid-template-columns: 1fr;
     gap: 64px;
   `}
@@ -264,6 +269,13 @@ const TEAM = [
     tags: ['R', 'Python', 'GWAS', 'Biostatistics', 'PCA', 'Genomics'],
     linkedin: 'https://in.linkedin.com/in/zafir-naik',
   },
+   {
+  name: 'Dr. Yasir Mushtaq Wani',
+  role: 'Data Engineer · Veterinarian',
+  bio: `Assistant Professor in Animal Genetics & Breeding at Khalsa College of Veterinary and Animal Sciences, Yasir brings deep expertise in computational genomics, bioinformatics, and veterinary science to DataHarvestLabs. An MVSc from the National Dairy Research Institute, Karnal, he specializes in CNV analysis, population genetics, and clinical data systems. He also built VetField — an offline clinical assistant for field veterinarians.`,
+  tags: ['Bioinformatics', 'Genomics', 'R', 'Veterinary Science', 'CNV Analysis'],
+  linkedin: 'https://www.linkedin.com/in/dr-yasir-mushtaq-wani',
+},
   {
     name: 'Faraz Ahmad Naik',
     role: 'Co-Founder · Software Engineer',
@@ -271,6 +283,7 @@ const TEAM = [
     tags: ['React', 'Node.js', 'Full-Stack', 'Systems', 'CI/CD'],
     linkedin: 'https://www.linkedin.com/in/faraznaik/',
   },
+ 
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
