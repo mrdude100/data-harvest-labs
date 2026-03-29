@@ -121,6 +121,7 @@ const SEO = ({
     <Head>
       {/* ── Primary ── */}
       <title>{fullTitle}</title>
+      <meta name="google-site-verification" content="XeETHI2BiOf6v7f74WiWAxt84xIFZYqMX2i-Xnh9HHs" />
       <meta name="description" content={metaDescription} />
       <meta
         name="keywords"
