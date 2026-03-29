@@ -12,7 +12,7 @@ const SEO = ({
 
   const fullTitle = title
     ? `${title} — Data Harvest Labs`
-    : 'Data Harvest Labs | Data Analysis & Research Services — Kashmir';
+    : 'Data Harvest Labs | Data Analysis & Research Services - Kashmir';
 
   const defaultDescription =
     'Data Harvest Labs is a data analytics company founded in Srinagar, Kashmir by Faraz Ahmad Naik and Dr. Zafir Ahmad Naik. We provide data analysis, statistical consulting, PCA, GWAS, report writing, and research services for students, researchers, and professionals worldwide.';

@@ -271,7 +271,7 @@ const TEAM = [
   },
    {
   name: 'Dr. Yasir Mushtaq Wani',
-  role: 'Data Engineer · Veterinarian',
+  role: 'Co-Founder · Veterinarian',
   bio: `Assistant Professor in Animal Genetics & Breeding at Khalsa College of Veterinary and Animal Sciences, Yasir brings deep expertise in computational genomics, bioinformatics, and veterinary science to DataHarvestLabs. An MVSc from the National Dairy Research Institute, Karnal, he specializes in CNV analysis, population genetics, and clinical data systems. He also built VetField — an offline clinical assistant for field veterinarians.`,
   tags: ['Bioinformatics', 'Genomics', 'R', 'Veterinary Science', 'CNV Analysis'],
   linkedin: 'https://www.linkedin.com/in/dr-yasir-mushtaq-wani',
@@ -279,8 +279,8 @@ const TEAM = [
   {
     name: 'Faraz Ahmad Naik',
     role: 'Co-Founder · Software Engineer',
-    bio: 'B.E. Computer Engineering student at NHCE Bangalore, Faraz brings the technical infrastructure to DataHarvestLabs. With experience at Rubrik and Shakepay, he works across full-stack development — React, Node.js, and systems engineering',
-    tags: ['React', 'Node.js', 'Full-Stack', 'Systems', 'CI/CD'],
+    bio: 'Software Engineer, Faraz brings the technical infrastructure to DataHarvestLabs. He works across full-stack development, machine learning and cloud systems, and systems engineering',
+    tags: ['Full-Stack', 'ML','Cloud', 'Systems', 'CI/CD'],
     linkedin: 'https://www.linkedin.com/in/faraznaik/',
   },
  
@@ -295,7 +295,7 @@ const AboutPage = () => {
     <>
       <SEO
   title="Who We Are"
-  description="Data Harvest Labs was founded in Kashmir by Faraz Ahmad Naik and Dr. Zafir Ahmad Naik. Learn our story, meet the team, and discover what drives us."
+  description="Data Harvest Labs was founded in Kashmir by Faraz Ahmad Naik, Dr. Zafir Ahmad Naik and Dr. Yasir Mushtaq Wani. Learn our story, meet the team, and discover what drives us."
   path="/about"
 />
 
@@ -317,7 +317,7 @@ const AboutPage = () => {
           <motion.div variants={fadeUp}>
             <OriginText>
               DataHarvestLabs started in July 2023 in Srinagar — not in a
-              boardroom, but between two friends who kept running into the same
+              boardroom, but between three friends who kept running into the same
               problem: researchers and students drowning in data with no
               affordable way to make sense of it.
             </OriginText>
@@ -326,8 +326,8 @@ const AboutPage = () => {
             <OriginText>
               Zafir was deep in his PhD, watching fellow researchers waste weeks
               on analyses that should take hours. Faraz was building software
-              and saw the same gap from the other side — powerful tools existed,
-              but they were inaccessible, expensive, or required expertise most
+              and saw the same gap from the other side - powerful tools existed,
+              but they were inaccessible to the people of Kashmir, expensive, or required expertise most
               people didn't have.
             </OriginText>
           </motion.div>
@@ -335,7 +335,7 @@ const AboutPage = () => {
             <OriginText>
               So they built something about it. A data analytics service that
               meets people where they are — students, researchers, professionals
-              — and delivers the kind of tailored, rigorous analysis that used
+              - and delivers the kind of tailored, rigorous analysis that used
               to require an entire team. From the Valley of Kashmir, for the
               world.
             </OriginText>
