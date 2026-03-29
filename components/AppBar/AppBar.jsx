@@ -2,84 +2,77 @@ import React from 'react';
 import Link from 'next/link';
 import Logo from '../Icons/Logo';
 import MenuButton from '../MenuButton';
-import { Slider, Container, StyledLink, MenuWrapper } from './styles';
-
-const getStyles = (direction = '') => {
-  if (direction === 'down') return { top: 0 };
-  if (direction === 'up') return { bottom: 0 };
-
-  return {};
-};
+import useMediaQuery from '../../hooks/useMediaQuery';
+import { Slider, Container, StyledLink, MenuWrapper, MobileNav, MobileNavLink } from './styles';
+import routes from '../../utils/constants/routes';
+import useCursorStyle from '../../hooks/useCursorStyle';
 
 const variants = {
-  hidden: { y: -131 },
-  show: { y: 0 },
+  hidden: { y: -80, opacity: 0 },
+  show: { y: 0, opacity: 1 },
 };
 
 const AppBar = props => {
   const {
     direction = 'down',
-    offset = 105,
     logoProps = {},
     style: styleProp = {},
     ...rootProps
   } = props;
-  const [hidden, setHidden] = React.useState(false);
+
+  const [scrolled, setScrolled] = React.useState(false);
+  const { addCursorBorder, removeCursorBorder } = useCursorStyle();
+  const isMobile = useMediaQuery(
+    ({ breakpoints }) => `(max-width:${breakpoints.sizes.tablet}px)`,
+  );
 
   React.useEffect(() => {
     const handleScroll = () => {
-      let shouldHide = false;
-      let intersection = offset;
-      let currentYPosition = 0;
-
-      if (direction === 'down') {
-        currentYPosition = window.scrollY;
-      } else if (direction === 'up') {
-        currentYPosition =
-          document.documentElement.scrollTop + window.innerHeight;
-        intersection = document.documentElement.scrollHeight - offset;
-      }
-
-      shouldHide = currentYPosition > intersection;
-      if (shouldHide !== hidden) {
-        setHidden(shouldHide);
-      }
+      setScrolled(window.scrollY > 40);
     };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    handleScroll();
-
-    window.addEventListener('scroll', handleScroll, false);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll, false);
-    };
-  }, [direction, offset]);
-
-  const styles = getStyles(direction);
+  // On mobile, render a fixed bottom nav bar instead
+  if (isMobile) {
+    return (
+      <MobileNav scrolled={scrolled}>
+        <Link href="/" passHref>
+          <MobileNavLink
+            onMouseEnter={addCursorBorder}
+            onMouseLeave={removeCursorBorder}
+          >
+            <Logo {...logoProps} />
+          </MobileNavLink>
+        </Link>
+        <MenuButton sticky={false} title="Menu" />
+      </MobileNav>
+    );
+  }
 
   return (
     <Slider
       variants={variants}
-      initial="hidden"
-      animate={hidden ? 'hidden' : 'show'}
-      transition={{
-        duration: 1,
-        ease: [0.666, 0, 0.237, 1],
-      }}
-      style={{
-        ...styles,
-        ...styleProp,
-      }}
+      initial="show"
+      animate="show"
+      transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      scrolled={scrolled}
+      style={styleProp}
       {...rootProps}
     >
       <Container>
         <Link href="/" passHref>
-          <StyledLink title="DataHarvestLabs">
+          <StyledLink
+            title="DataHarvestLabs"
+            onMouseEnter={addCursorBorder}
+            onMouseLeave={removeCursorBorder}
+          >
             <Logo {...logoProps} />
           </StyledLink>
         </Link>
         <MenuWrapper>
-          <MenuButton title="Projects" />
+          <MenuButton title="Menu" />
         </MenuWrapper>
       </Container>
     </Slider>
