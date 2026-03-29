@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import AnimateOnScreen from '../../AnimateOnScreen';
-import useCursorStyle from '../../../hooks/useCursorStyle';
+import AnimateOnScreen from '../AnimateOnScreen';
+import useCursorStyle from '../../hooks/useCursorStyle';
 import styled, { keyframes } from 'styled-components';
-import containerStyles from '../../../styles/shared/container';
-import { secondaryFontStyle } from '../../../styles/shared/text';
+import containerStyles from '../../styles/shared/container';
+import { secondaryFontStyle } from '../../styles/shared/text';
+
 
 // ─── Animations ──────────────────────────────────────────────────────────────
 

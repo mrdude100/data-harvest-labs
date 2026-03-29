@@ -1,22 +1,13 @@
 import React from 'react';
 import SEO from '../components/SEO';
 import BannerSection from '../components/Home/Banner';
-import ContentSection from '../components/Home/Content';
-import FeaturedSection from '../components/Home/FeaturedProject';
-import AboutSection from '../components/Home/About';
-import ContactSection from '../components/Home/Contact';
-import Footer from '../components/Home/Footer';
-
+import HomePage from '../components/Home/HomePage';
 const Home = () => {
   return (
     <>
       <SEO path="/" />
       <BannerSection />
-      <ContentSection />
-      <FeaturedSection />
-      <AboutSection />
-      <ContactSection />
-      <Footer />
+      <HomePage />
     </>
   );
 };

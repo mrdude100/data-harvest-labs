@@ -12,7 +12,6 @@ import {
   ProjectAnchor,
   ProjectInfo,
   ProjectTitle,
-  VideoPreview,
   MenuContainer,
   MenuButton,
 } from './styles';
@@ -99,9 +98,7 @@ const FeaturedProject = () => {
                   </span>
                 </ProjectTitle>
               </ProjectInfo>
-              <VideoPreview>
-                <video loop autoPlay muted src="videos/banner.mp4" />
-              </VideoPreview>
+              
             </ProjectAnchor>
           </Link>
         </motion.div>

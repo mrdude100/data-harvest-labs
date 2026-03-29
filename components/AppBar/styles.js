@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import containerStyles from '../../styles/shared/container';
-import { secondaryFontStyle } from '../../styles/shared/text';
 
 export const Slider = styled(({ renderAs, scrolled, ...props }) => {
   const Component = motion[renderAs] || motion.header;
@@ -30,6 +29,7 @@ export const Container = styled.div`
 
   ${({ theme }) => theme.breakpoints.tablet`
     height: 64px;
+    padding: 0 24px;
   `};
 `;
 
@@ -52,10 +52,10 @@ export const MenuWrapper = styled.div`
   margin: -20px;
 `;
 
-/* ── Mobile bottom nav ── */
+/* ── Mobile top nav ── */
 export const MobileNav = styled.nav`
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   z-index: ${({ theme }) => theme.zIndex.slider};
@@ -64,10 +64,11 @@ export const MobileNav = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
-  background: ${({ theme }) => theme.background};
-  border-top: 1px solid ${({ theme }) => theme.text}18;
-  transition: background 0.3s ease;
+  background: ${({ scrolled, theme }) =>
+    scrolled ? `${theme.background}f0` : theme.background};
+  border-bottom: 1px solid ${({ theme }) => theme.text}14;
   backdrop-filter: blur(12px);
+  transition: background 0.3s ease;
 `;
 
 export const MobileNavLink = styled.a`
