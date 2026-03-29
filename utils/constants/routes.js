@@ -1,27 +1,22 @@
 export default [
   {
     id: 'get-in-touch',
-    title: 'get in touch',
-    path: '/projects/not-humble',
+    title: 'Get in touch',
+    path: '/contact',
   },
   {
-    id: 'testimonies',
+    id: 'testimonials',
     title: 'Hear what our clients say',
-    path: '/projects/bleeping-easy',
+    path: '/testimonials',
   },
   {
     id: 'get-quoted',
-    title: 'get quotation on',
-    path: '/projects/make-it-zero',
-  },
-  {
-    id: 'temp3',
-    title: 'temp3',
-    path: '/projects/it-takes-an-island',
+    title: 'Get a quotation',
+    path: '/quote',
   },
   {
     id: 'who-are-we',
-    title: 'who are we?',
-    path: '/projects/50-beaches',
+    title: 'Who are we?',
+    path: '/about',
   },
 ];

@@ -1,3 +1,5 @@
+import SEO from '../components/SEO';
+<SEO path="/" />
 import React from 'react';
 import BannerSection from '../components/Home/Banner';
 import ContentSection from '../components/Home/Content';
@@ -9,6 +11,8 @@ import Footer from '../components/Home/Footer';
 const Home = () => {
   return (
     <>
+     <SEO path="/" />
+      <BannerSection />
       <BannerSection />
       <ContentSection />
       <FeaturedSection />

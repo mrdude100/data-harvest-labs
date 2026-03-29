@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import NextLink from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -30,10 +29,8 @@ import {
 } from './styles';
 
 const Menu = () => {
-  const containerRef = React.useRef(null);
-  const [isHovering, setIsHovering] = React.useState(false);
   const theme = useStyledTheme();
-  const [{ isMenuOpen }] = useMenuContext();
+  const [{ isMenuOpen }, dispatch] = useMenuContext();
   const {
     addCursorBorder,
     removeCursorBorder,
@@ -52,39 +49,12 @@ const Menu = () => {
     resetCursorColor();
   }, [resetCursorColor]);
 
-  const handleHoverStart = React.useCallback(
-    event => {
-      addCursorBorder();
-    },
-    [addCursorBorder],
-  );
-
-  const handleHoverEnd = React.useCallback(() => {
-    removeCursorBorder();
-  }, [removeCursorBorder]);
-
-  React.useEffect(() => {
-    const handleResize = () => {
-      if (isMenuOpen && containerRef.current) {
-        const offset = 256;
-        const { width } = containerRef.current.getBoundingClientRect();
-        const left = (window.innerWidth - width) / 2 + offset;
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [isMenuOpen]);
 
   return (
     <AnimatePresence onExitComplete={handleExitComplete}>
       {isMenuOpen && (
         <Backdrop onAnimationComplete={handleAnimationComplete}>
-          <Container ref={containerRef}>
+          <Container>
             <Header>
               <h3>Menu</h3>
               <CloseButton title="Close" />
@@ -94,8 +64,7 @@ const Menu = () => {
                 variants={listVariants}
                 initial="hidden"
                 animate="show"
-                onHoverStart={() => setIsHovering(true)}
-                onHoverEnd={() => setIsHovering(false)}
+                
               >
                 {routes.map(route => (
                   <motion.li
@@ -106,17 +75,19 @@ const Menu = () => {
                       ease: transition.ease,
                     }}
                   >
-                    <NextLink href={route.path}>
+                      <NextLink href={route.path}>
+
                       <Link
                         key={`${route.id}_${isMobile}`}
                         name={route.id}
-                        onHoverStart={handleHoverStart}
-                        onHoverEnd={handleHoverEnd}
+                        
                         custom={{ isMobile, color: theme.text }}
                         initial="initial"
                         whileHover="hover"
                         variants={linkVariants}
                         transition={transition}
+                        onClick={() => dispatch({ type: 'TOGGLE_MENU' })}
+
                       >
                         <ArrowContainer>
                           <Arrow fillColor={theme.background} />
@@ -141,7 +112,7 @@ const Menu = () => {
               <FooterText
                 className="link"
                 as="a"
-                href="tel:+91.7006038395"
+                href="tel:+91.7006087884"
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
               >

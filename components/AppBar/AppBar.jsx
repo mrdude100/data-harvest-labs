@@ -53,7 +53,7 @@ const AppBar = props => {
     return () => {
       window.removeEventListener('scroll', handleScroll, false);
     };
-  }, [hidden, direction, offset]);
+  }, [direction, offset]);
 
   const styles = getStyles(direction);
 

@@ -1,48 +1,616 @@
-// Contact.jsx
 import React from 'react';
-import { motion } from 'framer-motion';
-import {
-  ContactContainer,
-  Title,
-  Form,
-  Input,
-  TextArea,
-  SubmitButton,
-  ContactInfo,
-  InfoItem,
-  InfoLink,
-} from '../../styles/styles';
+import SEO from '../../components/SEO';
+import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
+import useCursorStyle from '../../hooks/useCursorStyle';
+import containerStyles from '../../styles/shared/container';
+import { secondaryFontStyle } from '../../styles/shared/text';
 
-const Contact = () => {
+// ─── Constants ───────────────────────────────────────────────────────────────
+
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkopjrgj'; // formspree endpoint for form submissions
+
+const SERVICES = [
+  'Data Analysis',
+  'PCA',
+  'Article Writing',
+  'Creative Development',
+  'Report Writing',
+  'Presentations',
+  'Principal Photography',
+  'Production Management',
+  'Big Data',
+];
+
+const STEPS = ['Who are you?', 'What do you need?', 'Tell us more'];
+
+// ─── Animations ──────────────────────────────────────────────────────────────
+
+const slideVariants = {
+  enter: direction => ({ x: direction > 0 ? 60 : -60, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: direction => ({ x: direction > 0 ? -60 : 60, opacity: 0 }),
+};
+
+const transition = {
+  duration: 0.45,
+  ease: [0, 0.7, 0.29, 0.97],
+};
+
+// ─── Styled Components ───────────────────────────────────────────────────────
+
+const PageWrapper = styled.main`
+  ${containerStyles};
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 140px;
+  padding-bottom: 100px;
+`;
+
+const TopLabel = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.875rem;
+  color: ${({ theme }) => theme.colors.red};
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 24px;
+`;
+
+const PageTitle = styled.h1`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.95;
+  color: ${({ theme }) => theme.text};
+  text-transform: uppercase;
+  margin: 0 0 64px;
+`;
+
+const StepIndicatorRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 56px;
+`;
+
+const StepDot = styled.button`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: ${({ $active, $done }) => ($done ? 'pointer' : $active ? 'default' : 'not-allowed')};
+  padding: 0;
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.red};
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+`;
+
+const DotCircle = styled.span`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: ${({ theme, $active, $done }) =>
+    $active || $done ? theme.colors.red : 'transparent'};
+  border: 2px solid ${({ theme, $active, $done }) =>
+    $active || $done ? theme.colors.red : theme.text};
+  opacity: ${({ $active, $done }) => ($active || $done ? 1 : 0.3)};
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+`;
+
+const DotLabel = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${({ theme, $active, $done }) =>
+    $active || $done ? theme.text : theme.text};
+  opacity: ${({ $active, $done }) => ($active || $done ? 1 : 0.3)};
+  transition: opacity 0.3s ease;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    display: none;
+  `}
+`;
+
+const DotSeparator = styled.span`
+  width: 32px;
+  height: 1px;
+  background: ${({ theme }) => theme.text};
+  opacity: 0.2;
+  flex-shrink: 0;
+`;
+
+const FormArea = styled.div`
+  position: relative;
+  min-height: 340px;
+`;
+
+const StepPanel = styled(motion.div)`
+  width: 100%;
+`;
+
+const FieldGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 640px;
+`;
+
+const FieldWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const Label = styled.label`
+  ${secondaryFontStyle};
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.5;
+`;
+
+const inputBase = `
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid;
+  border-radius: 0;
+  padding: 12px 0;
+  font-family: calibre, sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease;
+  -webkit-appearance: none;
+`;
+
+const StyledInput = styled.input`
+  ${inputBase};
+  color: ${({ theme }) => theme.text};
+  border-color: ${({ theme }) => theme.text};
+  opacity: ${({ theme }) => 0.85};
+
+  &::placeholder {
+    color: ${({ theme }) => theme.text};
+    opacity: 0.2;
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.red};
+    opacity: 1;
+  }
+`;
+
+const StyledTextarea = styled.textarea`
+  ${inputBase};
+  color: ${({ theme }) => theme.text};
+  border-color: ${({ theme }) => theme.text};
+  opacity: 0.85;
+  resize: none;
+  min-height: 120px;
+
+  &::placeholder {
+    color: ${({ theme }) => theme.text};
+    opacity: 0.2;
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.colors.red};
+    opacity: 1;
+  }
+`;
+
+const ServiceGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 640px;
+`;
+
+const ServiceChip = styled.button`
+  ${secondaryFontStyle};
+  font-size: 0.875rem;
+  padding: 10px 20px;
+  border-radius: 0;
+  border: 1px solid ${({ theme, $selected }) =>
+    $selected ? theme.colors.red : theme.text};
+  background: ${({ theme, $selected }) =>
+    $selected ? theme.colors.red : 'transparent'};
+  color: ${({ theme, $selected }) =>
+    $selected ? '#fff' : theme.text};
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: ${({ $selected }) => ($selected ? 1 : 0.5)};
+
+  &:hover {
+    opacity: 1;
+    border-color: ${({ theme }) => theme.colors.red};
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.red};
+    outline-offset: 2px;
+  }
+`;
+
+const ButtonRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 56px;
+`;
+
+const PrimaryButton = styled.button`
+  ${secondaryFontStyle};
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.text};
+  border: none;
+  padding: 18px 40px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.red};
+    color: #fff;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.red};
+    outline-offset: 4px;
+  }
+`;
+
+const BackButton = styled.button`
+  ${secondaryFontStyle};
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const ErrorText = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.75rem;
+  color: ${({ theme }) => theme.colors.red};
+  margin-top: 4px;
+`;
+
+const SuccessWrapper = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 640px;
+  padding: 64px 0;
+`;
+
+const SuccessTitle = styled.h2`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  line-height: 0.95;
+  margin: 0;
+`;
+
+const SuccessText = styled.p`
+  ${secondaryFontStyle};
+  font-size: 1rem;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.6;
+  margin: 0;
+  line-height: 1.6;
+`;
+
+// ─── Component ───────────────────────────────────────────────────────────────
+
+const ContactPage = () => {
+  const { addCursorBorder, removeCursorBorder } = useCursorStyle();
+
+  const [step, setStep] = React.useState(0);
+  const [direction, setDirection] = React.useState(1);
+  const [submitted, setSubmitted] = React.useState(false);
+  const [submitting, setSubmitting] = React.useState(false);
+  const [errors, setErrors] = React.useState({});
+
+  const [form, setForm] = React.useState({
+    name: '',
+    email: '',
+    services: [],
+    message: '',
+  });
+
+  const goTo = React.useCallback((next) => {
+    setDirection(next > step ? 1 : -1);
+    setStep(next);
+  }, [step]);
+
+  const validate = React.useCallback(() => {
+    const newErrors = {};
+    if (step === 0) {
+      if (!form.name.trim()) newErrors.name = 'Name is required';
+      if (!form.email.trim()) newErrors.email = 'Email is required';
+      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+        newErrors.email = 'Enter a valid email';
+    }
+    if (step === 1 && form.services.length === 0) {
+      newErrors.services = 'Please select at least one service';
+    }
+    if (step === 2 && !form.message.trim()) {
+      newErrors.message = 'Please tell us about your project';
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }, [step, form]);
+
+  const handleNext = React.useCallback(() => {
+    if (!validate()) return;
+    goTo(step + 1);
+  }, [validate, goTo, step]);
+
+  const handleBack = React.useCallback(() => {
+    goTo(step - 1);
+  }, [goTo, step]);
+
+  const toggleService = React.useCallback((service) => {
+    setForm(prev => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter(s => s !== service)
+        : [...prev.services, service],
+    }));
+    setErrors(prev => ({ ...prev, services: undefined }));
+  }, []);
+
+  const handleChange = React.useCallback((field) => (e) => {
+    setForm(prev => ({ ...prev, [field]: e.target.value }));
+    setErrors(prev => ({ ...prev, [field]: undefined }));
+  }, []);
+
+  const handleSubmit = React.useCallback(async () => {
+    if (!validate()) return;
+    setSubmitting(true);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          services: form.services.join(', '),
+          message: form.message,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setErrors({ submit: 'Something went wrong. Please try again.' });
+      }
+    } catch {
+      setErrors({ submit: 'Something went wrong. Please try again.' });
+    } finally {
+      setSubmitting(false);
+    }
+  }, [validate, form]);
+
   return (
-    <ContactContainer>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <Title>Contact Us</Title>
-        <Form>
-          <Input type="text" placeholder="Your Name" required />
-          <Input type="email" placeholder="Your Email" required />
-          <TextArea placeholder="Your Message" rows="5" required />
-          <SubmitButton type="submit">Send Message</SubmitButton>
-        </Form>
-        <ContactInfo>
-          <InfoItem>
-            Email:{' '}
-            <InfoLink href="mailto:info@dataharvestlabs.com">
-              info@dataharvestlabs.com
-            </InfoLink>
-          </InfoItem>
-          <InfoItem>
-            Phone: <InfoLink href="tel:+917006087884">+91 70060 87884</InfoLink>
-          </InfoItem>
-          <InfoItem>Address: Srinagar, Valley of Kashmir, 190001</InfoItem>
-        </ContactInfo>
-      </motion.div>
-    </ContactContainer>
+    <>
+      <SEO
+  title="Get in Touch"
+  description="Contact Data Harvest Labs for data analysis, statistical consulting, report writing, and research services. Founded in Srinagar, Kashmir."
+  path="/contact"
+/>
+
+      <PageWrapper>
+        <TopLabel>Contact</TopLabel>
+        <PageTitle>Get in{'\u00A0'}touch</PageTitle>
+
+        {!submitted ? (
+          <>
+            {/* Step indicator */}
+            <StepIndicatorRow>
+              {STEPS.map((label, i) => (
+                <React.Fragment key={label}>
+                  <StepDot
+                    $active={i === step}
+                    $done={i < step}
+                    onClick={() => i < step && goTo(i)}
+                    onMouseEnter={addCursorBorder}
+                    onMouseLeave={removeCursorBorder}
+                    disabled={i > step}
+                    aria-label={`Step ${i + 1}: ${label}`}
+                  >
+                    <DotCircle $active={i === step} $done={i < step} />
+                    <DotLabel $active={i === step} $done={i < step}>
+                      {label}
+                    </DotLabel>
+                  </StepDot>
+                  {i < STEPS.length - 1 && <DotSeparator />}
+                </React.Fragment>
+              ))}
+            </StepIndicatorRow>
+
+            {/* Form steps */}
+            <FormArea>
+              <AnimatePresence mode="wait" custom={direction}>
+                {step === 0 && (
+                  <StepPanel
+                    key="step0"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={transition}
+                  >
+                    <FieldGroup>
+                      <FieldWrapper>
+                        <Label htmlFor="name">Your name</Label>
+                        <StyledInput
+                          id="name"
+                          type="text"
+                          placeholder="e.g. Faraz Naik"
+                          value={form.name}
+                          onChange={handleChange('name')}
+                          autoComplete="name"
+                        />
+                        {errors.name && <ErrorText>{errors.name}</ErrorText>}
+                      </FieldWrapper>
+                      <FieldWrapper>
+                        <Label htmlFor="email">Your email</Label>
+                        <StyledInput
+                          id="email"
+                          type="email"
+                          placeholder="michael@example.com"
+                          value={form.email}
+                          onChange={handleChange('email')}
+                          autoComplete="email"
+                        />
+                        {errors.email && <ErrorText>{errors.email}</ErrorText>}
+                      </FieldWrapper>
+                    </FieldGroup>
+                  </StepPanel>
+                )}
+
+                {step === 1 && (
+                  <StepPanel
+                    key="step1"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={transition}
+                  >
+                    <FieldGroup>
+                      <FieldWrapper>
+                        <Label>Select services</Label>
+                        <ServiceGrid>
+                          {SERVICES.map(service => (
+                            <ServiceChip
+                              key={service}
+                              type="button"
+                              $selected={form.services.includes(service)}
+                              onClick={() => toggleService(service)}
+                              onMouseEnter={addCursorBorder}
+                              onMouseLeave={removeCursorBorder}
+                            >
+                              {service}
+                            </ServiceChip>
+                          ))}
+                        </ServiceGrid>
+                        {errors.services && <ErrorText>{errors.services}</ErrorText>}
+                      </FieldWrapper>
+                    </FieldGroup>
+                  </StepPanel>
+                )}
+
+                {step === 2 && (
+                  <StepPanel
+                    key="step2"
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={transition}
+                  >
+                    <FieldGroup>
+                      <FieldWrapper>
+                        <Label htmlFor="message">Tell us about your project</Label>
+                        <StyledTextarea
+                          id="message"
+                          placeholder="Describe what you need, timeline, goals..."
+                          value={form.message}
+                          onChange={handleChange('message')}
+                          rows={5}
+                        />
+                        {errors.message && <ErrorText>{errors.message}</ErrorText>}
+                      </FieldWrapper>
+                      {errors.submit && <ErrorText>{errors.submit}</ErrorText>}
+                    </FieldGroup>
+                  </StepPanel>
+                )}
+              </AnimatePresence>
+            </FormArea>
+
+            {/* Navigation buttons */}
+            <ButtonRow>
+              {step < 2 ? (
+                <PrimaryButton
+                  onClick={handleNext}
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                >
+                  Next →
+                </PrimaryButton>
+              ) : (
+                <PrimaryButton
+                  onClick={handleSubmit}
+                  disabled={submitting}
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                >
+                  {submitting ? 'Sending...' : 'Send message'}
+                </PrimaryButton>
+              )}
+              {step > 0 && (
+                <BackButton
+                  onClick={handleBack}
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                >
+                  ← Back
+                </BackButton>
+              )}
+            </ButtonRow>
+          </>
+        ) : (
+          <SuccessWrapper
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0, 0.7, 0.29, 0.97] }}
+          >
+            <SuccessTitle>We'll be{'\u00A0'}in touch</SuccessTitle>
+            <SuccessText>
+              Thanks, {form.name.split(' ')[0]}. We&apos;ve received your message and will get back to you soon.
+            </SuccessText>
+          </SuccessWrapper>
+        )}
+      </PageWrapper>
+    </>
   );
 };
 
-export default Contact;
+export default ContactPage;
