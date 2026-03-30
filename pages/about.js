@@ -272,9 +272,9 @@ const TEAM = [
    {
   name: 'Dr. Yasir Mushtaq Wani',
   role: 'Co-Founder · Veterinarian',
-  bio: `Assistant Professor in Animal Genetics & Breeding at Khalsa College of Veterinary and Animal Sciences, Yasir brings deep expertise in computational genomics, bioinformatics, and veterinary science to DataHarvestLabs. An MVSc from the National Dairy Research Institute, Karnal, he specializes in CNV analysis, population genetics, and clinical data systems. He also built VetField — an offline clinical assistant for field veterinarians.`,
+  bio: `Assistant Professor in Animal Genetics & Breeding at Khalsa College of Veterinary and Animal Sciences, Yasir brings deep expertise in computational genomics, bioinformatics, and veterinary science to DataHarvestLabs. An MVSc from the National Dairy Research Institute, Karnal, he specializes in CNV analysis, population genetics, and clinical data systems. He also built VetField - an offline clinical assistant for field veterinarians.`,
   tags: ['Bioinformatics', 'Genomics', 'R', 'Veterinary Science', 'CNV Analysis'],
-  linkedin: 'https://www.linkedin.com/in/dr-yasir-mushtaq-wani',
+  linkedin: 'https://www.linkedin.com/in/dr-yasir-mushtaq-wani-1864831b9/?originalSubdomain=in',
 },
   {
     name: 'Faraz Ahmad Naik',
@@ -316,7 +316,7 @@ const AboutPage = () => {
           <SectionLabel>Our story</SectionLabel>
           <motion.div variants={fadeUp}>
             <OriginText>
-              DataHarvestLabs started in July 2023 in Srinagar — not in a
+              DataHarvestLabs started in July 2023 in Srinagar - not in a
               boardroom, but between three friends who kept running into the same
               problem: researchers and students drowning in data with no
               affordable way to make sense of it.
@@ -334,7 +334,7 @@ const AboutPage = () => {
           <motion.div variants={fadeUp}>
             <OriginText>
               So they built something about it. A data analytics service that
-              meets people where they are — students, researchers, professionals
+              meets people where they are - students, researchers, professionals
               - and delivers the kind of tailored, rigorous analysis that used
               to require an entire team. From the Valley of Kashmir, for the
               world.
