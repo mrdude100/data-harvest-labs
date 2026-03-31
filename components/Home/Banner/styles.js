@@ -70,8 +70,8 @@ export const BannerTitle = styled(motion.h1)`
     display: block;
     font-family: calibre, sans-serif;
     font-weight: 900;
-    font-size: clamp(4rem, 18vw, 18rem);
-    line-height: 0.88;
+    font-size: clamp(3rem, 12vw, 11rem);
+    line-height: 1.00;
     color: ${({ theme }) => theme.text};
     text-transform: uppercase;
     letter-spacing: -0.02em;
@@ -79,7 +79,7 @@ export const BannerTitle = styled(motion.h1)`
   }
 
   ${({ theme }) => theme.breakpoints.tablet`
-    padding: 0 16px 16px;
+    padding: 0 18px 18px;
     & span {
       font-size: clamp(3rem, 16vw, 8rem);
     }
