@@ -12,13 +12,13 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkopjrgj'; // formspree endpo
 
 const SERVICES = [
   'Data Analysis',
-  'PCA',
-  'Article Writing',
-  'Creative Development',
-  'Report Writing',
-  'Presentations',
-  'Principal Photography',
-  'Production Management',
+  'PCA', 
+  'Clustering',
+  'Classification',
+  'Regression',
+  'Statistical Consulting',
+  'CNV Analysis',
+  'GWAS',
   'Big Data',
 ];
 
