@@ -17,7 +17,7 @@ const Logo = props => {
           lineHeight: '1', // Ensure line height is set to 1 for proper alignment
         }}
       >
-        Data Harvest Labs ©
+        Data Harvest Labs 
       </span>
     </div>
   );

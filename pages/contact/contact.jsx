@@ -428,7 +428,7 @@ const ContactPage = () => {
     <>
       <SEO
   title="Get in Touch"
-  description="Contact Data Harvest Labs for data analysis, statistical consulting, report writing, and research services. Founded in Srinagar, Kashmir."
+  description="Contact Data Harvest Labs for data analysis, statistical consulting, and research services. Founded in Srinagar, Kashmir."
   path="/contact"
 />
 

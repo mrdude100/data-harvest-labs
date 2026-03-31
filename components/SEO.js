@@ -11,11 +11,11 @@ const SEO = ({
   const fullUrl = `${baseUrl}${path}`;
 
   const fullTitle = title
-    ? `${title} — Data Harvest Labs`
+    ? `${title} - Data Harvest Labs`
     : 'Data Harvest Labs | Data Analysis & Research Services - Kashmir';
 
   const defaultDescription =
-    'Data Harvest Labs is a data analytics company founded in Srinagar, Kashmir by Faraz Ahmad Naik and Dr. Zafir Ahmad Naik. We provide data analysis, statistical consulting, PCA, GWAS, report writing, and research services for students, researchers, and professionals worldwide.';
+    'Data Harvest Labs is a data analytics company founded in Srinagar, Kashmir by Faraz Ahmad Naik, Dr. Zafir Ahmad Naik, and Dr. Yasir Mushtaq Wani. We provide data analysis, statistical consulting, PCA, GWAS, report writing, and research services for students, researchers, and professionals worldwide.';
 
   const metaDescription = description || defaultDescription;
 
@@ -67,6 +67,15 @@ const SEO = ({
             jobTitle: 'Co-Founder & Data Scientist',
             url: 'https://in.linkedin.com/in/zafir-naik',
             sameAs: ['https://in.linkedin.com/in/zafir-naik'],
+            worksFor: { '@id': `${baseUrl}/#organization` },
+          },
+          {
+            '@type': 'Person',
+            name: 'Dr. Yasir Mushtaq Wani',
+            alternateName: ['Yasir Wani', 'Yasir Mushtaq', 'Dr. Yasir Wani'],
+            jobTitle: 'Co-Founder & Data Scientist',
+            url: 'https://www.linkedin.com/in/dr-yasir-mushtaq-wani-1864831b9/?originalSubdomain=in',
+            sameAs: ['https://www.linkedin.com/in/dr-yasir-mushtaq-wani-1864831b9/?originalSubdomain=in'],
             worksFor: { '@id': `${baseUrl}/#organization` },
           },
         ],
@@ -125,9 +134,9 @@ const SEO = ({
       <meta name="description" content={metaDescription} />
       <meta
         name="keywords"
-        content="data analysis Kashmir, data harvest labs, Faraz Ahmad Naik, Zafir Ahmad Naik, data analytics Srinagar, statistical analysis India, PCA analysis, GWAS analysis, research data analysis, data science Kashmir, report writing, data visualization, bioinformatics, quantitative genetics"
+        content="data analysis Kashmir, data harvest labs, Faraz Ahmad Naik, Zafir Ahmad Naik, Dr. Yasir Mushtaq Wani, Yasir Wani, Faraz Naik, Faraz Ahmad, Zafir Ahmad, Dr. Zafir Ahmad Naik, Faraz Kashmir, Faraz Srinagar, DataHarvestLabs, Data Srinagar, Data analysis in kashmir, data analytics Srinagar, statistical analysis India, PCA analysis, GWAS analysis, research data analysis, data science Kashmir, report writing, data visualization, bioinformatics, quantitative genetics"
       />
-      <meta name="author" content="Faraz Ahmad Naik, Dr. Zafir Ahmad Naik" />
+      <meta name="author" content="Faraz Ahmad Naik, Dr. Zafir Ahmad Naik, Dr. Yasir Mushtaq Wani" />
       <link rel="canonical" href={fullUrl} />
 
       {/* ── Open Graph ── */}
@@ -140,7 +149,7 @@ const SEO = ({
       <meta property="og:image" content={`${baseUrl}/og-image.png`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Data Harvest Labs — Data Analysis & Research Services" />
+      <meta property="og:image:alt" content="Data Harvest Labs - Data Analysis & Research Services" />
 
       {/* ── Twitter / X ── */}
       <meta name="twitter:card" content="summary_large_image" />

@@ -21,10 +21,10 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
   <text x="72" y="420" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="900" font-size="112" fill="#ffffff" letter-spacing="-3">HARVEST</text>
 
   <!-- Tagline -->
-  <text x="72" y="510" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="400" font-size="22" fill="#ffffff" opacity="0.5">Data Analysis &amp; Research Services — Srinagar, Kashmir</text>
+  <text x="72" y="510" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="400" font-size="22" fill="#ffffff" opacity="0.5">Data Analysis &amp; Research Services - Srinagar, Kashmir</text>
 
   <!-- Bottom founders line -->
-  <text x="72" y="580" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="400" font-size="15" fill="#ffffff" opacity="0.3">Faraz Ahmad Naik &amp; Dr. Zafir Ahmad Naik · dataharvestlabs.com</text>
+  <text x="72" y="580" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="400" font-size="15" fill="#ffffff" opacity="0.3">Faraz Ahmad Naik  Dr. Zafir Ahmad Naik  Dr. Yasir Mushtaq Wani · dataharvestlabs.com</text>
 
   <!-- Red dot accent -->
   <circle cx="1128" cy="315" r="72" fill="#EA281E" opacity="0.15"/>
