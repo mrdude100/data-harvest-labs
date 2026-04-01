@@ -4,16 +4,16 @@ export default [
     title: 'Get in touch',
     path: '/contact',
   },
-  {
+  /*{
     id: 'testimonials',
     title: 'Hear what our clients say',
-    path: '/testimonials',
+    path: '/comingsoon.js',
   },
   {
     id: 'get-quoted',
     title: 'Get a quotation',
-    path: '/quote',
-  },
+    path: '/comingsoon.js',
+  },*/
   {
     id: 'who-are-we',
     title: 'Who are we?',
