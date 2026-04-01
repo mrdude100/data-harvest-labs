@@ -64,24 +64,21 @@ const HomeLink = styled.a`
 `;
 
 const NotFound = () => {
-
   return (
     <>
       <SEO title="Coming Soon" path="/comingsoon" />
       <Wrapper>
-        <ErrorCode>404</ErrorCode>
+        <ErrorCode>Oops!</ErrorCode>
         <Title>
-          Coming
+          Under
           <br />
-          Soon
+          Construction
         </Title>
         <Subtitle>
           We are still working on this page. Let&apos;s get you back on track.
         </Subtitle>
         <Link href="/" passHref>
-          <HomeLink>
-            Go to Homepage
-          </HomeLink>
+          <HomeLink>Go to Homepage</HomeLink>
         </Link>
       </Wrapper>
     </>
