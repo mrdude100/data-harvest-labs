@@ -5,9 +5,9 @@ export default [
     path: '/contact',
   },
   {
-    id: 'testimonials',
-    title: 'Hear what our clients say',
-    path: '/comingsoon',
+    id: 'who-are-we',
+    title: 'Who are we?',
+    path: '/about',
   },
   {
     id: 'get-quoted',
@@ -15,8 +15,10 @@ export default [
     path: '/comingsoon',
   },
   {
-    id: 'who-are-we',
-    title: 'Who are we?',
-    path: '/about',
+    id: 'testimonials',
+    title: 'Client Stories',
+    path: '/comingsoon',
   },
+  
+  
 ];
