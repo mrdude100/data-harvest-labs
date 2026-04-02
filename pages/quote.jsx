@@ -8,7 +8,7 @@ import { secondaryFontStyle } from '../styles/shared/text';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_QUOTE_FORM_ID';
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xaqlbjlr';
 
 const SERVICES = [
   'Data Analysis',
