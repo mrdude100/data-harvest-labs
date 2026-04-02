@@ -3,33 +3,25 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import AnimateOnScreen from '../AnimateOnScreen';
 import useCursorStyle from '../../hooks/useCursorStyle';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import containerStyles from '../../styles/shared/container';
 import { secondaryFontStyle } from '../../styles/shared/text';
-
 
 // ─── Animations ──────────────────────────────────────────────────────────────
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0, 0.7, 0.29, 0.97] } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0, 0.7, 0.29, 0.97] },
+  },
 };
 
 const stagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12 } },
 };
-
-const float = keyframes`
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-8px) rotate(1deg); }
-  66% { transform: translateY(4px) rotate(-1deg); }
-`;
-
-const pulse = keyframes`
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.8; }
-`;
 
 // ─── Shared ───────────────────────────────────────────────────────────────────
 
@@ -38,7 +30,7 @@ const Section = styled.section`
   padding: 96px 32px;
 
   ${({ theme }) => theme.breakpoints.tablet`
-    padding: 64px 24px;
+    padding: 48px 24px;
   `};
 `;
 
@@ -60,13 +52,11 @@ const SectionTitle = styled.h2`
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
   margin: 0 0 48px;
-`;
 
-const RedDivider = styled.div`
-  width: 40px;
-  height: 2px;
-  background: ${({ theme }) => theme.colors.red};
-  margin: 48px 0;
+  ${({ theme }) => theme.breakpoints.tablet`
+    font-size: clamp(1.5rem, 7vw, 2.5rem);
+    margin: 0 0 32px;
+  `}
 `;
 
 // ─── Stats ────────────────────────────────────────────────────────────────────
@@ -223,6 +213,10 @@ const ServiceDesc = styled.p`
   margin: 0;
   line-height: 1.6;
   font-weight: 400;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    display: none;
+  `}
 `;
 
 // ─── Why Us ───────────────────────────────────────────────────────────────────
@@ -438,24 +432,69 @@ const STATS = [
 ];
 
 const SERVICES = [
-  { name: 'SNP Data Analysis', desc: 'Quality filtering, LD analysis, haplotype phasing, and allele frequency estimation from raw SNP chip or GBS data.' },
-  { name: 'GWAS', desc: 'Genome-wide association studies using linear and mixed models — EMMAX, FarmCPU, and BLINK.' },
-  { name: 'Genomic Diversity', desc: 'Population structure using ADMIXTURE, PCA, Fst, Tajima\'s D, nucleotide diversity, and ROH analysis.' },
-  { name: 'PCA Analysis', desc: 'Principal component analysis for dimensionality reduction, pattern discovery, and population stratification.' },
-  { name: 'Heritability Estimation', desc: 'SNP-based and pedigree heritability using GCTA, BLUP, and variance component methods.' },
-  { name: 'ANOVA & Regression', desc: 'One-way, two-way, and multi-environment trial ANOVA with post-hoc tests for publication-grade results.' },
-  { name: 'Report & Article Writing', desc: 'Clear, publication-ready reports with interpretable figures and full methodology documentation.' },
-  { name: 'Presentations', desc: 'Professional presentation design — research seminars, conference talks, and thesis defences.' },
-  { name: 'Data Visualization', desc: 'Custom figures, Manhattan plots, PCA biplots, heatmaps, and interactive charts.' },
+  {
+    name: 'SNP Data Analysis',
+    desc: 'Quality filtering, LD analysis, haplotype phasing, and allele frequency estimation from raw SNP chip or GBS data.',
+  },
+  {
+    name: 'GWAS',
+    desc: 'Genome-wide association studies using linear and mixed models — EMMAX, FarmCPU, and BLINK.',
+  },
+  {
+    name: 'Genomic Diversity',
+    desc: "Population structure using ADMIXTURE, PCA, Fst, Tajima's D, nucleotide diversity, and ROH analysis.",
+  },
+  {
+    name: 'PCA Analysis',
+    desc: 'Principal component analysis for dimensionality reduction, pattern discovery, and population stratification.',
+  },
+  {
+    name: 'Heritability Estimation',
+    desc: 'SNP-based and pedigree heritability using GCTA, BLUP, and variance component methods.',
+  },
+  {
+    name: 'ANOVA & Regression',
+    desc: 'One-way, two-way, and multi-environment trial ANOVA with post-hoc tests for publication-grade results.',
+  },
+  {
+    name: 'Report & Article Writing',
+    desc: 'Clear, publication-ready reports with interpretable figures and full methodology documentation.',
+  },
+  {
+    name: 'Presentations',
+    desc: 'Professional presentation design — research seminars, conference talks, and thesis defences.',
+  },
+  {
+    name: 'Data Visualization',
+    desc: 'Custom figures, Manhattan plots, PCA biplots, heatmaps, and interactive charts.',
+  },
 ];
 
 const WHY = [
-  { title: 'End-to-End Expertise', desc: 'From raw genotype files to publication-ready results — we handle the entire analytical pipeline.' },
-  { title: 'Species Versatility', desc: 'Proven workflows for crop plants, livestock, aquaculture species, and wildlife genetics.' },
-  { title: 'Rigorous Statistics', desc: 'Best-practice standards: appropriate model selection, multiple-testing correction, and assumption validation.' },
-  { title: 'Transparent Reporting', desc: 'Interpretable figures, reproducible R/Python code, and full methodology documentation.' },
-  { title: 'Custom Pipelines', desc: 'Flexible workflows tailored to your data type — GBS, SNP chip, or WGS — and your research questions.' },
-  { title: 'Academic & Industry Ready', desc: 'Serving university research groups, breeding companies, government programs, and NGOs.' },
+  {
+    title: 'End-to-End Expertise',
+    desc: 'From raw genotype files to publication-ready results — we handle the entire analytical pipeline.',
+  },
+  {
+    title: 'Species Versatility',
+    desc: 'Proven workflows for crop plants, livestock, aquaculture species, and wildlife genetics.',
+  },
+  {
+    title: 'Rigorous Statistics',
+    desc: 'Best-practice standards: appropriate model selection, multiple-testing correction, and assumption validation.',
+  },
+  {
+    title: 'Transparent Reporting',
+    desc: 'Interpretable figures, reproducible R/Python code, and full methodology documentation.',
+  },
+  {
+    title: 'Custom Pipelines',
+    desc: 'Flexible workflows tailored to your data type — GBS, SNP chip, or WGS — and your research questions.',
+  },
+  {
+    title: 'Academic & Industry Ready',
+    desc: 'Serving university research groups, breeding companies, government programs, and NGOs.',
+  },
 ];
 
 const PLANT_APPS = [
@@ -477,10 +516,22 @@ const ANIMAL_APPS = [
 ];
 
 const COURSES = [
-  { name: 'Population & Quantitative Genetics', desc: 'HWE, heritability estimation, BLUP, variance components — with hands-on R practicals.' },
-  { name: 'SNP Data Analysis & GWAS', desc: 'Quality filtering, LD analysis, haplotype phasing, and genome-wide association using EMMAX, FarmCPU & BLINK.' },
-  { name: 'Genomic Diversity & Population Structure', desc: 'PCA, ADMIXTURE, Fst, Tajima\'s D, ROH, kinship matrices using PLINK, GCTA, and R.' },
-  { name: 'Biostatistics — ANOVA & Regression', desc: 'One-way, two-way & MET ANOVA; regression models; post-hoc tests for publication-grade analysis.' },
+  {
+    name: 'Population & Quantitative Genetics',
+    desc: 'HWE, heritability estimation, BLUP, variance components — with hands-on R practicals.',
+  },
+  {
+    name: 'SNP Data Analysis & GWAS',
+    desc: 'Quality filtering, LD analysis, haplotype phasing, and genome-wide association using EMMAX, FarmCPU & BLINK.',
+  },
+  {
+    name: 'Genomic Diversity & Population Structure',
+    desc: "PCA, ADMIXTURE, Fst, Tajima's D, ROH, kinship matrices using PLINK, GCTA, and R.",
+  },
+  {
+    name: 'Biostatistics — ANOVA & Regression',
+    desc: 'One-way, two-way & MET ANOVA; regression models; post-hoc tests for publication-grade analysis.',
+  },
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -603,12 +654,18 @@ const HomePage = () => {
           <AnimateOnScreen>
             <TrainingLeft as={motion.div}>
               <SectionLabel>Training</SectionLabel>
-              <SectionTitle>Genomics Training for Students & Researchers</SectionTitle>
+              <SectionTitle>
+                Genomics Training for Students & Researchers
+              </SectionTitle>
               <TrainingDesc>
-                We offer structured training programmes in genomic data analysis for BVSc, MSc, and PhD students — as well as early-career researchers and breeders transitioning to computational methods.
+                We offer structured training programmes in genomic data analysis
+                for BVSc, MSc, and PhD students — as well as early-career
+                researchers and breeders transitioning to computational methods.
               </TrainingDesc>
               <TrainingDesc>
-                Courses are hands-on, software-driven (R, PLINK, GCTA, TASSEL), and aligned with the latest analytical standards used in international journals.
+                Courses are hands-on, software-driven (R, PLINK, GCTA, TASSEL),
+                and aligned with the latest analytical standards used in
+                international journals.
               </TrainingDesc>
               <Link href="/contact" passHref>
                 <TrainingLink

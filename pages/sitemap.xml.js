@@ -29,7 +29,10 @@ const Sitemap = () => null;
 
 export const getServerSideProps = async ({ res }) => {
   res.setHeader('Content-Type', 'text/xml');
-  res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate');
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=86400, stale-while-revalidate',
+  );
   res.write(generateSitemap());
   res.end();
   return { props: {} };

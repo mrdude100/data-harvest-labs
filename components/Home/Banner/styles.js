@@ -16,7 +16,7 @@ export const GradientBackground = styled.div`
     #0a0a0a 0%,
     #1a0000 25%,
     #2d0000 40%,
-    #EA281E22 60%,
+    #ea281e22 60%,
     #1a0000 75%,
     #0a0a0a 100%
   );
@@ -71,7 +71,7 @@ export const BannerTitle = styled(motion.h1)`
     font-family: calibre, sans-serif;
     font-weight: 900;
     font-size: clamp(3rem, 12vw, 11rem);
-    line-height: 1.00;
+    line-height: 1;
     color: ${({ theme }) => theme.text};
     text-transform: uppercase;
     letter-spacing: -0.02em;

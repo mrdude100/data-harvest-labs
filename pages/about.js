@@ -269,21 +269,27 @@ const TEAM = [
     tags: ['R', 'Python', 'GWAS', 'Biostatistics', 'PCA', 'Genomics'],
     linkedin: 'https://in.linkedin.com/in/zafir-naik',
   },
-   {
-  name: 'Dr. Yasir Mushtaq Wani',
-  role: 'Co-Founder · Veterinarian',
-  bio: `Assistant Professor in Animal Genetics & Breeding at Khalsa College of Veterinary and Animal Sciences, Yasir brings deep expertise in computational genomics, bioinformatics, and veterinary science to DataHarvestLabs. An MVSc from the National Dairy Research Institute, Karnal, he specializes in CNV analysis, population genetics, and clinical data systems. He also built VetField - an offline clinical assistant for field veterinarians.`,
-  tags: ['Bioinformatics', 'Genomics', 'R', 'Veterinary Science', 'CNV Analysis'],
-  linkedin: 'https://www.linkedin.com/in/dr-yasir-mushtaq-wani-1864831b9/?originalSubdomain=in',
-},
+  {
+    name: 'Dr. Yasir Mushtaq Wani',
+    role: 'Co-Founder · Veterinarian',
+    bio: `Assistant Professor in Animal Genetics & Breeding at Khalsa College of Veterinary and Animal Sciences, Yasir brings deep expertise in computational genomics, bioinformatics, and veterinary science to DataHarvestLabs. An MVSc from the National Dairy Research Institute, Karnal, he specializes in CNV analysis, population genetics, and clinical data systems. He also built VetField - an offline clinical assistant for field veterinarians.`,
+    tags: [
+      'Bioinformatics',
+      'Genomics',
+      'R',
+      'Veterinary Science',
+      'CNV Analysis',
+    ],
+    linkedin:
+      'https://www.linkedin.com/in/dr-yasir-mushtaq-wani-1864831b9/?originalSubdomain=in',
+  },
   {
     name: 'Faraz Ahmad Naik',
     role: 'Co-Founder · Software Engineer',
     bio: 'Software Engineer, Faraz brings the technical infrastructure to DataHarvestLabs. He works across full-stack development, machine learning and cloud systems, and systems engineering',
-    tags: ['Full-Stack', 'ML','Cloud', 'Systems', 'CI/CD'],
+    tags: ['Full-Stack', 'ML', 'Cloud', 'Systems', 'CI/CD'],
     linkedin: 'https://www.linkedin.com/in/faraznaik/',
   },
- 
 ];
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -294,10 +300,10 @@ const AboutPage = () => {
   return (
     <>
       <SEO
-  title="Who We Are"
-  description="Data Harvest Labs was founded in Kashmir by Faraz Ahmad Naik, Dr. Zafir Ahmad Naik and Dr. Yasir Mushtaq Wani. Learn our story, meet the team, and discover what drives us."
-  path="/about"
-/>
+        title="Who We Are"
+        description="Data Harvest Labs was founded in Kashmir by Faraz Ahmad Naik, Dr. Zafir Ahmad Naik and Dr. Yasir Mushtaq Wani. Learn our story, meet the team, and discover what drives us."
+        path="/about"
+      />
 
       <PageWrapper>
         <TopLabel>Who we are</TopLabel>
@@ -308,17 +314,13 @@ const AboutPage = () => {
         </PageTitle>
 
         {/* Origin story */}
-        <Section
-          variants={stagger}
-          initial="hidden"
-          animate="show"
-        >
+        <Section variants={stagger} initial="hidden" animate="show">
           <SectionLabel>Our story</SectionLabel>
           <motion.div variants={fadeUp}>
             <OriginText>
               DataHarvestLabs started in July 2023 in Srinagar - not in a
-              boardroom, but between three friends who kept running into the same
-              problem: researchers and students drowning in data with no
+              boardroom, but between three friends who kept running into the
+              same problem: researchers and students drowning in data with no
               affordable way to make sense of it.
             </OriginText>
           </motion.div>
@@ -327,8 +329,8 @@ const AboutPage = () => {
               Zafir was deep in his PhD, watching fellow researchers waste weeks
               on analyses that should take hours. Faraz was building software
               and saw the same gap from the other side - powerful tools existed,
-              but they were inaccessible to the people of Kashmir, expensive, or required expertise most
-              people didn't have.
+              but they were inaccessible to the people of Kashmir, expensive, or
+              required expertise most people didn&apos;t have.
             </OriginText>
           </motion.div>
           <motion.div variants={fadeUp}>

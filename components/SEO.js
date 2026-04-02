@@ -75,7 +75,9 @@ const SEO = ({
             alternateName: ['Yasir Wani', 'Yasir Mushtaq', 'Dr. Yasir Wani'],
             jobTitle: 'Co-Founder & Data Scientist',
             url: 'https://www.linkedin.com/in/dr-yasir-mushtaq-wani-1864831b9/?originalSubdomain=in',
-            sameAs: ['https://www.linkedin.com/in/dr-yasir-mushtaq-wani-1864831b9/?originalSubdomain=in'],
+            sameAs: [
+              'https://www.linkedin.com/in/dr-yasir-mushtaq-wani-1864831b9/?originalSubdomain=in',
+            ],
             worksFor: { '@id': `${baseUrl}/#organization` },
           },
         ],
@@ -130,13 +132,19 @@ const SEO = ({
     <Head>
       {/* ── Primary ── */}
       <title>{fullTitle}</title>
-      <meta name="google-site-verification" content="XeETHI2BiOf6v7f74WiWAxt84xIFZYqMX2i-Xnh9HHs" />
+      <meta
+        name="google-site-verification"
+        content="XeETHI2BiOf6v7f74WiWAxt84xIFZYqMX2i-Xnh9HHs"
+      />
       <meta name="description" content={metaDescription} />
       <meta
         name="keywords"
         content="data analysis Kashmir, data harvest labs, Faraz Ahmad Naik, Zafir Ahmad Naik, Dr. Yasir Mushtaq Wani, Yasir Wani, Faraz Naik, Faraz Ahmad, Zafir Ahmad, Dr. Zafir Ahmad Naik, Faraz Kashmir, Faraz Srinagar, DataHarvestLabs, Data Srinagar, Data analysis in kashmir, data analytics Srinagar, statistical analysis India, PCA analysis, GWAS analysis, research data analysis, data science Kashmir, report writing, data visualization, bioinformatics, quantitative genetics"
       />
-      <meta name="author" content="Faraz Ahmad Naik, Dr. Zafir Ahmad Naik, Dr. Yasir Mushtaq Wani" />
+      <meta
+        name="author"
+        content="Faraz Ahmad Naik, Dr. Zafir Ahmad Naik, Dr. Yasir Mushtaq Wani"
+      />
       <link rel="canonical" href={fullUrl} />
 
       {/* ── Open Graph ── */}
@@ -149,7 +157,10 @@ const SEO = ({
       <meta property="og:image" content={`${baseUrl}/og-image.png`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Data Harvest Labs - Data Analysis & Research Services" />
+      <meta
+        property="og:image:alt"
+        content="Data Harvest Labs - Data Analysis & Research Services"
+      />
 
       {/* ── Twitter / X ── */}
       <meta name="twitter:card" content="summary_large_image" />

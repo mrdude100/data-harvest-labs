@@ -64,7 +64,6 @@ const HomeLink = styled.a`
 `;
 
 const NotFound = () => {
-
   return (
     <>
       <SEO title="Page Not Found" path="/404" />
@@ -76,13 +75,11 @@ const NotFound = () => {
           Found
         </Title>
         <Subtitle>
-          This page doesn't exist or was moved. Let&apos;s get you back on track.
-
+          This page doesn&apos;t exist or was moved. Let&apos;s get you back on
+          track.
         </Subtitle>
         <Link href="/" passHref>
-          <HomeLink>
-            Go to Homepage
-          </HomeLink>
+          <HomeLink>Go to Homepage</HomeLink>
         </Link>
       </Wrapper>
     </>

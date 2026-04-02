@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import containerStyles from '../../styles/shared/container';
 
+// eslint-disable-next-line no-unused-vars
 export const Slider = styled(({ renderAs, scrolled, ...props }) => {
   const Component = motion[renderAs] || motion.header;
   return <Component {...props} />;
@@ -11,7 +12,8 @@ export const Slider = styled(({ renderAs, scrolled, ...props }) => {
   right: 0;
   left: 0;
   z-index: ${({ theme }) => theme.zIndex.slider};
-  transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease,
+    box-shadow 0.3s ease;
   background: ${({ scrolled, theme }) =>
     scrolled ? `${theme.background}e6` : 'transparent'};
   backdrop-filter: ${({ scrolled }) => (scrolled ? 'blur(12px)' : 'none')};
