@@ -12,13 +12,11 @@ export default [
   {
     id: 'get-quoted',
     title: 'Get a quotation',
-    path: '/comingsoon',
+    path: '/quote',
   },
   {
     id: 'testimonials',
     title: 'Client Stories',
-    path: '/comingsoon',
+    path: '/testimonials',
   },
-  
-  
 ];
