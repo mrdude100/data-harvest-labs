@@ -214,25 +214,18 @@ export const CloseButton = styled(MenuButton)`
 
   &::before,
   &::after {
-    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 22px;
     background: ${({ theme }) => theme.background};
   }
 
   &::before {
-    transform: translateY(-50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
   &::after {
-    transform: translateY(-50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
-
-  ${({ theme }) => theme.breakpoints.tablet`
-    &::before {
-      margin-top: 0;
-    }
-
-    &::after {
-      margin-top: 0;
-    }
-  `};
 `;

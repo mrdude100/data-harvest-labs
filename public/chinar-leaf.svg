@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120">
+  <defs>
+    <linearGradient id="lg" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#F28438"/>
+      <stop offset="40%" stop-color="#D04416"/>
+      <stop offset="100%" stop-color="#7C1A08"/>
+    </linearGradient>
+    <linearGradient id="vg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A03010" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#7A1808" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 5-lobed chinar (Platanus orientalis) leaf body -->
+  <path fill="url(#lg)" d="
+    M 50,8
+    C 54,9  64,18  66,30
+    C 70,24  84,22  92,30
+    C 96,36  82,48  74,58
+    C 78,64  88,76  80,82
+    C 76,87  62,76  50,72
+    C 38,76  24,87  20,82
+    C 12,76  22,64  26,58
+    C 18,48   4,36   8,30
+    C 16,22  30,24  34,30
+    C 36,18  46,9   50,8
+    Z
+  "/>
+
+  <!-- Stem -->
+  <path d="M 50,72 Q 49,90 48,114"
+    fill="none" stroke="#6B2010" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Midrib -->
+  <path d="M 50,72 L 50,14"
+    fill="none" stroke="url(#vg)" stroke-width="1.1"/>
+
+  <!-- Lateral veins: right side -->
+  <path d="M 50,66 L 73,53
+           M 50,56 L 80,42
+           M 50,44 L 70,27"
+    fill="none" stroke="#A03010" stroke-width="0.7" stroke-linecap="round" opacity="0.42"/>
+
+  <!-- Lateral veins: left side -->
+  <path d="M 50,66 L 27,53
+           M 50,56 L 20,42
+           M 50,44 L 30,27"
+    fill="none" stroke="#A03010" stroke-width="0.7" stroke-linecap="round" opacity="0.42"/>
+
+  <!-- Tertiary veins: subtle texture -->
+  <path d="M 64,50 L 70,44 M 36,50 L 30,44
+           M 68,38 L 74,33 M 32,38 L 26,33"
+    fill="none" stroke="#A03010" stroke-width="0.45" stroke-linecap="round" opacity="0.22"/>
+</svg>

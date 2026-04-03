@@ -8,12 +8,13 @@ const gradientShift = keyframes`
 `;
 
 const leafFall = keyframes`
-  0%   { transform: translateY(-60px) rotate(0deg) translateX(0px);   opacity: 0; }
-  6%   { opacity: 1; }
-  35%  { transform: translateY(28vh)  rotate(160deg) translateX(18px); }
-  65%  { transform: translateY(58vh)  rotate(300deg) translateX(-14px); }
-  92%  { opacity: 0.65; }
-  100% { transform: translateY(108vh) rotate(420deg) translateX(10px); opacity: 0; }
+  0%   { transform: translateY(-80px) translateX(0px)   rotate(0deg);   opacity: 0; }
+  8%   { opacity: 0.88; }
+  28%  { transform: translateY(22vh)  translateX(18px)  rotate(14deg); }
+  52%  { transform: translateY(50vh)  translateX(-14px) rotate(-9deg); }
+  76%  { transform: translateY(76vh)  translateX(12px)  rotate(16deg); }
+  93%  { opacity: 0.55; }
+  100% { transform: translateY(110vh) translateX(-6px)  rotate(-3deg); opacity: 0; }
 `;
 
 export const LeafContainer = styled.div`
@@ -24,16 +25,17 @@ export const LeafContainer = styled.div`
   overflow: hidden;
 `;
 
-export const Leaf = styled.span`
+export const Leaf = styled.img`
   position: absolute;
-  top: -40px;
+  top: -80px;
   left: ${({ $left }) => $left};
-  font-size: ${({ $size }) => $size};
+  width: ${({ $size }) => $size};
+  height: auto;
   opacity: 0;
   animation: ${leafFall} ${({ $dur }) => $dur} ${({ $delay }) => $delay}
     ease-in-out infinite;
   will-change: transform;
-  filter: brightness(0.7) saturate(0.6);
+  user-select: none;
   display: block;
 `;
 
@@ -41,17 +43,19 @@ export const GradientBackground = styled.div`
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(
-    135deg,
-    #0a0a0a 0%,
-    #1a0000 25%,
-    #2d0000 40%,
-    #ea281e22 60%,
-    #1a0000 75%,
-    #0a0a0a 100%
-  );
-  background-size: 300% 300%;
-  animation: ${gradientShift} 12s ease infinite;
+  background: radial-gradient(
+      ellipse 75% 55% at 72% 18%,
+      #6b1212 0%,
+      rgba(50, 5, 5, 0) 62%
+    ),
+    radial-gradient(
+      ellipse 50% 45% at 12% 88%,
+      #3d0808 0%,
+      rgba(25, 3, 3, 0) 58%
+    ),
+    linear-gradient(168deg, #0c0c0c 0%, #1c0606 38%, #120404 65%, #080808 100%);
+  background-size: 300% 300%, 300% 300%, 200% 200%;
+  animation: ${gradientShift} 14s ease infinite;
 `;
 
 export const BannerSection = styled.section`

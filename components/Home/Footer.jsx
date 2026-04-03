@@ -260,6 +260,15 @@ const Footer = () => {
 
           <SocialRow>
             <SocialLink
+              href="https://in.linkedin.com/company/data-harvest-labs"
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={addCursorBorder}
+              onMouseLeave={removeCursorBorder}
+            >
+              Data Harvest Labs
+            </SocialLink>
+            <SocialLink
               href="https://www.linkedin.com/in/faraznaik/"
               target="_blank"
               rel="noopener noreferrer"

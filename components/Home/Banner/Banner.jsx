@@ -33,16 +33,16 @@ const itemTitleAnimation = {
 };
 
 const LEAVES = [
-  { left: '5%', delay: '0s', dur: '11s', size: '1.1rem' },
-  { left: '13%', delay: '-4s', dur: '14s', size: '0.85rem' },
-  { left: '22%', delay: '-8s', dur: '12s', size: '1.35rem' },
-  { left: '34%', delay: '-2s', dur: '10s', size: '0.95rem' },
-  { left: '46%', delay: '-6s', dur: '13s', size: '1.5rem' },
-  { left: '57%', delay: '-1s', dur: '11s', size: '0.8rem' },
-  { left: '67%', delay: '-7s', dur: '15s', size: '1.2rem' },
-  { left: '77%', delay: '-3s', dur: '12s', size: '0.9rem' },
-  { left: '87%', delay: '-5s', dur: '13s', size: '1.1rem' },
-  { left: '94%', delay: '-9s', dur: '14s', size: '0.75rem' },
+  { left: '5%', delay: '0s', dur: '16s', size: '54px' },
+  { left: '13%', delay: '-5s', dur: '19s', size: '40px' },
+  { left: '22%', delay: '-9s', dur: '17s', size: '66px' },
+  { left: '34%', delay: '-3s', dur: '15s', size: '46px' },
+  { left: '46%', delay: '-7s', dur: '18s', size: '74px' },
+  { left: '57%', delay: '-2s', dur: '16s', size: '38px' },
+  { left: '67%', delay: '-8s', dur: '20s', size: '60px' },
+  { left: '77%', delay: '-4s', dur: '17s', size: '48px' },
+  { left: '87%', delay: '-6s', dur: '18s', size: '56px' },
+  { left: '94%', delay: '-1s', dur: '19s', size: '36px' },
 ];
 
 const Banner = () => {
@@ -61,13 +61,13 @@ const Banner = () => {
         {LEAVES.map((leaf, i) => (
           <Leaf
             key={i}
+            src="/chinar-leaf.svg"
+            alt=""
             $left={leaf.left}
             $delay={leaf.delay}
             $dur={leaf.dur}
             $size={leaf.size}
-          >
-            🍁
-          </Leaf>
+          />
         ))}
       </LeafContainer>
       {isDesktop && (
