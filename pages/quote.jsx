@@ -395,6 +395,7 @@ const QuotePage = () => {
     name: '',
     email: '',
     organisation: '',
+    phone: '',
     services: [],
     description: '',
     country: '',
@@ -479,6 +480,7 @@ const QuotePage = () => {
           name: form.name,
           email: form.email,
           organisation: form.organisation,
+          phone: form.phone,
           services: form.services.join(', '),
           description: form.description,
           country: form.country,
@@ -584,6 +586,17 @@ const QuotePage = () => {
                           value={form.organisation}
                           onChange={handleChange('organisation')}
                           autoComplete="organization"
+                        />
+                      </FieldWrapper>
+                      <FieldWrapper>
+                        <Label htmlFor="phone">Mobile number (optional)</Label>
+                        <StyledInput
+                          id="phone"
+                          type="tel"
+                          placeholder="e.g. +91 70060 87884"
+                          value={form.phone}
+                          onChange={handleChange('phone')}
+                          autoComplete="tel"
                         />
                       </FieldWrapper>
                     </FieldGroup>
@@ -738,6 +751,12 @@ const QuotePage = () => {
                               <ReviewValue>{form.organisation}</ReviewValue>
                             </ReviewRow>
                           )}
+                          {form.phone && (
+                            <ReviewRow>
+                              <ReviewKey>Mobile</ReviewKey>
+                              <ReviewValue>{form.phone}</ReviewValue>
+                            </ReviewRow>
+                          )}
                           <ReviewRow>
                             <ReviewKey>Services</ReviewKey>
                             <ReviewValue>
@@ -802,7 +821,7 @@ const QuotePage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0, 0.7, 0.29, 0.97] }}
           >
-            <SuccessTitle>Quote{'\u00A0'}received</SuccessTitle>
+            <SuccessTitle>Request{'\u00A0'}received!</SuccessTitle>
             <SuccessText>
               Thanks, {form.name.split(' ')[0]}. We&apos;ve received your quote
               request and will get back to you with a detailed proposal soon.

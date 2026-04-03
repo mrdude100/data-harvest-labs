@@ -4,7 +4,13 @@ import useCursorStyle from '../../../hooks/useCursorStyle';
 import useWindowSize from '../../../hooks/useWindowSize';
 import useStyledTheme from '../../../hooks/useStyledTheme';
 import useMediaQuery from '../../../hooks/useMediaQuery';
-import { BannerSection, BannerTitle, GradientBackground } from './styles';
+import {
+  BannerSection,
+  BannerTitle,
+  GradientBackground,
+  Leaf,
+  LeafContainer,
+} from './styles';
 import CanvasEraser from '../../CanvasEraser';
 const titleAnimation = {
   animate: {
@@ -26,6 +32,19 @@ const itemTitleAnimation = {
   },
 };
 
+const LEAVES = [
+  { left: '5%', delay: '0s', dur: '11s', size: '1.1rem' },
+  { left: '13%', delay: '-4s', dur: '14s', size: '0.85rem' },
+  { left: '22%', delay: '-8s', dur: '12s', size: '1.35rem' },
+  { left: '34%', delay: '-2s', dur: '10s', size: '0.95rem' },
+  { left: '46%', delay: '-6s', dur: '13s', size: '1.5rem' },
+  { left: '57%', delay: '-1s', dur: '11s', size: '0.8rem' },
+  { left: '67%', delay: '-7s', dur: '15s', size: '1.2rem' },
+  { left: '77%', delay: '-3s', dur: '12s', size: '0.9rem' },
+  { left: '87%', delay: '-5s', dur: '13s', size: '1.1rem' },
+  { left: '94%', delay: '-9s', dur: '14s', size: '0.75rem' },
+];
+
 const Banner = () => {
   const canvasRef = React.useRef(null);
   const windowSize = useWindowSize();
@@ -38,6 +57,19 @@ const Banner = () => {
   return (
     <BannerSection style={{ height: windowSize.height }}>
       <GradientBackground />
+      <LeafContainer aria-hidden="true">
+        {LEAVES.map((leaf, i) => (
+          <Leaf
+            key={i}
+            $left={leaf.left}
+            $delay={leaf.delay}
+            $dur={leaf.dur}
+            $size={leaf.size}
+          >
+            🍁
+          </Leaf>
+        ))}
+      </LeafContainer>
       {isDesktop && (
         <CanvasEraser
           ref={canvasRef}

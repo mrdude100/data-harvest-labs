@@ -107,56 +107,6 @@ const StatLabel = styled.div`
   opacity: 0.7;
 `;
 
-// ─── Contact CTA ─────────────────────────────────────────────────────────────
-
-const CtaWrapper = styled.section`
-  ${containerStyles};
-  padding: 96px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid ${({ theme }) => theme.text}18;
-  border-bottom: 1px solid ${({ theme }) => theme.text}18;
-
-  ${({ theme }) => theme.breakpoints.small`
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 32px;
-    padding: 64px 24px;
-  `};
-`;
-
-const CtaText = styled.h2`
-  font-family: calibre, sans-serif;
-  font-weight: 900;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  line-height: 0.95;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.text};
-  margin: 0;
-  max-width: 600px;
-`;
-
-const CtaButton = styled.a`
-  ${secondaryFontStyle};
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.background};
-  background: ${({ theme }) => theme.text};
-  padding: 20px 48px;
-  display: inline-block;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-  text-decoration: none;
-  flex-shrink: 0;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.red};
-    color: #fff;
-  }
-`;
-
 // ─── Services ─────────────────────────────────────────────────────────────────
 
 const ServicesGrid = styled.div`
@@ -180,7 +130,7 @@ const ServiceCard = styled(motion.div)`
   background: ${({ theme }) => theme.background};
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   transition: background 0.2s ease;
 
   &:hover {
@@ -207,11 +157,11 @@ const ServiceName = styled.h3`
 
 const ServiceDesc = styled.p`
   ${secondaryFontStyle};
-  font-size: 0.875rem;
+  font-size: 0.84rem;
   color: ${({ theme }) => theme.text};
-  opacity: 0.5;
+  opacity: 0.45;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.55;
   font-weight: 400;
 
   ${({ theme }) => theme.breakpoints.tablet`
@@ -262,11 +212,11 @@ const WhyTitle = styled.h3`
 
 const WhyDesc = styled.p`
   ${secondaryFontStyle};
-  font-size: 0.875rem;
+  font-size: 0.84rem;
   color: ${({ theme }) => theme.text};
-  opacity: 0.5;
+  opacity: 0.45;
   margin: 0;
-  line-height: 1.65;
+  line-height: 1.6;
   font-weight: 400;
 `;
 
@@ -315,10 +265,10 @@ const AppList = styled.ul`
 
 const AppListItem = styled.li`
   ${secondaryFontStyle};
-  font-size: 0.875rem;
+  font-size: 0.84rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.6;
+  opacity: 0.55;
   padding-left: 16px;
   position: relative;
   line-height: 1.5;
@@ -365,11 +315,11 @@ const TrainingLeft = styled.div`
 
 const TrainingDesc = styled.p`
   font-family: calibre, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: ${({ theme }) => theme.text};
-  opacity: 0.65;
+  opacity: 0.55;
   margin: 0;
-  line-height: 1.65;
+  line-height: 1.7;
 `;
 
 const TrainingLink = styled.a`
@@ -414,12 +364,61 @@ const CourseName = styled.h4`
 
 const CourseDesc = styled.p`
   ${secondaryFontStyle};
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.5;
+  opacity: 0.45;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.55;
+`;
+
+// ─── Contact CTA ─────────────────────────────────────────────────────────────
+
+const CtaWrapper = styled.section`
+  ${containerStyles};
+  padding: 96px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid ${({ theme }) => theme.text}18;
+
+  ${({ theme }) => theme.breakpoints.small`
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 64px 24px;
+  `};
+`;
+
+const CtaText = styled.h2`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  margin: 0;
+  max-width: 600px;
+`;
+
+const CtaButton = styled.a`
+  ${secondaryFontStyle};
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.text};
+  padding: 20px 48px;
+  display: inline-block;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  flex-shrink: 0;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.red};
+    color: #fff;
+  }
 `;
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -434,66 +433,66 @@ const STATS = [
 const SERVICES = [
   {
     name: 'SNP Data Analysis',
-    desc: 'Quality filtering, LD analysis, haplotype phasing, and allele frequency estimation from raw SNP chip or GBS data.',
+    desc: 'QC filtering, LD pruning, haplotype phasing and allele frequency estimation from GBS or SNP chip data.',
   },
   {
     name: 'GWAS',
-    desc: 'Genome-wide association studies using linear and mixed models — EMMAX, FarmCPU, and BLINK.',
+    desc: 'Genome-wide association studies using EMMAX, FarmCPU, and BLINK mixed models.',
   },
   {
     name: 'Genomic Diversity',
-    desc: "Population structure using ADMIXTURE, PCA, Fst, Tajima's D, nucleotide diversity, and ROH analysis.",
+    desc: "Population structure via ADMIXTURE, PCA, Fst, Tajima's D, and ROH analysis.",
   },
   {
     name: 'PCA Analysis',
-    desc: 'Principal component analysis for dimensionality reduction, pattern discovery, and population stratification.',
+    desc: 'Dimensionality reduction and population stratification for any genotypic dataset.',
   },
   {
     name: 'Heritability Estimation',
-    desc: 'SNP-based and pedigree heritability using GCTA, BLUP, and variance component methods.',
+    desc: 'SNP-based and pedigree heritability using GCTA, BLUP, and variance components.',
   },
   {
     name: 'ANOVA & Regression',
-    desc: 'One-way, two-way, and multi-environment trial ANOVA with post-hoc tests for publication-grade results.',
+    desc: 'One-way, two-way, and MET ANOVA with post-hoc tests — publication ready.',
   },
   {
     name: 'Report & Article Writing',
-    desc: 'Clear, publication-ready reports with interpretable figures and full methodology documentation.',
+    desc: 'Publication-ready reports with interpretable figures and full methodology.',
   },
   {
     name: 'Presentations',
-    desc: 'Professional presentation design — research seminars, conference talks, and thesis defences.',
+    desc: 'Slide design for seminars, conference talks, and thesis defences.',
   },
   {
     name: 'Data Visualization',
-    desc: 'Custom figures, Manhattan plots, PCA biplots, heatmaps, and interactive charts.',
+    desc: 'Manhattan plots, PCA biplots, heatmaps, and custom publication figures.',
   },
 ];
 
 const WHY = [
   {
     title: 'End-to-End Expertise',
-    desc: 'From raw genotype files to publication-ready results — we handle the entire analytical pipeline.',
+    desc: 'Raw genotype files to publication-ready results — we handle the full pipeline.',
   },
   {
     title: 'Species Versatility',
-    desc: 'Proven workflows for crop plants, livestock, aquaculture species, and wildlife genetics.',
+    desc: 'Proven workflows for crops, livestock, aquaculture, and wildlife genetics.',
   },
   {
     title: 'Rigorous Statistics',
-    desc: 'Best-practice standards: appropriate model selection, multiple-testing correction, and assumption validation.',
+    desc: 'Best-practice model selection, multiple-testing correction, and assumption checks.',
   },
   {
     title: 'Transparent Reporting',
-    desc: 'Interpretable figures, reproducible R/Python code, and full methodology documentation.',
+    desc: 'Reproducible R/Python code, interpretable figures, and full methodology docs.',
   },
   {
     title: 'Custom Pipelines',
-    desc: 'Flexible workflows tailored to your data type — GBS, SNP chip, or WGS — and your research questions.',
+    desc: 'Tailored to your data type — GBS, SNP chip, or WGS — and your research goals.',
   },
   {
     title: 'Academic & Industry Ready',
-    desc: 'Serving university research groups, breeding companies, government programs, and NGOs.',
+    desc: 'Serving universities, breeding companies, government programs, and NGOs.',
   },
 ];
 
@@ -518,19 +517,19 @@ const ANIMAL_APPS = [
 const COURSES = [
   {
     name: 'Population & Quantitative Genetics',
-    desc: 'HWE, heritability estimation, BLUP, variance components — with hands-on R practicals.',
+    desc: 'HWE, heritability, BLUP, and variance components — hands-on R practicals.',
   },
   {
     name: 'SNP Data Analysis & GWAS',
-    desc: 'Quality filtering, LD analysis, haplotype phasing, and genome-wide association using EMMAX, FarmCPU & BLINK.',
+    desc: 'QC, LD, phasing, and association testing using EMMAX, FarmCPU & BLINK.',
   },
   {
     name: 'Genomic Diversity & Population Structure',
-    desc: "PCA, ADMIXTURE, Fst, Tajima's D, ROH, kinship matrices using PLINK, GCTA, and R.",
+    desc: 'PCA, ADMIXTURE, Fst, ROH, and kinship matrices in PLINK, GCTA, and R.',
   },
   {
     name: 'Biostatistics — ANOVA & Regression',
-    desc: 'One-way, two-way & MET ANOVA; regression models; post-hoc tests for publication-grade analysis.',
+    desc: 'One-way, two-way & MET ANOVA with regression models and post-hoc tests.',
   },
 ];
 
@@ -541,7 +540,7 @@ const HomePage = () => {
 
   return (
     <>
-      {/* ── Stats ── */}
+      {/* ── 1. Stats ── */}
       <StatsWrapper>
         <StatsInner
           as={motion.div}
@@ -558,22 +557,7 @@ const HomePage = () => {
         </StatsInner>
       </StatsWrapper>
 
-      {/* ── Contact CTA ── */}
-      <AnimateOnScreen>
-        <CtaWrapper as={motion.section}>
-          <CtaText>Ready to unlock your data?</CtaText>
-          <Link href="/contact" passHref>
-            <CtaButton
-              onMouseEnter={addCursorBorder}
-              onMouseLeave={removeCursorBorder}
-            >
-              Get in touch →
-            </CtaButton>
-          </Link>
-        </CtaWrapper>
-      </AnimateOnScreen>
-
-      {/* ── Services ── */}
+      {/* ── 2. Services ── */}
       <AnimateOnScreen>
         <Section as={motion.section}>
           <SectionLabel>What we do</SectionLabel>
@@ -595,7 +579,7 @@ const HomePage = () => {
         </Section>
       </AnimateOnScreen>
 
-      {/* ── Why Us ── */}
+      {/* ── 3. Why Us ── */}
       <AnimateOnScreen>
         <Section as={motion.section}>
           <SectionLabel>Why Data Harvest Labs</SectionLabel>
@@ -617,11 +601,11 @@ const HomePage = () => {
         </Section>
       </AnimateOnScreen>
 
-      {/* ── Applications ── */}
+      {/* ── 4. Applications ── */}
       <AnimateOnScreen>
         <Section as={motion.section}>
           <SectionLabel>Applications</SectionLabel>
-          <SectionTitle>Plant & Animal Genomics</SectionTitle>
+          <SectionTitle>Plant &amp; Animal Genomics</SectionTitle>
           <AppGrid
             as={motion.div}
             variants={stagger}
@@ -648,31 +632,26 @@ const HomePage = () => {
         </Section>
       </AnimateOnScreen>
 
-      {/* ── Training ── */}
+      {/* ── 5. Training ── */}
       <TrainingWrapper>
         <TrainingInner>
           <AnimateOnScreen>
             <TrainingLeft as={motion.div}>
               <SectionLabel>Training</SectionLabel>
               <SectionTitle>
-                Genomics Training for Students & Researchers
+                Genomics Training for Students &amp; Researchers
               </SectionTitle>
               <TrainingDesc>
-                We offer structured training programmes in genomic data analysis
-                for BVSc, MSc, and PhD students — as well as early-career
-                researchers and breeders transitioning to computational methods.
-              </TrainingDesc>
-              <TrainingDesc>
-                Courses are hands-on, software-driven (R, PLINK, GCTA, TASSEL),
-                and aligned with the latest analytical standards used in
-                international journals.
+                Structured programmes for BVSc, MSc, and PhD students —
+                hands-on, software-driven (R, PLINK, GCTA, TASSEL), and aligned
+                with international journal standards.
               </TrainingDesc>
               <Link href="/contact" passHref>
                 <TrainingLink
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
                 >
-                  Enquire about training →
+                  Enquire about training &#8594;
                 </TrainingLink>
               </Link>
             </TrainingLeft>
@@ -694,6 +673,21 @@ const HomePage = () => {
           </AnimateOnScreen>
         </TrainingInner>
       </TrainingWrapper>
+
+      {/* ── 6. CTA ── (moved to end for better conversion flow) */}
+      <AnimateOnScreen>
+        <CtaWrapper as={motion.section}>
+          <CtaText>Ready to unlock your data?</CtaText>
+          <Link href="/contact" passHref>
+            <CtaButton
+              onMouseEnter={addCursorBorder}
+              onMouseLeave={removeCursorBorder}
+            >
+              Get in touch &#8594;
+            </CtaButton>
+          </Link>
+        </CtaWrapper>
+      </AnimateOnScreen>
     </>
   );
 };

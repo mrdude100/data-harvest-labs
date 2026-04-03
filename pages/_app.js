@@ -11,6 +11,7 @@ import darkTheme from '../styles/themes/dark';
 import lightTheme from '../styles/themes/light';
 import AppBar from '../components/AppBar';
 import Cursor from '../components/Cursor';
+import Footer from '../components/Home/Footer';
 import Menu from '../components/Menu';
 
 const themes = {
@@ -66,6 +67,7 @@ const App = ({ Component, pageProps }) => {
               <Header />
               <Menu />
               <Component {...pageProps} />
+              <Footer />
               <Cursor />
             </ThemedApp>
           </CursorContextProvider>

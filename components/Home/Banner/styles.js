@@ -7,6 +7,36 @@ const gradientShift = keyframes`
   100% { background-position: 0% 50%; }
 `;
 
+const leafFall = keyframes`
+  0%   { transform: translateY(-60px) rotate(0deg) translateX(0px);   opacity: 0; }
+  6%   { opacity: 1; }
+  35%  { transform: translateY(28vh)  rotate(160deg) translateX(18px); }
+  65%  { transform: translateY(58vh)  rotate(300deg) translateX(-14px); }
+  92%  { opacity: 0.65; }
+  100% { transform: translateY(108vh) rotate(420deg) translateX(10px); opacity: 0; }
+`;
+
+export const LeafContainer = styled.div`
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+`;
+
+export const Leaf = styled.span`
+  position: absolute;
+  top: -40px;
+  left: ${({ $left }) => $left};
+  font-size: ${({ $size }) => $size};
+  opacity: 0;
+  animation: ${leafFall} ${({ $dur }) => $dur} ${({ $delay }) => $delay}
+    ease-in-out infinite;
+  will-change: transform;
+  filter: brightness(0.7) saturate(0.6);
+  display: block;
+`;
+
 export const GradientBackground = styled.div`
   position: absolute;
   inset: 0;
