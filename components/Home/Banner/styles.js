@@ -1,6 +1,12 @@
 import styled, { keyframes } from 'styled-components';
 import { motion } from 'framer-motion';
 
+const arrowPulse = keyframes`
+  0%   { opacity: 0;    transform: translateY(-6px); }
+  50%  { opacity: 0.85; transform: translateY(0px);  }
+  100% { opacity: 0;    transform: translateY(6px);  }
+`;
+
 const gradientShift = keyframes`
   0%   { background-position: 0% 50%; }
   50%  { background-position: 100% 50%; }
@@ -56,6 +62,41 @@ export const GradientBackground = styled.div`
     linear-gradient(168deg, #0c0c0c 0%, #1c0606 38%, #120404 65%, #080808 100%);
   background-size: 300% 300%, 300% 300%, 200% 200%;
   animation: ${gradientShift} 14s ease infinite;
+`;
+
+export const ScrollArrow = styled.button`
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: none;
+  border: 1px solid ${({ theme }) => theme.text}28;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: ${({ theme }) => theme.text};
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  svg {
+    animation: ${arrowPulse} 1.6s ease-in-out infinite;
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.red};
+    background: ${({ theme }) => theme.colors.red}18;
+    color: ${({ theme }) => theme.colors.red};
+  }
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    right: 20px;
+  `};
 `;
 
 export const BannerSection = styled.section`

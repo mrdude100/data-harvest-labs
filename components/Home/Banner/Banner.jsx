@@ -10,6 +10,7 @@ import {
   GradientBackground,
   Leaf,
   LeafContainer,
+  ScrollArrow,
 } from './styles';
 import CanvasEraser from '../../CanvasEraser';
 const titleAnimation = {
@@ -54,6 +55,10 @@ const Banner = () => {
     ({ breakpoints }) => `(min-width:${breakpoints.sizes.small + 1}px)`,
   );
 
+  const handleScrollDown = React.useCallback(() => {
+    window.scrollTo({ top: windowSize.height, behavior: 'smooth' });
+  }, [windowSize.height]);
+
   return (
     <BannerSection style={{ height: windowSize.height }}>
       <GradientBackground />
@@ -81,6 +86,19 @@ const Banner = () => {
           onMouseLeave={removeCursorBorder}
         />
       )}
+      <ScrollArrow onClick={handleScrollDown} aria-label="Scroll down">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </ScrollArrow>
+
       <BannerTitle
         variants={titleAnimation}
         initial="initial"

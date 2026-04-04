@@ -7,6 +7,52 @@ import styled from 'styled-components';
 import containerStyles from '../../styles/shared/container';
 import { secondaryFontStyle } from '../../styles/shared/text';
 
+// ─── Count-up hook ───────────────────────────────────────────────────────────
+
+const useCountUp = (target, duration, restartDelay) => {
+  const [count, setCount] = React.useState(0);
+  React.useEffect(() => {
+    let raf;
+    let tid;
+    const run = () => {
+      const t0 = performance.now();
+      const tick = now => {
+        const progress = Math.min((now - t0) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.round(eased * target));
+        if (progress < 1) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          tid = setTimeout(() => {
+            setCount(0);
+            tid = setTimeout(run, 80);
+          }, restartDelay);
+        }
+      };
+      raf = requestAnimationFrame(tick);
+    };
+    run();
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(tid);
+    };
+  }, [target, duration, restartDelay]);
+  return count;
+};
+
+const CountUpStat = ({ raw }) => {
+  const match = raw.match(/^(\d+)(\D*)$/);
+  const target = match ? parseInt(match[1], 10) : 0;
+  const suffix = match ? match[2] : '';
+  const count = useCountUp(target, 1800, 2600);
+  return (
+    <>
+      {count}
+      {suffix}
+    </>
+  );
+};
+
 // ─── Animations ──────────────────────────────────────────────────────────────
 
 const fadeUp = {
@@ -550,7 +596,9 @@ const HomePage = () => {
         >
           {STATS.map(({ number, label }) => (
             <StatItem key={label} variants={fadeUp}>
-              <StatNumber>{number}</StatNumber>
+              <StatNumber>
+                <CountUpStat raw={number} />
+              </StatNumber>
               <StatLabel>{label}</StatLabel>
             </StatItem>
           ))}
