@@ -40,9 +40,9 @@ const App = ({ Component, pageProps }) => {
       <Head>
         <title>DataHarvestLabs</title>
         <link rel="icon" href="/favicon.png" />
-        <link rel="preconnect" href="https://use.typekit.net" />
-        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://use.typekit.net/yzi3byl.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&display=swap" />
       </Head>
       <style jsx global>{`
         @font-face {
