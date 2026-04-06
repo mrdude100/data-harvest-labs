@@ -1,16 +1,11 @@
 import styled, { keyframes } from 'styled-components';
+// Note: gradientShift removed — animating background-position forces GPU repaint every frame (non-composited)
 import { motion } from 'framer-motion';
 
 const arrowPulse = keyframes`
   0%   { opacity: 0;    transform: translateY(-6px); }
   50%  { opacity: 0.85; transform: translateY(0px);  }
   100% { opacity: 0;    transform: translateY(6px);  }
-`;
-
-const gradientShift = keyframes`
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 `;
 
 const leafFall = keyframes`
@@ -60,8 +55,6 @@ export const GradientBackground = styled.div`
       rgba(25, 3, 3, 0) 58%
     ),
     linear-gradient(168deg, #0c0c0c 0%, #1c0606 38%, #120404 65%, #080808 100%);
-  background-size: 300% 300%, 300% 300%, 200% 200%;
-  animation: ${gradientShift} 14s ease infinite;
 `;
 
 export const ScrollArrow = styled.button`

@@ -150,7 +150,7 @@ const StatLabel = styled.div`
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
-  opacity: 0.7;
+  opacity: 0.88;
 `;
 
 // ─── Services ─────────────────────────────────────────────────────────────────
@@ -399,7 +399,7 @@ const CourseItem = styled(motion.div)`
   gap: 6px;
 `;
 
-const CourseName = styled.h4`
+const CourseName = styled.h3`
   font-family: calibre, sans-serif;
   font-weight: 900;
   font-size: 1rem;

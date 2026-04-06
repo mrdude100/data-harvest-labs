@@ -40,6 +40,8 @@ const App = ({ Component, pageProps }) => {
       <Head>
         <title>DataHarvestLabs</title>
         <link rel="icon" href="/favicon.png" />
+        <link rel="preconnect" href="https://use.typekit.net" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
         <link rel="stylesheet" href="https://use.typekit.net/yzi3byl.css" />
       </Head>
       <style jsx global>{`
