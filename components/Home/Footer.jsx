@@ -58,7 +58,7 @@ const BrandTagline = styled.p`
   font-size: 0.85rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.42;
+  opacity: 0.65;
   margin: 0;
   line-height: 1.7;
   max-width: 230px;
@@ -69,7 +69,7 @@ const MadeIn = styled.p`
   font-size: 0.78rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.28;
+  opacity: 0.6;
   margin: 0;
   margin-top: 4px;
   letter-spacing: 0.04em;
@@ -88,12 +88,14 @@ const SocialLink = styled.a`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
-  opacity: 0.32;
+  opacity: 0.65;
   text-decoration: none;
   transition: opacity 0.2s ease, color 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  min-height: 44px;
+  padding: 4px 0;
 
   &::before {
     content: '';
@@ -143,10 +145,12 @@ const NavLink = styled.a`
   font-size: 0.84rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.45;
+  opacity: 0.65;
   text-decoration: none;
   transition: opacity 0.2s ease;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 
   &:hover {
     opacity: 1;
@@ -173,7 +177,7 @@ const ContactLabel = styled.span`
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
-  opacity: 0.28;
+  opacity: 0.6;
 `;
 
 const ContactValue = styled.a`
@@ -181,7 +185,7 @@ const ContactValue = styled.a`
   font-size: 0.83rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.5;
+  opacity: 0.65;
   text-decoration: none;
   transition: opacity 0.2s ease, color 0.2s ease;
   display: inline-block;
@@ -217,7 +221,7 @@ const Copyright = styled.p`
   font-size: 0.68rem;
   letter-spacing: 0.05em;
   color: ${({ theme }) => theme.text};
-  opacity: 0.2;
+  opacity: 0.55;
   margin: 0;
 `;
 
@@ -232,7 +236,7 @@ const BottomLink = styled.a`
   font-size: 0.68rem;
   letter-spacing: 0.05em;
   color: ${({ theme }) => theme.text};
-  opacity: 0.2;
+  opacity: 0.55;
   text-decoration: none;
   transition: opacity 0.2s ease;
 

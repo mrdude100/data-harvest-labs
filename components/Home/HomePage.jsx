@@ -108,7 +108,7 @@ const SectionTitle = styled.h2`
 // ─── Stats ────────────────────────────────────────────────────────────────────
 
 const StatsWrapper = styled.div`
-  background: ${({ theme }) => theme.colors.red};
+  background: #c0201a;
   padding: 64px 0;
 `;
 
@@ -150,7 +150,7 @@ const StatLabel = styled.div`
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
-  opacity: 0.88;
+  opacity: 1;
 `;
 
 // ─── Services ─────────────────────────────────────────────────────────────────

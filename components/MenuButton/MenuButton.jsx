@@ -15,6 +15,7 @@ const MenuButton = ({ sticky = true, title = '', ...props }, ref) => {
   return (
     <StickyCursor sticky={sticky}>
       <Button
+        aria-label="Toggle menu"
         onMouseEnter={addCursorBorder}
         onMouseLeave={removeCursorBorder}
         onClick={handleOnToggle}
