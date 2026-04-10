@@ -10,6 +10,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           <script defer src="/_vercel/insights/script.js" />
+          <script defer src="/_vercel/speed-insights/script.js" />
         </body>
       </Html>
     );
