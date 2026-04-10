@@ -89,10 +89,6 @@ const BubbleArrow = styled.span.attrs({ className: 'bubble-arrow' })`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: calibre, sans-serif;
-  font-weight: 900;
-  font-size: 2rem;
-  color: #fff;
   transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   pointer-events: none;
   z-index: 1;
@@ -254,7 +250,22 @@ const Banner = () => {
             <BubbleRing>
               <BubbleTextSvg />
             </BubbleRing>
-            <BubbleArrow>&#8599;</BubbleArrow>
+            <BubbleArrow>
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                width="28"
+                height="28"
+                aria-hidden="true"
+              >
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </BubbleArrow>
           </BubbleLink>
         </Link>
       </BubbleWrap>
