@@ -258,8 +258,8 @@ const Banner = () => {
                 strokeWidth="2.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                width="28"
-                height="28"
+                width="18"
+                height="18"
                 aria-hidden="true"
               >
                 <line x1="7" y1="17" x2="17" y2="7" />
