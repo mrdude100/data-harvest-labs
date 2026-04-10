@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import AnimateOnScreen from '../AnimateOnScreen';
 import useCursorStyle from '../../hooks/useCursorStyle';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import containerStyles from '../../styles/shared/container';
 import { secondaryFontStyle } from '../../styles/shared/text';
 
@@ -66,24 +66,125 @@ const fadeUp = {
 
 const stagger = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12 } },
+  show: { transition: { staggerChildren: 0.1 } },
 };
+
+const marqueeKf = keyframes`
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+`;
+
+// ─── SVG Icons ────────────────────────────────────────────────────────────────
+
+const IconGenomics = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M7 3c1.2 2.2 3.5 3.2 5 3.2s3.8-1 5-3.2" />
+    <path d="M7 21c1.2-2.2 3.5-3.2 5-3.2s3.8 1 5 3.2" />
+    <path d="M7 3C5.3 7.5 5.3 16.5 7 21" />
+    <path d="M17 3c1.7 4.5 1.7 13.5 0 18" />
+    <line x1="8" y1="8.5" x2="16" y2="8.5" />
+    <line x1="7.5" y1="12" x2="16.5" y2="12" />
+    <line x1="8" y1="15.5" x2="16" y2="15.5" />
+  </svg>
+);
+
+const IconBiostat = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <line x1="3" y1="20" x2="21" y2="20" />
+    <rect x="4" y="13" width="3.5" height="7" rx="0.5" />
+    <rect x="10.25" y="8" width="3.5" height="12" rx="0.5" />
+    <rect x="16.5" y="4" width="3.5" height="16" rx="0.5" />
+    <polyline points="5.75 13 12 8 18.25 4" strokeDasharray="2 2" />
+  </svg>
+);
+
+const IconClinical = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="9" />
+    <line x1="12" y1="8" x2="12" y2="16" />
+    <line x1="8" y1="12" x2="16" y2="12" />
+  </svg>
+);
+
+const IconReview = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z" />
+    <polyline points="14 3 14 8 19 8" />
+    <line x1="8" y1="12" x2="16" y2="12" />
+    <line x1="8" y1="16" x2="13" y2="16" />
+    <circle cx="17.5" cy="17.5" r="2.5" />
+    <line x1="19.5" y1="19.5" x2="21" y2="21" />
+  </svg>
+);
+
+const IconML = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.4"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="2.2" />
+    <circle cx="4.5" cy="5.5" r="1.8" />
+    <circle cx="19.5" cy="5.5" r="1.8" />
+    <circle cx="4.5" cy="18.5" r="1.8" />
+    <circle cx="19.5" cy="18.5" r="1.8" />
+    <line x1="6.2" y1="6.7" x2="10.5" y2="10.5" />
+    <line x1="13.5" y1="10.5" x2="17.8" y2="6.7" />
+    <line x1="6.2" y1="17.3" x2="10.5" y2="13.5" />
+    <line x1="13.5" y1="13.5" x2="17.8" y2="17.3" />
+  </svg>
+);
+
+const SERVICE_ICONS = [
+  IconGenomics,
+  IconBiostat,
+  IconClinical,
+  IconReview,
+  IconML,
+];
 
 // ─── Shared ───────────────────────────────────────────────────────────────────
 
-const Section = styled.section`
-  ${containerStyles};
-  padding: 96px 32px;
-
-  ${({ theme }) => theme.breakpoints.tablet`
-    padding: 48px 24px;
-  `};
-`;
-
 const SectionLabel = styled.span`
   ${secondaryFontStyle};
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.red};
   display: block;
@@ -97,12 +198,21 @@ const SectionTitle = styled.h2`
   line-height: 1;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
-  margin: 0 0 48px;
+  margin: 0 0 56px;
 
   ${({ theme }) => theme.breakpoints.tablet`
-    font-size: clamp(1.5rem, 7vw, 2.5rem);
-    margin: 0 0 32px;
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    margin: 0 0 40px;
   `}
+`;
+
+const Section = styled.section`
+  ${containerStyles};
+  padding: 96px 32px;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 64px 24px;
+  `};
 `;
 
 // ─── Stats ────────────────────────────────────────────────────────────────────
@@ -150,151 +260,213 @@ const StatLabel = styled.div`
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #fff;
-  opacity: 1;
+  opacity: 0.75;
 `;
 
-// ─── About / Research Partner blurb ──────────────────────────────────────────
+// ─── About pull-quote ─────────────────────────────────────────────────────────
 
 const AboutWrapper = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.text}18;
+  border-bottom: 1px solid ${({ theme }) => theme.text}15;
 `;
 
 const AboutInner = styled.div`
   ${containerStyles};
-  padding: 80px 32px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 64px;
-  align-items: start;
-
-  ${({ theme }) => theme.breakpoints.small`
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 56px 24px;
-  `};
-`;
-
-const AboutHeading = styled.h2`
-  font-family: calibre, sans-serif;
-  font-weight: 900;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  line-height: 1.05;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.text};
-  margin: 0;
-`;
-
-const AboutText = styled.p`
-  font-family: calibre, sans-serif;
-  font-size: clamp(1rem, 1.5vw, 1.15rem);
-  color: ${({ theme }) => theme.text};
-  opacity: 0.6;
-  margin: 0;
-  line-height: 1.75;
-`;
-
-// ─── Services ─────────────────────────────────────────────────────────────────
-
-const ServicesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: ${({ theme }) => theme.text}18;
-  border: 1px solid ${({ theme }) => theme.text}18;
-
-  ${({ theme }) => theme.breakpoints.small`
-    grid-template-columns: repeat(2, 1fr);
-  `};
+  padding: 96px 32px;
 
   ${({ theme }) => theme.breakpoints.tablet`
-    grid-template-columns: 1fr;
+    padding: 72px 24px;
   `};
 `;
 
-const ServiceCard = styled(motion.div)`
-  padding: 40px 32px;
-  background: ${({ theme }) => theme.background};
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: background 0.2s ease;
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.red}11;
-  }
-`;
-
-const ServiceIcon = styled.span`
-  font-size: 1.75rem;
-  line-height: 1;
-  display: block;
-`;
-
-const ServiceName = styled.h3`
+const AboutQuote = styled.p`
   font-family: calibre, sans-serif;
-  font-weight: 900;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.text};
-  margin: 0;
-  line-height: 1;
-`;
-
-const ServiceDesc = styled.p`
-  ${secondaryFontStyle};
-  font-size: 0.84rem;
-  color: ${({ theme }) => theme.text};
-  opacity: 0.45;
-  margin: 0;
-  line-height: 1.55;
   font-weight: 400;
-
-  ${({ theme }) => theme.breakpoints.tablet`
-    display: none;
-  `}
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  line-height: 1.55;
+  color: ${({ theme }) => theme.text};
+  max-width: 820px;
+  margin: 0 0 28px;
+  opacity: 0.85;
 `;
 
-// ─── Tools pills ──────────────────────────────────────────────────────────────
-
-const ToolsSubSection = styled.div`
-  margin-top: 48px;
-  padding-top: 40px;
-  border-top: 1px solid ${({ theme }) => theme.text}18;
-`;
-
-const ToolsSubLabel = styled.span`
+const AboutMeta = styled.span`
   ${secondaryFontStyle};
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
-  opacity: 0.4;
-  display: block;
-  margin-bottom: 20px;
+  opacity: 0.35;
 `;
 
-const ToolsPillsWrap = styled.div`
+// ─── Services — editorial rows ────────────────────────────────────────────────
+
+const ServiceIconWrap = styled.div`
+  width: 36px;
+  height: 36px;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.35;
+  flex-shrink: 0;
+  transition: color 0.22s ease, opacity 0.22s ease;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    width: 28px;
+    height: 28px;
+  `};
+`;
+
+const ServiceRow = styled(motion.div)`
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 0 40px;
+  padding: 44px 0;
+  border-bottom: 1px solid ${({ theme }) => theme.text}12;
+  align-items: center;
+  cursor: default;
+  transition: background 0.22s ease;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.red}07;
+  }
+
+  &:hover ${ServiceIconWrap} {
+    color: ${({ theme }) => theme.colors.red};
+    opacity: 1;
+  }
+
+  ${({ theme }) => theme.breakpoints.small`
+    grid-template-columns: 52px 1fr auto;
+    gap: 0 24px;
+    padding: 36px 0;
+  `};
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    grid-template-columns: 40px 1fr auto;
+    gap: 0 20px;
+    padding: 30px 0;
+  `};
+`;
+
+const ServiceRowNumber = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: ${({ theme }) => theme.colors.red};
+  align-self: flex-start;
+  padding-top: 6px;
+`;
+
+const ServiceRowContent = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
 `;
 
-const ToolPill = styled.span`
-  ${secondaryFontStyle};
-  font-size: 0.82rem;
-  font-weight: 400;
-  letter-spacing: 0.03em;
+const ServiceRowName = styled.h3`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.6rem, 3.5vw, 2.75rem);
+  line-height: 1;
+  text-transform: uppercase;
   color: ${({ theme }) => theme.text};
-  border: 1px solid ${({ theme }) => theme.text}28;
-  border-radius: 999px;
-  padding: 7px 18px;
+  margin: 0;
+  letter-spacing: -0.01em;
+`;
+
+const ServiceRowDesc = styled.p`
+  ${secondaryFontStyle};
+  font-size: 0.84rem;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.4;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 560px;
+`;
+
+const ServicesList = styled.div`
+  border-top: 1px solid ${({ theme }) => theme.text}12;
+`;
+
+// ─── Tools marquee ────────────────────────────────────────────────────────────
+
+const MarqueeSection = styled.div`
+  border-top: 1px solid ${({ theme }) => theme.text}12;
+  border-bottom: 1px solid ${({ theme }) => theme.text}12;
+  overflow: hidden;
+  padding: 0;
+  margin-top: 64px;
+`;
+
+const MarqueeLabel = styled.div`
+  ${containerStyles};
+  padding: 20px 32px 0;
+
+  span {
+    ${secondaryFontStyle};
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.text};
+    opacity: 0.28;
+  }
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 16px 24px 0;
+  `};
+`;
+
+const MarqueeTrackWrap = styled.div`
+  display: flex;
+  overflow: hidden;
+  padding: 16px 0 20px;
+
+  &:hover div {
+    animation-play-state: paused;
+  }
+`;
+
+const MarqueeTrack = styled.div`
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ${marqueeKf} 28s linear infinite;
+  gap: 0;
+`;
+
+const MarqueeItem = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.8rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.45;
+  padding: 0 28px;
+  white-space: nowrap;
   cursor: default;
-  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+  transition: opacity 0.15s ease, color 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.colors.red};
+    opacity: 0.6;
+    flex-shrink: 0;
+  }
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.red};
+    opacity: 1;
     color: ${({ theme }) => theme.colors.red};
-    background: ${({ theme }) => theme.colors.red}0a;
   }
 `;
 
@@ -302,13 +474,9 @@ const ToolPill = styled.span`
 
 const WhyGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px 32px;
-
-  ${({ theme }) => theme.breakpoints.small`
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-  `};
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1px solid ${({ theme }) => theme.text}12;
 
   ${({ theme }) => theme.breakpoints.tablet`
     grid-template-columns: 1fr;
@@ -316,36 +484,62 @@ const WhyGrid = styled.div`
 `;
 
 const WhyCard = styled(motion.div)`
+  padding: 48px 40px;
+  border-right: 1px solid ${({ theme }) => theme.text}12;
+  border-bottom: 1px solid ${({ theme }) => theme.text}12;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  transition: background 0.2s ease;
+
+  &:nth-child(even) {
+    border-right: none;
+  }
+
+  &:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.red}06;
+  }
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    border-right: none;
+    &:nth-last-child(-n + 2) {
+      border-bottom: 1px solid ${({ theme }) => theme.text}12;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+    padding: 36px 24px;
+  `};
 `;
 
-const WhyNumber = styled.span`
-  font-family: calibre, sans-serif;
-  font-weight: 900;
-  font-size: 3rem;
+const WhyIndex = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
   color: ${({ theme }) => theme.colors.red};
-  opacity: 0.3;
-  line-height: 1;
 `;
 
 const WhyTitle = styled.h3`
   font-family: calibre, sans-serif;
   font-weight: 900;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
   margin: 0;
+  line-height: 1.1;
 `;
 
 const WhyDesc = styled.p`
   ${secondaryFontStyle};
   font-size: 0.84rem;
   color: ${({ theme }) => theme.text};
-  opacity: 0.45;
+  opacity: 0.42;
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.65;
   font-weight: 400;
 `;
 
@@ -353,58 +547,47 @@ const WhyDesc = styled.p`
 
 const WhoWrapper = styled.div`
   background: ${({ theme }) => theme.text}05;
-  border-top: 1px solid ${({ theme }) => theme.text}18;
-  border-bottom: 1px solid ${({ theme }) => theme.text}18;
+  border-top: 1px solid ${({ theme }) => theme.text}12;
+  border-bottom: 1px solid ${({ theme }) => theme.text}12;
 `;
 
 const WhoInner = styled.div`
   ${containerStyles};
-  padding: 80px 32px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 64px;
-  align-items: center;
+  padding: 96px 32px;
 
-  ${({ theme }) => theme.breakpoints.small`
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 56px 24px;
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 64px 24px;
   `};
 `;
 
-const WhoHeading = styled.h2`
-  font-family: calibre, sans-serif;
-  font-weight: 900;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  line-height: 1;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.text};
-  margin: 0;
-  letter-spacing: 0.06em;
-`;
-
-const WhoPillsWrap = styled.div`
+const WhoTagsWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
+  margin-top: 48px;
 `;
 
-const WhoPill = styled.span`
+const WhoTag = styled(motion.span)`
   font-family: calibre, sans-serif;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
   color: ${({ theme }) => theme.text};
-  border: 1.5px solid ${({ theme }) => theme.text}30;
+  border: 1.5px solid ${({ theme }) => theme.text}22;
   border-radius: 999px;
-  padding: 10px 22px;
-  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+  padding: 12px 28px;
   cursor: default;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.red};
     background: ${({ theme }) => theme.colors.red}0d;
     color: ${({ theme }) => theme.colors.red};
   }
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    font-size: 1rem;
+    padding: 10px 22px;
+  `};
 `;
 
 // ─── Applications ─────────────────────────────────────────────────────────────
@@ -413,7 +596,7 @@ const AppGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
-  background: ${({ theme }) => theme.text}18;
+  background: ${({ theme }) => theme.text}12;
 
   ${({ theme }) => theme.breakpoints.tablet`
     grid-template-columns: 1fr;
@@ -425,7 +608,7 @@ const AppCard = styled(motion.div)`
   padding: 48px 40px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 
   ${({ theme }) => theme.breakpoints.tablet`
     padding: 32px 24px;
@@ -435,10 +618,11 @@ const AppCard = styled(motion.div)`
 const AppCardTitle = styled.h3`
   font-family: calibre, sans-serif;
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
   margin: 0;
+  line-height: 1;
 `;
 
 const AppList = styled.ul`
@@ -447,7 +631,7 @@ const AppList = styled.ul`
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 `;
 
 const AppListItem = styled.li`
@@ -455,16 +639,16 @@ const AppListItem = styled.li`
   font-size: 0.84rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.55;
-  padding-left: 16px;
+  opacity: 0.5;
+  padding-left: 18px;
   position: relative;
-  line-height: 1.5;
+  line-height: 1.55;
 
   &::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 8px;
+    top: 7px;
     width: 4px;
     height: 4px;
     border-radius: 50%;
@@ -475,8 +659,8 @@ const AppListItem = styled.li`
 // ─── Training ─────────────────────────────────────────────────────────────────
 
 const TrainingWrapper = styled.section`
-  background: ${({ theme }) => theme.text}08;
-  border-top: 1px solid ${({ theme }) => theme.text}18;
+  background: ${({ theme }) => theme.text}06;
+  border-top: 1px solid ${({ theme }) => theme.text}12;
 `;
 
 const TrainingInner = styled.div`
@@ -484,7 +668,7 @@ const TrainingInner = styled.div`
   padding: 96px 32px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  gap: 80px;
   align-items: start;
 
   ${({ theme }) => theme.breakpoints.small`
@@ -504,15 +688,15 @@ const TrainingDesc = styled.p`
   font-family: calibre, sans-serif;
   font-size: 1rem;
   color: ${({ theme }) => theme.text};
-  opacity: 0.55;
+  opacity: 0.5;
   margin: 0;
-  line-height: 1.7;
+  line-height: 1.75;
 `;
 
 const TrainingLink = styled.a`
   ${secondaryFontStyle};
-  font-size: 0.875rem;
-  letter-spacing: 0.06em;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.red};
   text-decoration: none;
@@ -534,10 +718,11 @@ const TrainingCourses = styled.div`
 
 const CourseItem = styled(motion.div)`
   background: ${({ theme }) => theme.background};
-  padding: 24px 28px;
+  padding: 28px 32px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+  border-bottom: 1px solid ${({ theme }) => theme.text}10;
 `;
 
 const CourseName = styled.h3`
@@ -551,12 +736,12 @@ const CourseName = styled.h3`
 
 const CourseDesc = styled.p`
   ${secondaryFontStyle};
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.45;
+  opacity: 0.4;
   margin: 0;
-  line-height: 1.55;
+  line-height: 1.6;
 `;
 
 // ─── Free Consultation ────────────────────────────────────────────────────────
@@ -575,7 +760,7 @@ const ConsultInner = styled.div`
 
   ${({ theme }) => theme.breakpoints.small`
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
     padding: 72px 24px;
   `};
 `;
@@ -588,19 +773,18 @@ const ConsultLeft = styled.div`
 
 const ConsultLabel = styled.span`
   ${secondaryFontStyle};
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #fff;
-  opacity: 0.65;
-  display: block;
+  opacity: 0.55;
 `;
 
 const ConsultHeading = styled.h2`
   font-family: calibre, sans-serif;
   font-weight: 900;
-  font-size: clamp(2rem, 4vw, 3.25rem);
-  line-height: 1;
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  line-height: 0.95;
   text-transform: uppercase;
   color: #fff;
   margin: 0;
@@ -608,26 +792,26 @@ const ConsultHeading = styled.h2`
 
 const ConsultDesc = styled.p`
   font-family: calibre, sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: #fff;
-  opacity: 0.8;
+  opacity: 0.75;
   margin: 0;
-  line-height: 1.65;
+  line-height: 1.6;
 `;
 
 const ConsultBadges = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 8px;
+  gap: 8px;
+  margin-top: 4px;
 `;
 
 const ConsultBadge = styled.span`
   ${secondaryFontStyle};
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 999px;
   padding: 5px 14px;
 `;
@@ -635,7 +819,7 @@ const ConsultBadge = styled.span`
 const ConsultRight = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 `;
 
 const ConsultCta = styled.a`
@@ -645,24 +829,24 @@ const ConsultCta = styled.a`
   text-transform: uppercase;
   color: #c0201a;
   background: #fff;
-  padding: 20px 40px;
-  display: inline-block;
+  padding: 22px 40px;
+  display: block;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease;
   text-decoration: none;
   text-align: center;
   font-weight: 600;
 
   &:hover {
-    background: #f0f0f0;
+    background: #f2f2f2;
   }
 `;
 
 const ConsultNote = styled.p`
   ${secondaryFontStyle};
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   color: #fff;
-  opacity: 0.5;
+  opacity: 0.45;
   margin: 0;
   text-align: center;
   letter-spacing: 0.02em;
@@ -676,7 +860,7 @@ const CtaWrapper = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid ${({ theme }) => theme.text}18;
+  border-top: 1px solid ${({ theme }) => theme.text}12;
 
   ${({ theme }) => theme.breakpoints.small`
     flex-direction: column;
@@ -728,27 +912,22 @@ const STATS = [
 
 const SERVICES = [
   {
-    icon: '🧬',
     name: 'Genomics & Bioinformatics',
     desc: 'GWAS, SNP analysis, population genetics, NGS pipelines — a rare capability in Indian academia.',
   },
   {
-    icon: '📊',
     name: 'Biostatistics & Data Analysis',
     desc: 'Regression, survival analysis, Bayesian methods, mixed models, and ANOVA.',
   },
   {
-    icon: '🔬',
     name: 'Clinical Research Design',
     desc: 'RCT, cohort, case-control — sample size, randomisation, Ethics Committee protocol.',
   },
   {
-    icon: '📋',
     name: 'Systematic Reviews & Meta-Analysis',
     desc: 'PRISMA-compliant reviews, forest plots, network meta-analysis. NMC promotion eligible.',
   },
   {
-    icon: '🤖',
     name: 'ML & Predictive Models',
     desc: 'Clinical prediction models, diagnostic AI, ML pipelines for medical decision support.',
   },
@@ -794,7 +973,7 @@ const WHY = [
   },
   {
     title: 'NMC & Ethics Ready',
-    desc: 'PRISMA-compliant reviews, Ethics Committee protocols, and NMC thesis-ready deliverables.',
+    desc: 'PRISMA-compliant reviews, Ethics Committee protocols, NMC thesis-ready deliverables.',
   },
   {
     title: 'Pan-India & Beyond',
@@ -883,58 +1062,63 @@ const HomePage = () => {
         </StatsInner>
       </StatsWrapper>
 
-      {/* ── 2. Research Partner blurb ── */}
+      {/* ── 2. Research Partner pull-quote ── */}
       <AnimateOnScreen>
         <AboutWrapper>
-          <AboutInner
-            as={motion.div}
-            variants={stagger}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.div variants={fadeUp}>
-              <AboutHeading>Your Dedicated Research Partner</AboutHeading>
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <AboutText>
-                Data Harvest Labs is a genomic data analysis and statistical
-                consulting company founded in Srinagar, Kashmir. We serve
-                universities, breeding companies, government research programs,
-                and clinician researchers — pan-India and beyond.
-              </AboutText>
-            </motion.div>
+          <AboutInner as={motion.div}>
+            <SectionLabel>Your Dedicated Research Partner</SectionLabel>
+            <AboutQuote>
+              Data Harvest Labs is a genomic data analysis and statistical
+              consulting company founded in Srinagar, Kashmir. We serve
+              universities, breeding companies, government research programs,
+              and clinician researchers — pan-India and beyond.
+            </AboutQuote>
+            <AboutMeta>Srinagar, Kashmir &nbsp;·&nbsp; Est. 2023</AboutMeta>
           </AboutInner>
         </AboutWrapper>
       </AnimateOnScreen>
 
-      {/* ── 3. Services ── */}
+      {/* ── 3. Services — editorial rows ── */}
       <AnimateOnScreen>
         <Section as={motion.section}>
           <SectionLabel>What we do</SectionLabel>
           <SectionTitle>Services</SectionTitle>
-          <ServicesGrid
+          <ServicesList
             as={motion.div}
             variants={stagger}
             initial="hidden"
             animate="show"
           >
-            {SERVICES.map(s => (
-              <ServiceCard key={s.name} variants={fadeUp}>
-                <ServiceIcon aria-hidden="true">{s.icon}</ServiceIcon>
-                <ServiceName>{s.name}</ServiceName>
-                <ServiceDesc>{s.desc}</ServiceDesc>
-              </ServiceCard>
-            ))}
-          </ServicesGrid>
+            {SERVICES.map((s, i) => {
+              const Icon = SERVICE_ICONS[i];
+              return (
+                <ServiceRow key={s.name} variants={fadeUp}>
+                  <ServiceRowNumber>0{i + 1}</ServiceRowNumber>
+                  <ServiceRowContent>
+                    <ServiceRowName>{s.name}</ServiceRowName>
+                    <ServiceRowDesc>{s.desc}</ServiceRowDesc>
+                  </ServiceRowContent>
+                  <ServiceIconWrap>
+                    <Icon />
+                  </ServiceIconWrap>
+                </ServiceRow>
+              );
+            })}
+          </ServicesList>
 
-          <ToolsSubSection>
-            <ToolsSubLabel>Tools &amp; Software</ToolsSubLabel>
-            <ToolsPillsWrap>
-              {TOOLS.map(tool => (
-                <ToolPill key={tool}>{tool}</ToolPill>
-              ))}
-            </ToolsPillsWrap>
-          </ToolsSubSection>
+          {/* Tools marquee */}
+          <MarqueeSection>
+            <MarqueeLabel>
+              <span>Tools &amp; Software</span>
+            </MarqueeLabel>
+            <MarqueeTrackWrap>
+              <MarqueeTrack>
+                {[...TOOLS, ...TOOLS].map((tool, i) => (
+                  <MarqueeItem key={i}>{tool}</MarqueeItem>
+                ))}
+              </MarqueeTrack>
+            </MarqueeTrackWrap>
+          </MarqueeSection>
         </Section>
       </AnimateOnScreen>
 
@@ -951,7 +1135,7 @@ const HomePage = () => {
           >
             {WHY.map((w, i) => (
               <WhyCard key={w.title} variants={fadeUp}>
-                <WhyNumber>0{i + 1}</WhyNumber>
+                <WhyIndex>0{i + 1}</WhyIndex>
                 <WhyTitle>{w.title}</WhyTitle>
                 <WhyDesc>{w.desc}</WhyDesc>
               </WhyCard>
@@ -963,23 +1147,23 @@ const HomePage = () => {
       {/* ── 5. Who We Work With ── */}
       <AnimateOnScreen>
         <WhoWrapper>
-          <WhoInner
-            as={motion.div}
-            variants={stagger}
-            initial="hidden"
-            animate="show"
-          >
-            <motion.div variants={fadeUp}>
-              <SectionLabel>Clientele</SectionLabel>
-              <WhoHeading>Who We Work With</WhoHeading>
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <WhoPillsWrap>
-                {WHO_WE_WORK_WITH.map(who => (
-                  <WhoPill key={who}>{who}</WhoPill>
-                ))}
-              </WhoPillsWrap>
-            </motion.div>
+          <WhoInner as={motion.div}>
+            <SectionLabel>Clientele</SectionLabel>
+            <SectionTitle style={{ marginBottom: 0 }}>
+              Who We Work With
+            </SectionTitle>
+            <WhoTagsWrap
+              as={motion.div}
+              variants={stagger}
+              initial="hidden"
+              animate="show"
+            >
+              {WHO_WE_WORK_WITH.map(who => (
+                <WhoTag key={who} variants={fadeUp}>
+                  {who}
+                </WhoTag>
+              ))}
+            </WhoTagsWrap>
           </WhoInner>
         </WhoWrapper>
       </AnimateOnScreen>
