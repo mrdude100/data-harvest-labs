@@ -614,13 +614,13 @@ const AppList = styled.ul`
 
 const AppListItem = styled.li`
   ${secondaryFontStyle};
-  font-size: 0.84rem;
+  font-size: 1rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.5;
+  opacity: 0.65;
   padding-left: 18px;
   position: relative;
-  line-height: 1.55;
+  line-height: 1.6;
 
   &::before {
     content: '';
