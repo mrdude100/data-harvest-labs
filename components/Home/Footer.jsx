@@ -78,7 +78,7 @@ const MadeIn = styled.p`
 const SocialRow = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   margin-top: 8px;
 `;
 
@@ -94,8 +94,7 @@ const SocialLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 44px;
-  padding: 4px 0;
+  padding: 2px 0;
 
   &::before {
     content: '';
@@ -137,7 +136,7 @@ const ColHeading = styled.p`
 const LinkList = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 14px;
 `;
 
 const NavLink = styled.a`
@@ -150,7 +149,6 @@ const NavLink = styled.a`
   transition: opacity 0.2s ease;
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
 
   &:hover {
     opacity: 1;

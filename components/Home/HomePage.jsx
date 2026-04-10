@@ -321,9 +321,9 @@ const ServiceIconWrap = styled.div`
 
 const ServiceRow = styled(motion.div)`
   display: grid;
-  grid-template-columns: 72px 1fr auto;
-  gap: 0 40px;
-  padding: 44px 0;
+  grid-template-columns: 52px 1fr auto;
+  gap: 0 28px;
+  padding: 26px 0;
   border-bottom: 1px solid ${({ theme }) => theme.text}12;
   align-items: center;
   cursor: default;
@@ -339,15 +339,15 @@ const ServiceRow = styled(motion.div)`
   }
 
   ${({ theme }) => theme.breakpoints.small`
-    grid-template-columns: 52px 1fr auto;
-    gap: 0 24px;
-    padding: 36px 0;
+    grid-template-columns: 40px 1fr auto;
+    gap: 0 18px;
+    padding: 20px 0;
   `};
 
   ${({ theme }) => theme.breakpoints.tablet`
-    grid-template-columns: 40px 1fr auto;
-    gap: 0 20px;
-    padding: 30px 0;
+    grid-template-columns: 32px 1fr auto;
+    gap: 0 14px;
+    padding: 18px 0;
   `};
 `;
 
@@ -369,8 +369,8 @@ const ServiceRowContent = styled.div`
 const ServiceRowName = styled.h3`
   font-family: calibre, sans-serif;
   font-weight: 900;
-  font-size: clamp(1.6rem, 3.5vw, 2.75rem);
-  line-height: 1;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  line-height: 1.05;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
   margin: 0;
@@ -474,9 +474,13 @@ const MarqueeItem = styled.span`
 
 const WhyGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0;
-  border: 1px solid ${({ theme }) => theme.text}12;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 32px;
+
+  ${({ theme }) => theme.breakpoints.small`
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  `};
 
   ${({ theme }) => theme.breakpoints.tablet`
     grid-template-columns: 1fr;
@@ -484,62 +488,36 @@ const WhyGrid = styled.div`
 `;
 
 const WhyCard = styled(motion.div)`
-  padding: 48px 40px;
-  border-right: 1px solid ${({ theme }) => theme.text}12;
-  border-bottom: 1px solid ${({ theme }) => theme.text}12;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  transition: background 0.2s ease;
-
-  &:nth-child(even) {
-    border-right: none;
-  }
-
-  &:nth-last-child(-n + 2) {
-    border-bottom: none;
-  }
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.red}06;
-  }
-
-  ${({ theme }) => theme.breakpoints.tablet`
-    border-right: none;
-    &:nth-last-child(-n + 2) {
-      border-bottom: 1px solid ${({ theme }) => theme.text}12;
-    }
-    &:last-child {
-      border-bottom: none;
-    }
-    padding: 36px 24px;
-  `};
+  gap: 12px;
 `;
 
-const WhyIndex = styled.span`
-  ${secondaryFontStyle};
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
+const WhyNumber = styled.span`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
   color: ${({ theme }) => theme.colors.red};
+  opacity: 0.3;
+  line-height: 1;
 `;
 
 const WhyTitle = styled.h3`
   font-family: calibre, sans-serif;
   font-weight: 900;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
   margin: 0;
-  line-height: 1.1;
 `;
 
 const WhyDesc = styled.p`
   ${secondaryFontStyle};
   font-size: 0.84rem;
   color: ${({ theme }) => theme.text};
-  opacity: 0.42;
+  opacity: 0.45;
   margin: 0;
-  line-height: 1.65;
+  line-height: 1.6;
   font-weight: 400;
 `;
 
@@ -1135,7 +1113,7 @@ const HomePage = () => {
           >
             {WHY.map((w, i) => (
               <WhyCard key={w.title} variants={fadeUp}>
-                <WhyIndex>0{i + 1}</WhyIndex>
+                <WhyNumber>0{i + 1}</WhyNumber>
                 <WhyTitle>{w.title}</WhyTitle>
                 <WhyDesc>{w.desc}</WhyDesc>
               </WhyCard>
