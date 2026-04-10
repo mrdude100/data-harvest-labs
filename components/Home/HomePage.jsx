@@ -153,6 +153,46 @@ const StatLabel = styled.div`
   opacity: 1;
 `;
 
+// ─── About / Research Partner blurb ──────────────────────────────────────────
+
+const AboutWrapper = styled.div`
+  border-bottom: 1px solid ${({ theme }) => theme.text}18;
+`;
+
+const AboutInner = styled.div`
+  ${containerStyles};
+  padding: 80px 32px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  align-items: start;
+
+  ${({ theme }) => theme.breakpoints.small`
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 56px 24px;
+  `};
+`;
+
+const AboutHeading = styled.h2`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  margin: 0;
+`;
+
+const AboutText = styled.p`
+  font-family: calibre, sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: ${({ theme }) => theme.text};
+  opacity: 0.6;
+  margin: 0;
+  line-height: 1.75;
+`;
+
 // ─── Services ─────────────────────────────────────────────────────────────────
 
 const ServicesGrid = styled.div`
@@ -184,11 +224,10 @@ const ServiceCard = styled(motion.div)`
   }
 `;
 
-const ServiceNumber = styled.span`
-  ${secondaryFontStyle};
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  color: ${({ theme }) => theme.colors.red};
+const ServiceIcon = styled.span`
+  font-size: 1.75rem;
+  line-height: 1;
+  display: block;
 `;
 
 const ServiceName = styled.h3`
@@ -213,6 +252,50 @@ const ServiceDesc = styled.p`
   ${({ theme }) => theme.breakpoints.tablet`
     display: none;
   `}
+`;
+
+// ─── Tools pills ──────────────────────────────────────────────────────────────
+
+const ToolsSubSection = styled.div`
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid ${({ theme }) => theme.text}18;
+`;
+
+const ToolsSubLabel = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.4;
+  display: block;
+  margin-bottom: 20px;
+`;
+
+const ToolsPillsWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+`;
+
+const ToolPill = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: ${({ theme }) => theme.text};
+  border: 1px solid ${({ theme }) => theme.text}28;
+  border-radius: 999px;
+  padding: 7px 18px;
+  cursor: default;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.red};
+    color: ${({ theme }) => theme.colors.red};
+    background: ${({ theme }) => theme.colors.red}0a;
+  }
 `;
 
 // ─── Why Us ───────────────────────────────────────────────────────────────────
@@ -266,11 +349,69 @@ const WhyDesc = styled.p`
   font-weight: 400;
 `;
 
+// ─── Who We Work With ─────────────────────────────────────────────────────────
+
+const WhoWrapper = styled.div`
+  background: ${({ theme }) => theme.text}05;
+  border-top: 1px solid ${({ theme }) => theme.text}18;
+  border-bottom: 1px solid ${({ theme }) => theme.text}18;
+`;
+
+const WhoInner = styled.div`
+  ${containerStyles};
+  padding: 80px 32px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 64px;
+  align-items: center;
+
+  ${({ theme }) => theme.breakpoints.small`
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 56px 24px;
+  `};
+`;
+
+const WhoHeading = styled.h2`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  margin: 0;
+  letter-spacing: 0.06em;
+`;
+
+const WhoPillsWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+`;
+
+const WhoPill = styled.span`
+  font-family: calibre, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: ${({ theme }) => theme.text};
+  border: 1.5px solid ${({ theme }) => theme.text}30;
+  border-radius: 999px;
+  padding: 10px 22px;
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+  cursor: default;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.red};
+    background: ${({ theme }) => theme.colors.red}0d;
+    color: ${({ theme }) => theme.colors.red};
+  }
+`;
+
 // ─── Applications ─────────────────────────────────────────────────────────────
 
 const AppGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   background: ${({ theme }) => theme.text}18;
 
@@ -294,7 +435,7 @@ const AppCard = styled(motion.div)`
 const AppCardTitle = styled.h3`
   font-family: calibre, sans-serif;
   font-weight: 900;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
   margin: 0;
@@ -418,6 +559,115 @@ const CourseDesc = styled.p`
   line-height: 1.55;
 `;
 
+// ─── Free Consultation ────────────────────────────────────────────────────────
+
+const ConsultWrapper = styled.section`
+  background: #c0201a;
+`;
+
+const ConsultInner = styled.div`
+  ${containerStyles};
+  padding: 96px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+
+  ${({ theme }) => theme.breakpoints.small`
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 72px 24px;
+  `};
+`;
+
+const ConsultLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const ConsultLabel = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.65;
+  display: block;
+`;
+
+const ConsultHeading = styled.h2`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+`;
+
+const ConsultDesc = styled.p`
+  font-family: calibre, sans-serif;
+  font-size: 1.05rem;
+  color: #fff;
+  opacity: 0.8;
+  margin: 0;
+  line-height: 1.65;
+`;
+
+const ConsultBadges = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+`;
+
+const ConsultBadge = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 5px 14px;
+`;
+
+const ConsultRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const ConsultCta = styled.a`
+  ${secondaryFontStyle};
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #c0201a;
+  background: #fff;
+  padding: 20px 40px;
+  display: inline-block;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 600;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+`;
+
+const ConsultNote = styled.p`
+  ${secondaryFontStyle};
+  font-size: 0.78rem;
+  color: #fff;
+  opacity: 0.5;
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.02em;
+`;
+
 // ─── Contact CTA ─────────────────────────────────────────────────────────────
 
 const CtaWrapper = styled.section`
@@ -478,51 +728,61 @@ const STATS = [
 
 const SERVICES = [
   {
-    name: 'SNP Data Analysis',
-    desc: 'QC filtering, LD pruning, haplotype phasing and allele frequency estimation from GBS or SNP chip data.',
+    icon: '🧬',
+    name: 'Genomics & Bioinformatics',
+    desc: 'GWAS, SNP analysis, population genetics, NGS pipelines — a rare capability in Indian academia.',
   },
   {
-    name: 'GWAS',
-    desc: 'Genome-wide association studies using EMMAX, FarmCPU, and BLINK mixed models.',
+    icon: '📊',
+    name: 'Biostatistics & Data Analysis',
+    desc: 'Regression, survival analysis, Bayesian methods, mixed models, and ANOVA.',
   },
   {
-    name: 'Genomic Diversity',
-    desc: "Population structure via ADMIXTURE, PCA, Fst, Tajima's D, and ROH analysis.",
+    icon: '🔬',
+    name: 'Clinical Research Design',
+    desc: 'RCT, cohort, case-control — sample size, randomisation, Ethics Committee protocol.',
   },
   {
-    name: 'PCA Analysis',
-    desc: 'Dimensionality reduction and population stratification for any genotypic dataset.',
+    icon: '📋',
+    name: 'Systematic Reviews & Meta-Analysis',
+    desc: 'PRISMA-compliant reviews, forest plots, network meta-analysis. NMC promotion eligible.',
   },
   {
-    name: 'Heritability Estimation',
-    desc: 'SNP-based and pedigree heritability using GCTA, BLUP, and variance components.',
+    icon: '🤖',
+    name: 'ML & Predictive Models',
+    desc: 'Clinical prediction models, diagnostic AI, ML pipelines for medical decision support.',
   },
-  {
-    name: 'ANOVA & Regression',
-    desc: 'One-way, two-way, and MET ANOVA with post-hoc tests — publication ready.',
-  },
-  {
-    name: 'Report & Article Writing',
-    desc: 'Publication-ready reports with interpretable figures and full methodology.',
-  },
-  {
-    name: 'Presentations',
-    desc: 'Slide design for seminars, conference talks, and thesis defences.',
-  },
-  {
-    name: 'Data Visualization',
-    desc: 'Manhattan plots, PCA biplots, heatmaps, and custom publication figures.',
-  },
+];
+
+const TOOLS = [
+  'R',
+  'Python',
+  'SPSS',
+  'Stata',
+  'PLINK',
+  'GCTA',
+  'REDCap',
+  'G*Power',
+  'TASSEL',
+  'GATK',
+  'RevMan',
+  'SAS',
+  'Epi Info',
+  'Bioconductor',
+  'ADMIXTURE',
+  'JASP',
+  'OpenEpi',
+  'MEGA',
 ];
 
 const WHY = [
   {
     title: 'End-to-End Expertise',
-    desc: 'Raw genotype files to publication-ready results — we handle the full pipeline.',
+    desc: 'Raw data to publication-ready results — we handle the full analytical pipeline.',
   },
   {
-    title: 'Species Versatility',
-    desc: 'Proven workflows for crops, livestock, aquaculture, and wildlife genetics.',
+    title: 'Clinical & Genomic Depth',
+    desc: 'Rare dual capability in clinical research design and advanced genomic analysis.',
   },
   {
     title: 'Rigorous Statistics',
@@ -530,16 +790,25 @@ const WHY = [
   },
   {
     title: 'Transparent Reporting',
-    desc: 'Reproducible R/Python code, interpretable figures, and full methodology docs.',
+    desc: 'Reproducible code, interpretable figures, and full methodology documentation.',
   },
   {
-    title: 'Custom Pipelines',
-    desc: 'Tailored to your data type — GBS, SNP chip, or WGS — and your research goals.',
+    title: 'NMC & Ethics Ready',
+    desc: 'PRISMA-compliant reviews, Ethics Committee protocols, and NMC thesis-ready deliverables.',
   },
   {
-    title: 'Academic & Industry Ready',
-    desc: 'Serving universities, breeding companies, government programs, and NGOs.',
+    title: 'Pan-India & Beyond',
+    desc: 'Serving universities, hospitals, breeding companies, and government research programs across India.',
   },
+];
+
+const WHO_WE_WORK_WITH = [
+  'MD · MS · MBBS',
+  'PhD Researchers',
+  'BVSc Students',
+  'Clinicians',
+  'Breeding Companies',
+  'Govt Programs',
 ];
 
 const PLANT_APPS = [
@@ -560,6 +829,15 @@ const ANIMAL_APPS = [
   'Admixture and breed composition analysis',
 ];
 
+const CLINICAL_APPS = [
+  'RCT design, randomisation, and sample size',
+  'Cohort and case-control study analysis',
+  'Diagnostic accuracy & ROC analysis',
+  'Survival analysis & Kaplan-Meier curves',
+  'Systematic reviews and meta-analysis',
+  'Ethics Committee protocol preparation',
+];
+
 const COURSES = [
   {
     name: 'Population & Quantitative Genetics',
@@ -570,12 +848,12 @@ const COURSES = [
     desc: 'QC, LD, phasing, and association testing using EMMAX, FarmCPU & BLINK.',
   },
   {
-    name: 'Genomic Diversity & Population Structure',
-    desc: 'PCA, ADMIXTURE, Fst, ROH, and kinship matrices in PLINK, GCTA, and R.',
+    name: 'Biostatistics for Clinical Research',
+    desc: 'Survival analysis, regression, ANOVA, and sample size estimation for medical research.',
   },
   {
-    name: 'Biostatistics — ANOVA & Regression',
-    desc: 'One-way, two-way & MET ANOVA with regression models and post-hoc tests.',
+    name: 'Systematic Reviews & Meta-Analysis',
+    desc: 'PRISMA workflow, forest plots, heterogeneity assessment, and RevMan/R practicals.',
   },
 ];
 
@@ -605,7 +883,31 @@ const HomePage = () => {
         </StatsInner>
       </StatsWrapper>
 
-      {/* ── 2. Services ── */}
+      {/* ── 2. Research Partner blurb ── */}
+      <AnimateOnScreen>
+        <AboutWrapper>
+          <AboutInner
+            as={motion.div}
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.div variants={fadeUp}>
+              <AboutHeading>Your Dedicated Research Partner</AboutHeading>
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <AboutText>
+                Data Harvest Labs is a genomic data analysis and statistical
+                consulting company founded in Srinagar, Kashmir. We serve
+                universities, breeding companies, government research programs,
+                and clinician researchers — pan-India and beyond.
+              </AboutText>
+            </motion.div>
+          </AboutInner>
+        </AboutWrapper>
+      </AnimateOnScreen>
+
+      {/* ── 3. Services ── */}
       <AnimateOnScreen>
         <Section as={motion.section}>
           <SectionLabel>What we do</SectionLabel>
@@ -616,18 +918,27 @@ const HomePage = () => {
             initial="hidden"
             animate="show"
           >
-            {SERVICES.map((s, i) => (
+            {SERVICES.map(s => (
               <ServiceCard key={s.name} variants={fadeUp}>
-                <ServiceNumber>0{i + 1}</ServiceNumber>
+                <ServiceIcon aria-hidden="true">{s.icon}</ServiceIcon>
                 <ServiceName>{s.name}</ServiceName>
                 <ServiceDesc>{s.desc}</ServiceDesc>
               </ServiceCard>
             ))}
           </ServicesGrid>
+
+          <ToolsSubSection>
+            <ToolsSubLabel>Tools &amp; Software</ToolsSubLabel>
+            <ToolsPillsWrap>
+              {TOOLS.map(tool => (
+                <ToolPill key={tool}>{tool}</ToolPill>
+              ))}
+            </ToolsPillsWrap>
+          </ToolsSubSection>
         </Section>
       </AnimateOnScreen>
 
-      {/* ── 3. Why Us ── */}
+      {/* ── 4. Why Us ── */}
       <AnimateOnScreen>
         <Section as={motion.section}>
           <SectionLabel>Why Data Harvest Labs</SectionLabel>
@@ -649,11 +960,35 @@ const HomePage = () => {
         </Section>
       </AnimateOnScreen>
 
-      {/* ── 4. Applications ── */}
+      {/* ── 5. Who We Work With ── */}
+      <AnimateOnScreen>
+        <WhoWrapper>
+          <WhoInner
+            as={motion.div}
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.div variants={fadeUp}>
+              <SectionLabel>Clientele</SectionLabel>
+              <WhoHeading>Who We Work With</WhoHeading>
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <WhoPillsWrap>
+                {WHO_WE_WORK_WITH.map(who => (
+                  <WhoPill key={who}>{who}</WhoPill>
+                ))}
+              </WhoPillsWrap>
+            </motion.div>
+          </WhoInner>
+        </WhoWrapper>
+      </AnimateOnScreen>
+
+      {/* ── 6. Applications ── */}
       <AnimateOnScreen>
         <Section as={motion.section}>
           <SectionLabel>Applications</SectionLabel>
-          <SectionTitle>Plant &amp; Animal Genomics</SectionTitle>
+          <SectionTitle>Plant, Animal &amp; Clinical</SectionTitle>
           <AppGrid
             as={motion.div}
             variants={stagger}
@@ -676,23 +1011,31 @@ const HomePage = () => {
                 ))}
               </AppList>
             </AppCard>
+            <AppCard variants={fadeUp}>
+              <AppCardTitle>Clinical Research</AppCardTitle>
+              <AppList>
+                {CLINICAL_APPS.map(item => (
+                  <AppListItem key={item}>{item}</AppListItem>
+                ))}
+              </AppList>
+            </AppCard>
           </AppGrid>
         </Section>
       </AnimateOnScreen>
 
-      {/* ── 5. Training ── */}
+      {/* ── 7. Training ── */}
       <TrainingWrapper>
         <TrainingInner>
           <AnimateOnScreen>
             <TrainingLeft as={motion.div}>
               <SectionLabel>Training</SectionLabel>
               <SectionTitle>
-                Genomics Training for Students &amp; Researchers
+                Research Training for Students &amp; Clinicians
               </SectionTitle>
               <TrainingDesc>
-                Structured programmes for BVSc, MSc, and PhD students —
-                hands-on, software-driven (R, PLINK, GCTA, TASSEL), and aligned
-                with international journal standards.
+                Structured programmes for MBBS, MD, BVSc, MSc, and PhD students
+                — hands-on, software-driven, and aligned with international
+                journal and NMC thesis standards.
               </TrainingDesc>
               <Link href="/contact" passHref>
                 <TrainingLink
@@ -722,7 +1065,46 @@ const HomePage = () => {
         </TrainingInner>
       </TrainingWrapper>
 
-      {/* ── 6. CTA ── (moved to end for better conversion flow) */}
+      {/* ── 8. Free Consultation ── */}
+      <AnimateOnScreen>
+        <ConsultWrapper>
+          <ConsultInner
+            as={motion.div}
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+          >
+            <ConsultLeft as={motion.div} variants={fadeUp}>
+              <ConsultLabel>Get Started</ConsultLabel>
+              <ConsultHeading>Free 30-Minute Consultation</ConsultHeading>
+              <ConsultDesc>
+                No commitment. Tell us your problem — we&apos;ll map a solution.
+              </ConsultDesc>
+              <ConsultBadges>
+                <ConsultBadge>Starting at &#8377;8,000</ConsultBadge>
+                <ConsultBadge>Confidential</ConsultBadge>
+                <ConsultBadge>Ethical</ConsultBadge>
+                <ConsultBadge>NMC Thesis-Ready</ConsultBadge>
+              </ConsultBadges>
+            </ConsultLeft>
+            <motion.div variants={fadeUp}>
+              <ConsultRight>
+                <Link href="/contact" passHref>
+                  <ConsultCta
+                    onMouseEnter={addCursorBorder}
+                    onMouseLeave={removeCursorBorder}
+                  >
+                    Book Free Consultation &#8594;
+                  </ConsultCta>
+                </Link>
+                <ConsultNote>No payment required to book</ConsultNote>
+              </ConsultRight>
+            </motion.div>
+          </ConsultInner>
+        </ConsultWrapper>
+      </AnimateOnScreen>
+
+      {/* ── 9. CTA ── */}
       <AnimateOnScreen>
         <CtaWrapper as={motion.section}>
           <CtaText>Ready to unlock your data?</CtaText>
