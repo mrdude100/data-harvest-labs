@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
-import useWindowSize from '../../../hooks/useWindowSize';
 import {
   BannerSection,
   BannerTitle,
@@ -24,8 +23,8 @@ const spinKf = keyframes`
 `;
 
 const pulseKf = keyframes`
-  0%, 100% { box-shadow: 0 0 0 0 rgba(192,32,26,0.55); }
-  50%       { box-shadow: 0 0 0 18px rgba(192,32,26,0);  }
+  0%, 100% { transform: scale(1);    opacity: 0.7; }
+  50%       { transform: scale(1.18); opacity: 0;   }
 `;
 
 // ─── Bubble styled components ─────────────────────────────────────────────────
@@ -52,10 +51,19 @@ const BubbleLink = styled.a`
   position: relative;
   text-decoration: none;
   cursor: pointer;
-  animation: ${pulseKf} 2.6s ease-in-out infinite;
   transition:
     transform 0.18s cubic-bezier(0.23, 1, 0.32, 1),
     background 0.18s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(192, 32, 26, 0.55);
+    animation: ${pulseKf} 2.6s ease-in-out infinite;
+    pointer-events: none;
+  }
 
   &:hover {
     background: #d42520;
@@ -159,8 +167,6 @@ const LEAVES = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const Banner = () => {
-  const windowSize = useWindowSize();
-
   // Magnetic bubble effect
   const bubbleRef = React.useRef(null);
   const [magnetOffset, setMagnetOffset] = React.useState({ x: 0, y: 0 });
@@ -191,12 +197,11 @@ const Banner = () => {
   }, []);
 
   const handleScrollDown = React.useCallback(() => {
-    window.scrollTo({ top: windowSize.height, behavior: 'smooth' });
-  }, [windowSize.height]);
+    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+  }, []);
 
   return (
     <BannerSection
-      style={{ height: windowSize.height }}
       onMouseMove={handleBannerMouseMove}
       onMouseLeave={handleBannerMouseLeave}
     >

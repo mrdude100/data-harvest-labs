@@ -47,7 +47,7 @@ const App = ({ Component, pageProps }) => {
           font-family: barlow;
           font-weight: 700;
           font-style: normal;
-          font-display: swap;
+          font-display: block;
           src: url('/fonts/barlow-700.woff2') format('woff2');
         }
 
@@ -55,7 +55,7 @@ const App = ({ Component, pageProps }) => {
           font-family: calibre;
           font-weight: 400;
           font-style: normal;
-          font-display: swap;
+          font-display: block;
           src: url('/fonts/calibre-test-regular.woff') format('woff'),
             url('/fonts/CalibreTest-Regular.otf') format('opentype');
         }
@@ -64,7 +64,7 @@ const App = ({ Component, pageProps }) => {
           font-family: calibre;
           font-weight: 900;
           font-style: normal;
-          font-display: swap;
+          font-display: block;
           src: url('/fonts/calibre-test-black.woff') format('woff'),
             url('/fonts/CalibreTest-Black.otf') format('opentype');
         }

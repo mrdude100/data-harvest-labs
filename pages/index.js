@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import Script from 'next/script';
 import SEO from '../components/SEO';
 import BannerSection from '../components/Home/Banner';
 import HomePage from '../components/Home/HomePage';
@@ -7,16 +7,17 @@ const Home = () => {
   return (
     <>
       <SEO path="/" />
-      <Head>
-        <link
-          rel="stylesheet"
-          href="https://assets.calendly.com/assets/external/widget.css"
-        />
-        <script
-          src="https://assets.calendly.com/assets/external/widget.js"
-          async
-        />
-      </Head>
+      <link
+        rel="stylesheet"
+        href="https://assets.calendly.com/assets/external/widget.css"
+        media="print"
+        // eslint-disable-next-line react/no-unknown-property
+        onLoad="this.media='all'"
+      />
+      <Script
+        src="https://assets.calendly.com/assets/external/widget.js"
+        strategy="afterInteractive"
+      />
       <BannerSection />
       <HomePage />
     </>
