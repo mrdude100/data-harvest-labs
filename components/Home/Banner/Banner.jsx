@@ -243,9 +243,13 @@ const Banner = () => {
       <BubbleWrap>
         <BubbleLink
           ref={bubbleRef}
-          href="https://calendly.com/dataharvestlabs"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="https://calendly.com/faraznaik673/30min"
+          onClick={e => {
+            e.preventDefault();
+            window.Calendly?.initPopupWidget({
+              url: 'https://calendly.com/faraznaik673/30min',
+            });
+          }}
           style={{
             transform: `translate(${magnetOffset.x}px, ${magnetOffset.y}px)`,
           }}
