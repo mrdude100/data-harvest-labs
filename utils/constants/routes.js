@@ -15,6 +15,11 @@ export default [
     path: '/case-studies',
   },
   {
+    id: 'estimator',
+    title: 'Price estimator',
+    path: '/estimator',
+  },
+  {
     id: 'who-are-we',
     title: 'Who are we?',
     path: '/about',

@@ -2,10 +2,13 @@ const baseUrl = 'https://www.dataharvestlabs.com';
 
 const pages = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
-  { path: '/about', priority: '0.9', changefreq: 'monthly' },
-  { path: '/contact', priority: '0.9', changefreq: 'monthly' },
-  { path: '/quote', priority: '0.8', changefreq: 'monthly' },
+  { path: '/services', priority: '0.9', changefreq: 'monthly' },
+  { path: '/process', priority: '0.8', changefreq: 'monthly' },
+  { path: '/case-studies', priority: '0.8', changefreq: 'monthly' },
+  { path: '/about', priority: '0.8', changefreq: 'monthly' },
   { path: '/testimonials', priority: '0.7', changefreq: 'monthly' },
+  { path: '/estimator', priority: '0.7', changefreq: 'monthly' },
+  { path: '/quote', priority: '0.9', changefreq: 'monthly' },
 ];
 
 const generateSitemap = () => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -625,6 +626,16 @@ const QuotePage = () => {
         description="Request a quote from Data Harvest Labs for data analysis, GWAS, PCA, statistical consulting, and genomic research services."
         path="/quote"
       />
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://assets.calendly.com/assets/external/widget.css"
+        />
+        <script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        />
+      </Head>
 
       <PageWrapper>
         <TopLabel>Quotation</TopLabel>

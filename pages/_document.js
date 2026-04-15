@@ -6,20 +6,14 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link
-            rel="stylesheet"
-            href="https://assets.calendly.com/assets/external/widget.css"
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#c0392b" />
         </Head>
         <body>
           <Main />
           <NextScript />
           <script defer src="/_vercel/insights/script.js" />
           <script defer src="/_vercel/speed-insights/script.js" />
-          <script
-            src="https://assets.calendly.com/assets/external/widget.js"
-            async
-          />
         </body>
       </Html>
     );

@@ -41,18 +41,23 @@ const App = ({ Component, pageProps }) => {
       <Head>
         <title>DataHarvestLabs</title>
         <link rel="icon" href="/favicon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&display=swap" />
       </Head>
       <style jsx global>{`
+        @font-face {
+          font-family: barlow;
+          font-weight: 700;
+          font-style: normal;
+          font-display: swap;
+          src: url('/fonts/barlow-700.woff2') format('woff2');
+        }
+
         @font-face {
           font-family: calibre;
           font-weight: 400;
           font-style: normal;
           font-display: swap;
-          src: url('/fonts/CalibreTest-Regular.otf') format('opentype'),
-            url('/fonts/calibre-test-regular.woff') format('woff');
+          src: url('/fonts/calibre-test-regular.woff') format('woff'),
+            url('/fonts/CalibreTest-Regular.otf') format('opentype');
         }
 
         @font-face {
@@ -60,8 +65,8 @@ const App = ({ Component, pageProps }) => {
           font-weight: 900;
           font-style: normal;
           font-display: swap;
-          src: url('/fonts/CalibreTest-Black.otf') format('opentype'),
-            url('/fonts/calibre-test-black.woff') format('woff');
+          src: url('/fonts/calibre-test-black.woff') format('woff'),
+            url('/fonts/CalibreTest-Black.otf') format('opentype');
         }
       `}</style>
       <ThemeContextProvider>
