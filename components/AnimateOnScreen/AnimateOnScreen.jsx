@@ -1,15 +1,14 @@
 import React from 'react';
-import { useAnimation } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { useAnimation, useInView } from 'framer-motion';
 
 const transition = {
-  delay: 0.3,
+  delay: 0.2,
   translateY: {
-    duration: 1,
+    duration: 0.8,
     ease: [0, 0.7, 0.29, 0.97],
   },
   opacity: {
-    duration: 1,
+    duration: 0.8,
     ease: [0.25, 0.1, 0.25, 1.0],
   },
 };
@@ -20,30 +19,26 @@ const variants = {
 };
 
 const AnimateOnScreen = ({ children: childrenProp }) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.15 });
   const animation = useAnimation();
-  const [inViewRef, inView] = useInView({ triggerOnce: true });
 
   React.useEffect(() => {
-    if (inView) {
+    if (isInView) {
       animation.start('show');
     }
-  }, [animation, inView, inViewRef]);
+  }, [animation, isInView]);
 
   const children = React.Children.map(childrenProp, child => {
-    if (!React.isValidElement(child)) {
-      return null;
-    }
+    if (!React.isValidElement(child)) return null;
 
     const handleRef = node => {
-      // Keep your own reference
-      inViewRef(node);
-
-      // Call the original ref, if any
-      const { ref } = child;
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (ref !== null) {
-        ref.current = node;
+      ref.current = node;
+      const { ref: childRef } = child;
+      if (typeof childRef === 'function') {
+        childRef(node);
+      } else if (childRef != null) {
+        childRef.current = node;
       }
     };
 
