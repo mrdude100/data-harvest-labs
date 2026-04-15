@@ -28,9 +28,9 @@ const FooterGrid = styled.div`
   `}
 
   ${({ theme }) => theme.breakpoints.tablet`
-    grid-template-columns: 1fr;
-    gap: 36px;
-    padding: 48px 24px 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 40px 20px 32px;
   `}
 `;
 
@@ -40,6 +40,10 @@ const BrandCol = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    grid-column: 1 / -1;
+  `}
 `;
 
 const BrandName = styled.p`
@@ -124,6 +128,12 @@ const Col = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  ${({ theme, $mobileHide }) =>
+    $mobileHide &&
+    theme.breakpoints.tablet`
+    display: none;
+  `}
 `;
 
 const ColHeading = styled.p`
@@ -211,10 +221,10 @@ const BottomBar = styled.div`
   flex-wrap: wrap;
 
   ${({ theme }) => theme.breakpoints.tablet`
-    padding: 18px 24px;
+    padding: 16px 20px;
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
+    gap: 4px;
   `}
 `;
 
@@ -305,7 +315,7 @@ const Footer = () => {
         </BrandCol>
 
         {/* ── Navigate ── */}
-        <Col>
+        <Col $mobileHide>
           <ColHeading>Company</ColHeading>
           <LinkList>
             <Link href="/" passHref legacyBehavior>
@@ -376,7 +386,7 @@ const Footer = () => {
         </Col>
 
         {/* ── Services ── */}
-        <Col>
+        <Col $mobileHide>
           <ColHeading>Services</ColHeading>
           <LinkList>
             <Link href="/services" passHref legacyBehavior>

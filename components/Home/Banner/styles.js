@@ -150,7 +150,7 @@ export const BannerTitle = styled(motion.h1)`
   }
 
   ${({ theme }) => theme.breakpoints.tablet`
-    padding: 0 18px 18px;
+    padding: 0 18px 80px;
     & span {
       font-size: clamp(3rem, 16vw, 8rem);
     }

@@ -29,8 +29,12 @@ const Section = styled.section`
   ${containerStyles};
   padding: 96px 32px;
 
+  ${({ theme }) => theme.breakpoints.small`
+    padding: 72px 24px;
+  `};
+
   ${({ theme }) => theme.breakpoints.tablet`
-    padding: 64px 24px;
+    padding: 48px 20px;
   `};
 `;
 
@@ -119,6 +123,11 @@ const CtaWrapper = styled.section`
     gap: 32px;
     padding: 64px 24px;
   `};
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 48px 20px;
+    gap: 24px;
+  `};
 `;
 
 const CtaText = styled.h2`
@@ -168,7 +177,7 @@ const ServicesGrid = styled.div`
   `};
 
   ${({ theme }) => theme.breakpoints.tablet`
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   `};
 `;
 
@@ -183,6 +192,11 @@ const ServiceCard = styled(motion.div)`
   &:hover {
     background: ${({ theme }) => theme.colors.red}11;
   }
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 20px 16px;
+    gap: 8px;
+  `};
 `;
 
 const ServiceNumber = styled.span`
@@ -210,6 +224,10 @@ const ServiceDesc = styled.p`
   margin: 0;
   line-height: 1.6;
   font-weight: 400;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    display: none;
+  `};
 `;
 
 // ─── Why Us ───────────────────────────────────────────────────────────────────
@@ -225,7 +243,8 @@ const WhyGrid = styled.div`
   `};
 
   ${({ theme }) => theme.breakpoints.tablet`
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 16px;
   `};
 `;
 
@@ -242,6 +261,10 @@ const WhyNumber = styled.span`
   color: ${({ theme }) => theme.colors.red};
   opacity: 0.3;
   line-height: 1;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    display: none;
+  `};
 `;
 
 const WhyTitle = styled.h3`
@@ -347,6 +370,11 @@ const TrainingInner = styled.div`
     grid-template-columns: 1fr;
     gap: 48px;
     padding: 64px 24px;
+  `};
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 48px 20px;
+    gap: 32px;
   `};
 `;
 
