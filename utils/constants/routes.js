@@ -10,13 +10,28 @@ export default [
     path: '/about',
   },
   {
+    id: 'services',
+    title: 'Services',
+    path: '/services',
+  },
+  {
+    id: 'process',
+    title: 'How it works',
+    path: '/process',
+  },
+  {
+    id: 'case-studies',
+    title: 'Case studies',
+    path: '/case-studies',
+  },
+  {
     id: 'get-quoted',
     title: 'Get a quotation',
     path: '/quote',
   },
   {
     id: 'testimonials',
-    title: 'Client Stories',
+    title: 'Client stories',
     path: '/testimonials',
   },
 ];

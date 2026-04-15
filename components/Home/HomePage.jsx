@@ -879,6 +879,89 @@ const CtaButton = styled.a`
   }
 `;
 
+// ─── Research Impact ──────────────────────────────────────────────────────────
+
+const ImpactWrapper = styled.div`
+  background: #c0201a;
+`;
+
+const ImpactInner = styled.div`
+  ${containerStyles};
+  padding: 96px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+
+  ${({ theme }) => theme.breakpoints.small`
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 72px 24px;
+  `}
+`;
+
+const ImpactStatement = styled.p`
+  font-family: calibre, sans-serif;
+  font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+  color: #fff;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.55;
+`;
+
+const ImpactRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+`;
+
+const ImpactStat = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 2px solid rgba(255, 255, 255, 0.35);
+`;
+
+const ImpactStatNum = styled.span`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: #fff;
+  line-height: 1;
+`;
+
+const ImpactStatLabel = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.55;
+  font-weight: 400;
+`;
+
+const ImpactCtaLink = styled.a`
+  ${secondaryFontStyle};
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, gap 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    gap: 16px;
+  }
+`;
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const STATS = [
@@ -1184,6 +1267,37 @@ const HomePage = () => {
           </AppGrid>
         </Section>
       </AnimateOnScreen>
+
+      {/* ── 6.5 Research Impact ── */}
+      <ImpactWrapper>
+        <ImpactInner>
+          <ImpactStatement>
+            Our work has contributed to peer-reviewed research in plant
+            genetics, clinical medicine, animal breeding, and epidemiology —
+            spanning universities, hospitals, and government programmes across
+            India and beyond.
+          </ImpactStatement>
+          <ImpactRight>
+            <ImpactStat>
+              <ImpactStatNum>15+</ImpactStatNum>
+              <ImpactStatLabel>
+                Published studies contributed to
+              </ImpactStatLabel>
+            </ImpactStat>
+            <ImpactStat>
+              <ImpactStatNum>8+</ImpactStatNum>
+              <ImpactStatLabel>Countries served</ImpactStatLabel>
+            </ImpactStat>
+            <ImpactStat>
+              <ImpactStatNum>20+</ImpactStatNum>
+              <ImpactStatLabel>Academic institutions</ImpactStatLabel>
+            </ImpactStat>
+            <Link href="/case-studies" passHref>
+              <ImpactCtaLink>Read case studies &#8594;</ImpactCtaLink>
+            </Link>
+          </ImpactRight>
+        </ImpactInner>
+      </ImpactWrapper>
 
       {/* ── 7. Training ── */}
       <TrainingWrapper>

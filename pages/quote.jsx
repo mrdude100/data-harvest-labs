@@ -380,6 +380,57 @@ const SuccessText = styled.p`
   line-height: 1.6;
 `;
 
+// ─── Calendly Banner ─────────────────────────────────────────────────────────
+
+// TODO: Replace with your actual Calendly link
+const CALENDLY_LINK = 'https://calendly.com/dataharvestlabs';
+
+const CalendlyBanner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 28px;
+  background: ${({ theme }) => theme.text}06;
+  border: 1px solid ${({ theme }) => theme.text}12;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 16px 20px;
+    margin-bottom: 48px;
+  `}
+`;
+
+const CalendlyText = styled.p`
+  ${secondaryFontStyle};
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.5;
+  margin: 0;
+  line-height: 1.5;
+`;
+
+const CalendlyLink = styled.a`
+  ${secondaryFontStyle};
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.red};
+  text-decoration: none;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    gap: 12px;
+  }
+`;
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 const QuotePage = () => {
@@ -510,6 +561,22 @@ const QuotePage = () => {
       <PageWrapper>
         <TopLabel>Quotation</TopLabel>
         <PageTitle>Get a{'\u00A0'}quote</PageTitle>
+
+        <CalendlyBanner>
+          <CalendlyText>
+            Prefer to talk through your project first? Book a free 15-minute
+            discovery call — no commitment required.
+          </CalendlyText>
+          <CalendlyLink
+            href={CALENDLY_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            onMouseEnter={addCursorBorder}
+            onMouseLeave={removeCursorBorder}
+          >
+            Book a call &#8594;
+          </CalendlyLink>
+        </CalendlyBanner>
 
         {!submitted ? (
           <>

@@ -320,6 +320,30 @@ const Footer = () => {
                 About
               </NavLink>
             </Link>
+            <Link href="/services" passHref>
+              <NavLink
+                onMouseEnter={addCursorBorder}
+                onMouseLeave={removeCursorBorder}
+              >
+                Services
+              </NavLink>
+            </Link>
+            <Link href="/process" passHref>
+              <NavLink
+                onMouseEnter={addCursorBorder}
+                onMouseLeave={removeCursorBorder}
+              >
+                How It Works
+              </NavLink>
+            </Link>
+            <Link href="/case-studies" passHref>
+              <NavLink
+                onMouseEnter={addCursorBorder}
+                onMouseLeave={removeCursorBorder}
+              >
+                Case Studies
+              </NavLink>
+            </Link>
             <Link href="/testimonials" passHref>
               <NavLink
                 onMouseEnter={addCursorBorder}
@@ -351,7 +375,7 @@ const Footer = () => {
         <Col>
           <ColHeading>Services</ColHeading>
           <LinkList>
-            <Link href="/quote" passHref>
+            <Link href="/services" passHref>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -359,7 +383,7 @@ const Footer = () => {
                 Genomics & Bioinformatics
               </NavLink>
             </Link>
-            <Link href="/quote" passHref>
+            <Link href="/services" passHref>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -367,7 +391,7 @@ const Footer = () => {
                 Biostatistics & Data Analysis
               </NavLink>
             </Link>
-            <Link href="/quote" passHref>
+            <Link href="/services" passHref>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -375,7 +399,7 @@ const Footer = () => {
                 Clinical Research Design
               </NavLink>
             </Link>
-            <Link href="/quote" passHref>
+            <Link href="/services" passHref>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -383,7 +407,7 @@ const Footer = () => {
                 Systematic Reviews & Meta-Analysis
               </NavLink>
             </Link>
-            <Link href="/quote" passHref>
+            <Link href="/services" passHref>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
