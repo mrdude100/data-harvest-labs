@@ -356,7 +356,7 @@ const Footer = () => {
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
               >
-                SNP Data Analysis
+                Genomics & Bioinformatics
               </NavLink>
             </Link>
             <Link href="/quote" passHref>
@@ -364,7 +364,7 @@ const Footer = () => {
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
               >
-                GWAS
+                Biostatistics & Data Analysis
               </NavLink>
             </Link>
             <Link href="/quote" passHref>
@@ -372,7 +372,7 @@ const Footer = () => {
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
               >
-                PCA & Clustering
+                Clinical Research Design
               </NavLink>
             </Link>
             <Link href="/quote" passHref>
@@ -380,15 +380,15 @@ const Footer = () => {
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
               >
-                Statistical Consulting
+                Systematic Reviews & Meta-Analysis
               </NavLink>
             </Link>
-            <Link href="/contact" passHref>
+            <Link href="/quote" passHref>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
               >
-                Genomics Training
+                ML & Predictive Models
               </NavLink>
             </Link>
           </LinkList>
