@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
 import useWindowSize from '../../../hooks/useWindowSize';
@@ -87,11 +86,13 @@ const BubbleArrow = styled.span.attrs({ className: 'bubble-arrow' })`
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: transform 0.22s cubic-bezier(0.23, 1, 0.32, 1);
   pointer-events: none;
   z-index: 1;
+  gap: 2px;
 `;
 
 // ─── Rotating text SVG ────────────────────────────────────────────────────────
@@ -107,18 +108,18 @@ const BubbleTextSvg = () => (
     <defs>
       <path
         id="bubbleCircle"
-        d="M 74,74 m -60,0 a 60,60 0 1,1 120,0 a 60,60 0 1,1 -120,0"
+        d="M 74,74 m -56,0 a 56,56 0 1,1 112,0 a 56,56 0 1,1 -112,0"
       />
     </defs>
     <text
-      fill="rgba(255,255,255,0.75)"
-      fontSize="9"
-      letterSpacing="3.2"
-      fontWeight="600"
+      fill="rgba(255,255,255,0.9)"
+      fontSize="11.5"
+      letterSpacing="3.8"
+      fontWeight="700"
       fontFamily="'Barlow', sans-serif"
     >
       <textPath href="#bubbleCircle">
-        FREE CONSULTATION · 30 MIN · NO COMMITMENT ·&nbsp;&nbsp;
+        FREE CONSULTATION · 30 MIN · NO COMMITMENT ·&nbsp;
       </textPath>
     </text>
   </svg>
@@ -239,35 +240,37 @@ const Banner = () => {
 
       {/* Floating consultation bubble */}
       <BubbleWrap>
-        <Link href="/contact" passHref>
-          <BubbleLink
-            ref={bubbleRef}
-            style={{
-              transform: `translate(${magnetOffset.x}px, ${magnetOffset.y}px)`,
-            }}
-            aria-label="Book a free 30-minute consultation"
-          >
-            <BubbleRing>
-              <BubbleTextSvg />
-            </BubbleRing>
-            <BubbleArrow>
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#fff"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                width="18"
-                height="18"
-                aria-hidden="true"
-              >
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="7 7 17 7 17 17" />
-              </svg>
-            </BubbleArrow>
-          </BubbleLink>
-        </Link>
+        <BubbleLink
+          ref={bubbleRef}
+          href="https://calendly.com/dataharvestlabs"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            transform: `translate(${magnetOffset.x}px, ${magnetOffset.y}px)`,
+          }}
+          aria-label="Book a free 30-minute consultation"
+        >
+          <BubbleRing>
+            <BubbleTextSvg />
+          </BubbleRing>
+          <BubbleArrow>
+            <span
+              style={{
+                fontFamily: "'Barlow', sans-serif",
+                fontWeight: 800,
+                fontSize: '0.7rem',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: '#fff',
+                lineHeight: 1.3,
+                textAlign: 'center',
+              }}
+            >
+              BOOK A<br />
+              FREE CALL
+            </span>
+          </BubbleArrow>
+        </BubbleLink>
       </BubbleWrap>
 
       <BannerTitle

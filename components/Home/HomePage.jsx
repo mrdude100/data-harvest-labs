@@ -964,18 +964,22 @@ const ImpactCtaLink = styled.a`
 
 // ─── Estimator Highlight ──────────────────────────────────────────────────────
 
-const EstimatorSection = styled.section`
+const EstimatorOuter = styled.section`
+  background: ${({ theme }) => theme.colors.red};
+  width: 100%;
+`;
+
+const EstimatorSection = styled.div`
   ${containerStyles};
   padding: 96px 32px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
-  border-top: 1px solid ${({ theme }) => theme.text}12;
 
   ${({ theme }) => theme.breakpoints.small`
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
     padding: 72px 24px;
   `}
 `;
@@ -997,29 +1001,28 @@ const EstimatorPill = styled.span`
   font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border: 1px solid ${({ theme }) => theme.colors.red};
-  color: ${({ theme }) => theme.colors.red};
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
   padding: 5px 12px;
 `;
 
 const EstimatorTitle = styled.h2`
   font-family: calibre, sans-serif;
   font-weight: 900;
-  font-size: clamp(2.25rem, 5vw, 4rem);
-  line-height: 0.95;
+  font-size: clamp(2.75rem, 6vw, 5rem);
+  line-height: 0.92;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.text};
+  color: #fff;
   margin: 0;
 `;
 
 const EstimatorDesc = styled.p`
   font-family: calibre, sans-serif;
-  font-size: 1rem;
-  color: ${({ theme }) => theme.text};
-  opacity: 0.5;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.75);
   margin: 0;
   line-height: 1.65;
-  max-width: 400px;
+  max-width: 420px;
 `;
 
 const EstimatorCta = styled.a`
@@ -1027,8 +1030,8 @@ const EstimatorCta = styled.a`
   font-size: 1rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.background};
-  background: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.colors.red};
+  background: #fff;
   padding: 20px 40px;
   display: inline-block;
   text-decoration: none;
@@ -1036,7 +1039,7 @@ const EstimatorCta = styled.a`
   align-self: flex-start;
 
   &:hover {
-    background: ${({ theme }) => theme.colors.red};
+    background: #111;
     color: #fff;
   }
 `;
@@ -1046,30 +1049,29 @@ const EstimatorNote = styled.span`
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.text};
-  opacity: 0.3;
+  color: rgba(255, 255, 255, 0.45);
   font-weight: 400;
 `;
 
 const EstimatorRight = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 `;
 
 const EstimatorStep = styled.div`
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 32px 1fr;
   gap: 16px;
   align-items: baseline;
-  padding: 18px 24px;
-  background: ${({ theme }) => theme.text}04;
-  border-left: 1px solid ${({ theme }) => theme.text}12;
+  padding: 20px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
   transition: border-color 0.2s ease, background 0.2s ease;
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.red};
-    background: ${({ theme }) => theme.colors.red}06;
+    border-color: #fff;
+    background: rgba(255, 255, 255, 0.14);
   }
 `;
 
@@ -1077,16 +1079,14 @@ const EstimatorStepNum = styled.span`
   ${secondaryFontStyle};
   font-size: 0.65rem;
   letter-spacing: 0.1em;
-  color: ${({ theme }) => theme.colors.red};
-  opacity: 0.7;
+  color: rgba(255, 255, 255, 0.5);
 `;
 
 const EstimatorStepText = styled.span`
   ${secondaryFontStyle};
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text};
-  opacity: 0.6;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.5;
 `;
 
@@ -1470,56 +1470,58 @@ const HomePage = () => {
       </TrainingWrapper>
 
       {/* ── 8. Project Estimator ── */}
-      <AnimateOnScreen>
-        <EstimatorSection
-          as={motion.div}
-          variants={stagger}
-          initial="hidden"
-          animate="show"
-        >
-          <EstimatorLeft as={motion.div} variants={fadeUp}>
-            <EstimatorPills>
-              <EstimatorPill>Free Tool</EstimatorPill>
-              <EstimatorPill>2 Minutes</EstimatorPill>
-            </EstimatorPills>
-            <EstimatorTitle>
-              Know Your
-              <br />
-              Budget
-              <br />
-              Instantly
-            </EstimatorTitle>
-            <EstimatorDesc>
-              Answer 4 quick questions about your project and get a tailored
-              scope, timeline, and price range — no sales call required.
-            </EstimatorDesc>
-            <Link href="/estimator" passHref>
-              <EstimatorCta
-                onMouseEnter={addCursorBorder}
-                onMouseLeave={removeCursorBorder}
-              >
-                Try the Estimator
-              </EstimatorCta>
-            </Link>
-            <EstimatorNote>
-              Takes less than 2 minutes &mdash; no sign-up
-            </EstimatorNote>
-          </EstimatorLeft>
-          <EstimatorRight as={motion.div} variants={fadeUp}>
-            {[
-              'What type of research do you need?',
-              'How many samples or data points?',
-              "What's your timeline?",
-              'How ready is your data?',
-            ].map((q, i) => (
-              <EstimatorStep key={i}>
-                <EstimatorStepNum>0{i + 1}</EstimatorStepNum>
-                <EstimatorStepText>{q}</EstimatorStepText>
-              </EstimatorStep>
-            ))}
-          </EstimatorRight>
-        </EstimatorSection>
-      </AnimateOnScreen>
+      <EstimatorOuter>
+        <AnimateOnScreen>
+          <EstimatorSection
+            as={motion.div}
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+          >
+            <EstimatorLeft as={motion.div} variants={fadeUp}>
+              <EstimatorPills>
+                <EstimatorPill>Free Tool</EstimatorPill>
+                <EstimatorPill>2 Minutes</EstimatorPill>
+              </EstimatorPills>
+              <EstimatorTitle>
+                Know Your
+                <br />
+                Budget
+                <br />
+                Instantly
+              </EstimatorTitle>
+              <EstimatorDesc>
+                Answer 4 quick questions about your project and get a tailored
+                scope, timeline, and price range — no sales call required.
+              </EstimatorDesc>
+              <Link href="/estimator" passHref>
+                <EstimatorCta
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                >
+                  Try the Estimator
+                </EstimatorCta>
+              </Link>
+              <EstimatorNote>
+                Takes less than 2 minutes &mdash; no sign-up
+              </EstimatorNote>
+            </EstimatorLeft>
+            <EstimatorRight as={motion.div} variants={fadeUp}>
+              {[
+                'What type of research do you need?',
+                'How many samples or data points?',
+                "What's your timeline?",
+                'How ready is your data?',
+              ].map((q, i) => (
+                <EstimatorStep key={i}>
+                  <EstimatorStepNum>0{i + 1}</EstimatorStepNum>
+                  <EstimatorStepText>{q}</EstimatorStepText>
+                </EstimatorStep>
+              ))}
+            </EstimatorRight>
+          </EstimatorSection>
+        </AnimateOnScreen>
+      </EstimatorOuter>
 
       {/* ── 9. Free Consultation ── */}
       <AnimateOnScreen>
