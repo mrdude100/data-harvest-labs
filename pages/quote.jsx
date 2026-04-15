@@ -384,8 +384,7 @@ const SuccessText = styled.p`
 
 // ─── Calendly Banner ─────────────────────────────────────────────────────────
 
-// TODO: Replace with your actual Calendly link
-const CALENDLY_LINK = 'https://calendly.com/dataharvestlabs';
+const CALENDLY_LINK = 'https://calendly.com/faraznaik673/30min';
 
 const CalendlyBanner = styled.div`
   display: flex;
@@ -571,8 +570,10 @@ const QuotePage = () => {
           </CalendlyText>
           <CalendlyLink
             href={CALENDLY_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={e => {
+              e.preventDefault();
+              window.Calendly?.initPopupWidget({ url: CALENDLY_LINK });
+            }}
             onMouseEnter={addCursorBorder}
             onMouseLeave={removeCursorBorder}
           >

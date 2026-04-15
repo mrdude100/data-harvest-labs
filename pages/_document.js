@@ -5,12 +5,21 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link
+            rel="stylesheet"
+            href="https://assets.calendly.com/assets/external/widget.css"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
           <script defer src="/_vercel/insights/script.js" />
           <script defer src="/_vercel/speed-insights/script.js" />
+          <script
+            src="https://assets.calendly.com/assets/external/widget.js"
+            async
+          />
         </body>
       </Html>
     );
