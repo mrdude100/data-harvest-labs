@@ -239,7 +239,7 @@ const SocialProofLabel = styled.div`
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: ${({ theme }) => theme.text};
-    opacity: 0.25;
+    opacity: 0.6;
   }
 
   ${({ theme }) => theme.breakpoints.tablet`
@@ -294,7 +294,7 @@ const InstItem = styled.span`
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
-  opacity: 0.38;
+  opacity: 0.6;
   white-space: nowrap;
   padding: 0 32px;
   display: flex;
@@ -334,7 +334,7 @@ const QuoteSnippetText = styled.span`
   font-size: 0.78rem;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
-  opacity: 0.5;
+  opacity: 0.65;
   font-style: italic;
 `;
 
@@ -344,7 +344,7 @@ const QuoteSnippetAttr = styled.span`
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.text};
-  opacity: 0.25;
+  opacity: 0.6;
   flex-shrink: 0;
 
   &::before {
@@ -406,8 +406,7 @@ const StatLabel = styled.div`
   font-size: 0.8rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
-  opacity: 0.75;
+  color: rgba(255, 255, 255, 0.92);
 `;
 
 // ─── About pull-quote ─────────────────────────────────────────────────────────
@@ -908,8 +907,7 @@ const ConsultLabel = styled.span`
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #fff;
-  opacity: 0.55;
+  color: rgba(255, 255, 255, 0.88);
 `;
 
 const ConsultHeading = styled.h2`
@@ -925,8 +923,7 @@ const ConsultHeading = styled.h2`
 const ConsultDesc = styled.p`
   font-family: calibre, sans-serif;
   font-size: 1.1rem;
-  color: #fff;
-  opacity: 0.75;
+  color: rgba(255, 255, 255, 0.92);
   margin: 0;
   line-height: 1.6;
 `;
@@ -977,8 +974,7 @@ const ConsultCta = styled.a`
 const ConsultNote = styled.p`
   ${secondaryFontStyle};
   font-size: 0.76rem;
-  color: #fff;
-  opacity: 0.45;
+  color: rgba(255, 255, 255, 0.88);
   margin: 0;
   text-align: center;
   letter-spacing: 0.02em;
@@ -1093,8 +1089,7 @@ const ImpactStatLabel = styled.span`
   font-size: 0.72rem;
   letter-spacing: 0.09em;
   text-transform: uppercase;
-  color: #fff;
-  opacity: 0.55;
+  color: rgba(255, 255, 255, 0.88);
   font-weight: 400;
 `;
 
@@ -1103,19 +1098,18 @@ const ImpactCtaLink = styled.a`
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   margin-top: 8px;
-  opacity: 0.65;
   transition:
-    opacity 0.2s ease,
+    color 0.2s ease,
     gap 0.2s ease;
 
   &:hover {
-    opacity: 1;
+    color: #fff;
     gap: 16px;
   }
 `;
@@ -1497,8 +1491,13 @@ const HomePage = () => {
         {/* Row 1 — institutions scrolling left */}
         <SocialProofRow>
           <InstTrack>
-            {[...INSTITUTIONS, ...INSTITUTIONS].map((name, i) => (
+            {INSTITUTIONS.map((name, i) => (
               <InstItem key={i}>{name}</InstItem>
+            ))}
+            {INSTITUTIONS.map((name, i) => (
+              <InstItem key={`d-${i}`} aria-hidden="true">
+                {name}
+              </InstItem>
             ))}
           </InstTrack>
         </SocialProofRow>
@@ -1507,7 +1506,10 @@ const HomePage = () => {
         <SocialProofRow>
           <QuoteTrack>
             {[...QUOTE_SNIPPETS, ...QUOTE_SNIPPETS].map((q, i) => (
-              <QuoteSnippetItem key={i}>
+              <QuoteSnippetItem
+                key={i}
+                aria-hidden={i >= QUOTE_SNIPPETS.length}
+              >
                 <QuoteStars>★★★★★</QuoteStars>
                 <QuoteSnippetText>&ldquo;{q.text}&rdquo;</QuoteSnippetText>
                 <QuoteSnippetAttr>
@@ -1555,8 +1557,13 @@ const HomePage = () => {
             </MarqueeLabel>
             <MarqueeTrackWrap>
               <MarqueeTrack>
-                {[...TOOLS, ...TOOLS].map((tool, i) => (
+                {TOOLS.map((tool, i) => (
                   <MarqueeItem key={i}>{tool}</MarqueeItem>
+                ))}
+                {TOOLS.map((tool, i) => (
+                  <MarqueeItem key={`d-${i}`} aria-hidden="true">
+                    {tool}
+                  </MarqueeItem>
                 ))}
               </MarqueeTrack>
             </MarqueeTrackWrap>

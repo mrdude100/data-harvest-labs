@@ -100,7 +100,7 @@ const SocialLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 2px 0;
+  padding: 8px 0;
 
   &::before {
     content: '';
