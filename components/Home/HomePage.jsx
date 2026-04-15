@@ -1674,7 +1674,7 @@ const HomePage = () => {
               <ImpactStatLabel>Academic institutions</ImpactStatLabel>
             </ImpactStat>
             <Link href="/case-studies" passHref legacyBehavior>
-              <ImpactCtaLink>Read case studies &#8594;</ImpactCtaLink>
+              <ImpactCtaLink>See our published results &#8594;</ImpactCtaLink>
             </Link>
           </ImpactRight>
         </ImpactInner>
@@ -1699,7 +1699,7 @@ const HomePage = () => {
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
                 >
-                  Enquire about training &#8594;
+                  Find the right course &#8594;
                 </TrainingLink>
               </Link>
             </TrainingLeft>
@@ -1752,7 +1752,7 @@ const HomePage = () => {
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
                 >
-                  Try the Estimator
+                  See my price in 2 minutes
                 </EstimatorCta>
               </Link>
               <EstimatorNote>
@@ -1805,7 +1805,7 @@ const HomePage = () => {
                     onMouseEnter={addCursorBorder}
                     onMouseLeave={removeCursorBorder}
                   >
-                    Book Free Consultation &#8594;
+                    Claim my free 30-min call &#8594;
                   </ConsultCta>
                 </Link>
                 <ConsultNote>No payment required to book</ConsultNote>
@@ -1824,7 +1824,7 @@ const HomePage = () => {
               onMouseEnter={addCursorBorder}
               onMouseLeave={removeCursorBorder}
             >
-              Get in touch &#8594;
+              Start your project &#8594;
             </CtaButton>
           </Link>
         </CtaWrapper>

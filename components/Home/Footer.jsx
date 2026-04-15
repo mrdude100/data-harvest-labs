@@ -371,7 +371,7 @@ const Footer = () => {
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
               >
-                Get a Quote
+                Get a proposal
               </NavLink>
             </Link>
           </LinkList>

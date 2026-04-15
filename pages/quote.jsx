@@ -632,7 +632,7 @@ const QuotePage = () => {
 
         <CalendlyBanner>
           <CalendlyText>
-            Prefer to talk through your project first? Book a free 15-minute
+            Prefer to talk through your project first? Book a free 30-minute
             discovery call — no commitment required.
           </CalendlyText>
           <CalendlyLink
@@ -651,7 +651,7 @@ const QuotePage = () => {
             onMouseEnter={addCursorBorder}
             onMouseLeave={removeCursorBorder}
           >
-            Book a call &#8594;
+            Talk to an analyst first &#8594;
           </CalendlyLink>
         </CalendlyBanner>
 
@@ -945,7 +945,7 @@ const QuotePage = () => {
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
                 >
-                  {submitting ? 'Sending...' : 'Submit quote'}
+                  {submitting ? 'Sending...' : 'Send my request'}
                 </PrimaryButton>
               )}
               {step > 0 && (
@@ -993,7 +993,7 @@ const QuotePage = () => {
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
               >
-                Book a call now &#8594;
+                Schedule my discovery call &#8594;
               </SuccessCalendlyBtn>
               <SuccessCalendlyNote>No commitment required</SuccessCalendlyNote>
             </SuccessCalendlyBox>
