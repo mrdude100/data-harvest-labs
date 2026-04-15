@@ -428,8 +428,7 @@ const ProcessPage = () => {
           as={motion.div}
           variants={stagger}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-80px' }}
+          animate="show"
         >
           {STEPS.map(step => (
             <StepRow key={step.number} variants={fadeUp}>
@@ -454,8 +453,7 @@ const ProcessPage = () => {
             as={motion.div}
             variants={fadeUp}
             initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
+            animate="show"
           >
             <PromiseTitle>Our commitments to you</PromiseTitle>
             <PromiseGrid>

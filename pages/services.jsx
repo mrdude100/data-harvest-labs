@@ -738,12 +738,7 @@ const ServicesPage = () => {
           const Icon = s.icon;
           return (
             <AnimateOnScreen key={s.name}>
-              <ServiceCard
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true }}
-              >
+              <ServiceCard variants={fadeUp} initial="hidden" animate="show">
                 <CardLeft>
                   <CardNumber>0{i + 1}</CardNumber>
                   <CardIcon>
@@ -794,8 +789,7 @@ const ServicesPage = () => {
               as={motion.div}
               variants={stagger}
               initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
+              animate="show"
             >
               {PRICING_TIERS.map(t => (
                 <PricingCard key={t.tier} variants={fadeUp}>
@@ -831,8 +825,7 @@ const ServicesPage = () => {
           as={motion.section}
           variants={fadeUp}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
+          animate="show"
         >
           <CtaText>Not sure what you need?</CtaText>
           <Link href="/estimator" passHref>

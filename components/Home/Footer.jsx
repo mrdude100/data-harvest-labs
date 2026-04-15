@@ -352,7 +352,7 @@ const Footer = () => {
                 Testimonials
               </NavLink>
             </Link>
-            <Link href="/contact" passHref>
+            <Link href="/quote" passHref>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}

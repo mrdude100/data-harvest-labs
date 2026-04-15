@@ -489,12 +489,7 @@ const CaseStudiesPage = () => {
         </AnimateOnScreen>
 
         {/* ── Case Cards ── */}
-        <CaseGrid
-          variants={stagger}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-60px' }}
-        >
+        <CaseGrid variants={stagger} initial="hidden" animate="show">
           {CASES.map(c => (
             <CaseCard key={c.title} variants={fadeUp}>
               <CaseLeft>

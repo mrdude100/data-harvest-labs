@@ -962,6 +962,134 @@ const ImpactCtaLink = styled.a`
   }
 `;
 
+// ─── Estimator Highlight ──────────────────────────────────────────────────────
+
+const EstimatorSection = styled.section`
+  ${containerStyles};
+  padding: 96px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  border-top: 1px solid ${({ theme }) => theme.text}12;
+
+  ${({ theme }) => theme.breakpoints.small`
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 72px 24px;
+  `}
+`;
+
+const EstimatorLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+const EstimatorPills = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+`;
+
+const EstimatorPill = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 1px solid ${({ theme }) => theme.colors.red};
+  color: ${({ theme }) => theme.colors.red};
+  padding: 5px 12px;
+`;
+
+const EstimatorTitle = styled.h2`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  margin: 0;
+`;
+
+const EstimatorDesc = styled.p`
+  font-family: calibre, sans-serif;
+  font-size: 1rem;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.5;
+  margin: 0;
+  line-height: 1.65;
+  max-width: 400px;
+`;
+
+const EstimatorCta = styled.a`
+  ${secondaryFontStyle};
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.text};
+  padding: 20px 40px;
+  display: inline-block;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  align-self: flex-start;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.red};
+    color: #fff;
+  }
+`;
+
+const EstimatorNote = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.3;
+  font-weight: 400;
+`;
+
+const EstimatorRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+`;
+
+const EstimatorStep = styled.div`
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 18px 24px;
+  background: ${({ theme }) => theme.text}04;
+  border-left: 1px solid ${({ theme }) => theme.text}12;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.red};
+    background: ${({ theme }) => theme.colors.red}06;
+  }
+`;
+
+const EstimatorStepNum = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: ${({ theme }) => theme.colors.red};
+  opacity: 0.7;
+`;
+
+const EstimatorStepText = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.6;
+  line-height: 1.5;
+`;
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const STATS = [
@@ -1313,7 +1441,7 @@ const HomePage = () => {
                 — hands-on, software-driven, and aligned with international
                 journal and NMC thesis standards.
               </TrainingDesc>
-              <Link href="/contact" passHref>
+              <Link href="/quote" passHref>
                 <TrainingLink
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
@@ -1341,7 +1469,59 @@ const HomePage = () => {
         </TrainingInner>
       </TrainingWrapper>
 
-      {/* ── 8. Free Consultation ── */}
+      {/* ── 8. Project Estimator ── */}
+      <AnimateOnScreen>
+        <EstimatorSection
+          as={motion.div}
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+        >
+          <EstimatorLeft as={motion.div} variants={fadeUp}>
+            <EstimatorPills>
+              <EstimatorPill>Free Tool</EstimatorPill>
+              <EstimatorPill>2 Minutes</EstimatorPill>
+            </EstimatorPills>
+            <EstimatorTitle>
+              Know Your
+              <br />
+              Budget
+              <br />
+              Instantly
+            </EstimatorTitle>
+            <EstimatorDesc>
+              Answer 4 quick questions about your project and get a tailored
+              scope, timeline, and price range — no sales call required.
+            </EstimatorDesc>
+            <Link href="/estimator" passHref>
+              <EstimatorCta
+                onMouseEnter={addCursorBorder}
+                onMouseLeave={removeCursorBorder}
+              >
+                Try the Estimator
+              </EstimatorCta>
+            </Link>
+            <EstimatorNote>
+              Takes less than 2 minutes &mdash; no sign-up
+            </EstimatorNote>
+          </EstimatorLeft>
+          <EstimatorRight as={motion.div} variants={fadeUp}>
+            {[
+              'What type of research do you need?',
+              'How many samples or data points?',
+              "What's your timeline?",
+              'How ready is your data?',
+            ].map((q, i) => (
+              <EstimatorStep key={i}>
+                <EstimatorStepNum>0{i + 1}</EstimatorStepNum>
+                <EstimatorStepText>{q}</EstimatorStepText>
+              </EstimatorStep>
+            ))}
+          </EstimatorRight>
+        </EstimatorSection>
+      </AnimateOnScreen>
+
+      {/* ── 9. Free Consultation ── */}
       <AnimateOnScreen>
         <ConsultWrapper>
           <ConsultInner
@@ -1365,7 +1545,7 @@ const HomePage = () => {
             </ConsultLeft>
             <motion.div variants={fadeUp}>
               <ConsultRight>
-                <Link href="/contact" passHref>
+                <Link href="/quote" passHref>
                   <ConsultCta
                     onMouseEnter={addCursorBorder}
                     onMouseLeave={removeCursorBorder}
@@ -1384,7 +1564,7 @@ const HomePage = () => {
       <AnimateOnScreen>
         <CtaWrapper as={motion.section}>
           <CtaText>Ready to unlock your data?</CtaText>
-          <Link href="/contact" passHref>
+          <Link href="/quote" passHref>
             <CtaButton
               onMouseEnter={addCursorBorder}
               onMouseLeave={removeCursorBorder}
