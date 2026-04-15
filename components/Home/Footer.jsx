@@ -371,14 +371,6 @@ const Footer = () => {
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
               >
-                Contact
-              </NavLink>
-            </Link>
-            <Link href="/quote" passHref legacyBehavior>
-              <NavLink
-                onMouseEnter={addCursorBorder}
-                onMouseLeave={removeCursorBorder}
-              >
                 Get a Quote
               </NavLink>
             </Link>

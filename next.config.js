@@ -3,6 +3,15 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/contact',
+        destination: '/quote',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
