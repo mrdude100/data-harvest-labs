@@ -74,6 +74,11 @@ const marqueeKf = keyframes`
   to   { transform: translateX(-50%); }
 `;
 
+const marqueeKfReverse = keyframes`
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+`;
+
 // ─── SVG Icons ────────────────────────────────────────────────────────────────
 
 const IconGenomics = () => (
@@ -213,6 +218,148 @@ const Section = styled.section`
   ${({ theme }) => theme.breakpoints.tablet`
     padding: 64px 24px;
   `};
+`;
+
+// ─── Social Proof Marquee ─────────────────────────────────────────────────────
+
+const SocialProofOuter = styled.div`
+  border-top: 1px solid ${({ theme }) => theme.text}12;
+  border-bottom: 1px solid ${({ theme }) => theme.text}12;
+  overflow: hidden;
+  background: ${({ theme }) => theme.background};
+`;
+
+const SocialProofLabel = styled.div`
+  ${containerStyles};
+  padding: 20px 32px 0;
+
+  span {
+    ${secondaryFontStyle};
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.text};
+    opacity: 0.25;
+  }
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 16px 20px 0;
+  `};
+`;
+
+const SocialProofRow = styled.div`
+  display: flex;
+  overflow: hidden;
+  padding: 14px 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+
+  &:first-of-type {
+    padding-top: 18px;
+  }
+
+  &:last-of-type {
+    padding-bottom: 18px;
+  }
+
+  &:hover div {
+    animation-play-state: paused;
+  }
+`;
+
+const InstTrack = styled.div`
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ${marqueeKf} 32s linear infinite;
+  gap: 0;
+`;
+
+const QuoteTrack = styled.div`
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ${marqueeKfReverse} 42s linear infinite;
+  gap: 0;
+`;
+
+const InstItem = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.38;
+  white-space: nowrap;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: ${({ theme }) => theme.colors.red};
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+`;
+
+const QuoteSnippetItem = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+  padding: 0 36px;
+`;
+
+const QuoteStars = styled.span`
+  font-size: 0.6rem;
+  color: ${({ theme }) => theme.colors.red};
+  letter-spacing: 2px;
+  opacity: 0.8;
+  flex-shrink: 0;
+`;
+
+const QuoteSnippetText = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.5;
+  font-style: italic;
+`;
+
+const QuoteSnippetAttr = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.25;
+  flex-shrink: 0;
+
+  &::before {
+    content: '—  ';
+  }
+`;
+
+const QuoteSep = styled.span`
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: ${({ theme }) => theme.colors.red};
+  opacity: 0.35;
+  flex-shrink: 0;
 `;
 
 // ─── Stats ────────────────────────────────────────────────────────────────────
@@ -1240,6 +1387,65 @@ const COURSES = [
   },
 ];
 
+const INSTITUTIONS = [
+  'SKUAST-K',
+  'SKUAST-J',
+  'ICAR-IVRI',
+  'University of Kashmir',
+  'NIT Srinagar',
+  'AIIMS Delhi',
+  'JIPMER Puducherry',
+  'CMC Vellore',
+  'ICMR',
+  'NDRI Karnal',
+  'Punjab Agricultural University',
+  'GBPUAT Pantnagar',
+  'HAU Hisar',
+  'Central Asia Crop Research Centre',
+  'National Livestock Improvement Programme',
+  'NIMHANS Bengaluru',
+  'University of Veterinary Sciences',
+  'College of Agriculture & Life Sciences',
+];
+
+const QUOTE_SNIPPETS = [
+  {
+    text: 'Rigorous, publication-ready results — delivered on time.',
+    name: 'Dr. Amir Malik',
+    role: 'Plant Breeder',
+  },
+  {
+    text: 'Deep domain knowledge and clear, honest communication.',
+    name: 'Mehreen Hassan',
+    role: 'PhD Candidate',
+  },
+  {
+    text: 'Outstanding analysis with fully reproducible R code.',
+    name: 'Dr. Suresh Patel',
+    role: 'Principal Investigator',
+  },
+  {
+    text: 'Flagged issues we had completely overlooked ourselves.',
+    name: 'Dr. Farida Yusupova',
+    role: 'Genomics Researcher',
+  },
+  {
+    text: 'By the end I could run a full GWAS independently.',
+    name: 'Bilal Qureshi',
+    role: 'PhD Student',
+  },
+  {
+    text: 'Compelling slides — several compliments from the audience.',
+    name: 'Dr. Nadia Al-Rashid',
+    role: 'Associate Professor',
+  },
+  {
+    text: 'Both the statistics and biological context — a big difference.',
+    name: "James O'Brien",
+    role: 'Lead Geneticist',
+  },
+];
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const HomePage = () => {
@@ -1281,6 +1487,38 @@ const HomePage = () => {
           </AboutInner>
         </AboutWrapper>
       </AnimateOnScreen>
+
+      {/* ── 2.5. Social Proof Marquee ── */}
+      <SocialProofOuter>
+        <SocialProofLabel>
+          <span>Trusted by researchers across India &amp; beyond</span>
+        </SocialProofLabel>
+
+        {/* Row 1 — institutions scrolling left */}
+        <SocialProofRow>
+          <InstTrack>
+            {[...INSTITUTIONS, ...INSTITUTIONS].map((name, i) => (
+              <InstItem key={i}>{name}</InstItem>
+            ))}
+          </InstTrack>
+        </SocialProofRow>
+
+        {/* Row 2 — quote snippets scrolling right */}
+        <SocialProofRow>
+          <QuoteTrack>
+            {[...QUOTE_SNIPPETS, ...QUOTE_SNIPPETS].map((q, i) => (
+              <QuoteSnippetItem key={i}>
+                <QuoteStars>★★★★★</QuoteStars>
+                <QuoteSnippetText>&ldquo;{q.text}&rdquo;</QuoteSnippetText>
+                <QuoteSnippetAttr>
+                  {q.name}, {q.role}
+                </QuoteSnippetAttr>
+                <QuoteSep />
+              </QuoteSnippetItem>
+            ))}
+          </QuoteTrack>
+        </SocialProofRow>
+      </SocialProofOuter>
 
       {/* ── 3. Services — editorial rows ── */}
       <AnimateOnScreen>
