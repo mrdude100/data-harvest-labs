@@ -750,7 +750,7 @@ const ServicesPage = () => {
                   </CardIcon>
                   <CardName>{s.name}</CardName>
                   <CardDesc>{s.desc}</CardDesc>
-                  <Link href="/quote" passHref>
+                  <Link href="/quote" passHref legacyBehavior>
                     <CardLink
                       onMouseEnter={addCursorBorder}
                       onMouseLeave={removeCursorBorder}
@@ -808,7 +808,7 @@ const ServicesPage = () => {
                       <PricingFeature key={f}>{f}</PricingFeature>
                     ))}
                   </PricingFeatures>
-                  <Link href={t.href} passHref>
+                  <Link href={t.href} passHref legacyBehavior>
                     <PricingCta
                       onMouseEnter={addCursorBorder}
                       onMouseLeave={removeCursorBorder}
@@ -832,7 +832,7 @@ const ServicesPage = () => {
           animate="show"
         >
           <CtaText>Not sure what you need?</CtaText>
-          <Link href="/estimator" passHref>
+          <Link href="/estimator" passHref legacyBehavior>
             <CtaButton
               onMouseEnter={addCursorBorder}
               onMouseLeave={removeCursorBorder}

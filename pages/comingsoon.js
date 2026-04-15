@@ -77,7 +77,7 @@ const NotFound = () => {
         <Subtitle>
           We are still working on this page. Let&apos;s get you back on track.
         </Subtitle>
-        <Link href="/" passHref>
+        <Link href="/" passHref legacyBehavior>
           <HomeLink>Go to Homepage</HomeLink>
         </Link>
       </Wrapper>

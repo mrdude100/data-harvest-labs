@@ -393,7 +393,7 @@ const AboutPage = () => {
         {/* CTA */}
         <CtaSection>
           <CtaTitle>Ready to work together?</CtaTitle>
-          <Link href="/contact" passHref>
+          <Link href="/contact" passHref legacyBehavior>
             <CtaButton
               onMouseEnter={addCursorBorder}
               onMouseLeave={removeCursorBorder}

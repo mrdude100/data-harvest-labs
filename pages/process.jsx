@@ -473,7 +473,7 @@ const ProcessPage = () => {
 
         {/* ── CTA ── */}
         <CtaRow>
-          <Link href="/quote" passHref>
+          <Link href="/quote" passHref legacyBehavior>
             <CtaButton
               onMouseEnter={addCursorBorder}
               onMouseLeave={removeCursorBorder}
@@ -481,7 +481,7 @@ const ProcessPage = () => {
               Start your project &#8594;
             </CtaButton>
           </Link>
-          <Link href="/estimator" passHref>
+          <Link href="/estimator" passHref legacyBehavior>
             <SecondaryLink
               onMouseEnter={addCursorBorder}
               onMouseLeave={removeCursorBorder}

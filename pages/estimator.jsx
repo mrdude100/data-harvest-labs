@@ -669,7 +669,7 @@ const EstimatorPage = () => {
             </DisclaimerText>
 
             <ResultCtaRow>
-              <Link href="/quote" passHref>
+              <Link href="/quote" passHref legacyBehavior>
                 <PrimaryCtaButton
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}

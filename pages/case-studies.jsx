@@ -546,7 +546,7 @@ const CaseStudiesPage = () => {
             Have a similar project? Let&apos;s talk through what&apos;s possible
             with your data.
           </CtaText>
-          <Link href="/quote" passHref>
+          <Link href="/quote" passHref legacyBehavior>
             <CtaButton
               onMouseEnter={addCursorBorder}
               onMouseLeave={removeCursorBorder}

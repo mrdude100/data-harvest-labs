@@ -555,7 +555,7 @@ const HomePage = () => {
       <AnimateOnScreen>
         <CtaWrapper as={motion.section}>
           <CtaText>Ready to unlock your data?</CtaText>
-          <Link href="/contact" passHref>
+          <Link href="/contact" passHref legacyBehavior>
             <CtaButton
               onMouseEnter={addCursorBorder}
               onMouseLeave={removeCursorBorder}
@@ -660,7 +660,7 @@ const HomePage = () => {
                 and aligned with the latest analytical standards used in
                 international journals.
               </TrainingDesc>
-              <Link href="/contact" passHref>
+              <Link href="/contact" passHref legacyBehavior>
                 <TrainingLink
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}

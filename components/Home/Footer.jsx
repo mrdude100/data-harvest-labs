@@ -308,7 +308,7 @@ const Footer = () => {
         <Col>
           <ColHeading>Company</ColHeading>
           <LinkList>
-            <Link href="/" passHref>
+            <Link href="/" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -316,7 +316,7 @@ const Footer = () => {
                 Home
               </NavLink>
             </Link>
-            <Link href="/about" passHref>
+            <Link href="/about" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -324,7 +324,7 @@ const Footer = () => {
                 About
               </NavLink>
             </Link>
-            <Link href="/services" passHref>
+            <Link href="/services" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -332,7 +332,7 @@ const Footer = () => {
                 Services
               </NavLink>
             </Link>
-            <Link href="/process" passHref>
+            <Link href="/process" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -340,7 +340,7 @@ const Footer = () => {
                 How It Works
               </NavLink>
             </Link>
-            <Link href="/case-studies" passHref>
+            <Link href="/case-studies" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -348,7 +348,7 @@ const Footer = () => {
                 Case Studies
               </NavLink>
             </Link>
-            <Link href="/testimonials" passHref>
+            <Link href="/testimonials" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -356,7 +356,7 @@ const Footer = () => {
                 Testimonials
               </NavLink>
             </Link>
-            <Link href="/quote" passHref>
+            <Link href="/quote" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -364,7 +364,7 @@ const Footer = () => {
                 Contact
               </NavLink>
             </Link>
-            <Link href="/quote" passHref>
+            <Link href="/quote" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -379,7 +379,7 @@ const Footer = () => {
         <Col>
           <ColHeading>Services</ColHeading>
           <LinkList>
-            <Link href="/services" passHref>
+            <Link href="/services" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -387,7 +387,7 @@ const Footer = () => {
                 Genomics & Bioinformatics
               </NavLink>
             </Link>
-            <Link href="/services" passHref>
+            <Link href="/services" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -395,7 +395,7 @@ const Footer = () => {
                 Biostatistics & Data Analysis
               </NavLink>
             </Link>
-            <Link href="/services" passHref>
+            <Link href="/services" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -403,7 +403,7 @@ const Footer = () => {
                 Clinical Research Design
               </NavLink>
             </Link>
-            <Link href="/services" passHref>
+            <Link href="/services" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}
@@ -411,7 +411,7 @@ const Footer = () => {
                 Systematic Reviews & Meta-Analysis
               </NavLink>
             </Link>
-            <Link href="/services" passHref>
+            <Link href="/services" passHref legacyBehavior>
               <NavLink
                 onMouseEnter={addCursorBorder}
                 onMouseLeave={removeCursorBorder}

@@ -39,7 +39,7 @@ const AppBar = props => {
   if (isMobile) {
     return (
       <MobileNav scrolled={scrolled}>
-        <Link href="/" passHref>
+        <Link href="/" passHref legacyBehavior>
           <MobileNavLink
             onMouseEnter={addCursorBorder}
             onMouseLeave={removeCursorBorder}
@@ -63,7 +63,7 @@ const AppBar = props => {
       {...rootProps}
     >
       <Container>
-        <Link href="/" passHref>
+        <Link href="/" passHref legacyBehavior>
           <StyledLink
             title="DataHarvestLabs"
             onMouseEnter={addCursorBorder}

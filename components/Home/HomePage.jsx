@@ -1435,7 +1435,7 @@ const HomePage = () => {
               <ImpactStatNum>20+</ImpactStatNum>
               <ImpactStatLabel>Academic institutions</ImpactStatLabel>
             </ImpactStat>
-            <Link href="/case-studies" passHref>
+            <Link href="/case-studies" passHref legacyBehavior>
               <ImpactCtaLink>Read case studies &#8594;</ImpactCtaLink>
             </Link>
           </ImpactRight>
@@ -1456,7 +1456,7 @@ const HomePage = () => {
                 — hands-on, software-driven, and aligned with international
                 journal and NMC thesis standards.
               </TrainingDesc>
-              <Link href="/quote" passHref>
+              <Link href="/quote" passHref legacyBehavior>
                 <TrainingLink
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
@@ -1509,7 +1509,7 @@ const HomePage = () => {
                 Answer 4 quick questions about your project and get a tailored
                 scope, timeline, and price range — no sales call required.
               </EstimatorDesc>
-              <Link href="/estimator" passHref>
+              <Link href="/estimator" passHref legacyBehavior>
                 <EstimatorCta
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
@@ -1562,7 +1562,7 @@ const HomePage = () => {
             </ConsultLeft>
             <motion.div variants={fadeUp}>
               <ConsultRight>
-                <Link href="/quote" passHref>
+                <Link href="/quote" passHref legacyBehavior>
                   <ConsultCta
                     onMouseEnter={addCursorBorder}
                     onMouseLeave={removeCursorBorder}
@@ -1581,7 +1581,7 @@ const HomePage = () => {
       <AnimateOnScreen>
         <CtaWrapper as={motion.section}>
           <CtaText>Ready to unlock your data?</CtaText>
-          <Link href="/quote" passHref>
+          <Link href="/quote" passHref legacyBehavior>
             <CtaButton
               onMouseEnter={addCursorBorder}
               onMouseLeave={removeCursorBorder}

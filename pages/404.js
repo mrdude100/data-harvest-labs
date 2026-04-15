@@ -78,7 +78,7 @@ const NotFound = () => {
           This page doesn&apos;t exist or was moved. Let&apos;s get you back on
           track.
         </Subtitle>
-        <Link href="/" passHref>
+        <Link href="/" passHref legacyBehavior>
           <HomeLink>Go to Homepage</HomeLink>
         </Link>
       </Wrapper>

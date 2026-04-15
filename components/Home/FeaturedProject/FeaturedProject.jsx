@@ -74,7 +74,7 @@ const FeaturedProject = () => {
     <ContentSection>
       <AnimateOnScreen>
         <motion.div>
-          <Link href="/contact" passHref>
+          <Link href="/contact" passHref legacyBehavior>
             <ProjectAnchor
               onHoverStart={handleAnchorHoverStart}
               onHoverEnd={handleAnchorHoverEnd}
