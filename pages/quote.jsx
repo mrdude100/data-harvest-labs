@@ -382,6 +382,72 @@ const SuccessText = styled.p`
   line-height: 1.6;
 `;
 
+const SuccessCalendlyBox = styled.div`
+  margin-top: 8px;
+  padding: 28px 32px;
+  border: 1px solid ${({ theme }) => theme.colors.red}40;
+  border-left: 3px solid ${({ theme }) => theme.colors.red};
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 22px 20px;
+  `}
+`;
+
+const SuccessCalendlyHeading = styled.p`
+  font-family: calibre, sans-serif;
+  font-weight: 900;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.text};
+  margin: 0;
+  line-height: 1;
+`;
+
+const SuccessCalendlyDesc = styled.p`
+  ${secondaryFontStyle};
+  font-size: 0.875rem;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.55;
+  margin: 0;
+  line-height: 1.6;
+  font-weight: 400;
+`;
+
+const SuccessCalendlyBtn = styled.button`
+  ${secondaryFontStyle};
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: ${({ theme }) => theme.colors.red};
+  border: none;
+  padding: 14px 28px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background 0.2s ease;
+  margin-top: 4px;
+
+  &:hover {
+    background: #a81a15;
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.red};
+    outline-offset: 4px;
+  }
+`;
+
+const SuccessCalendlyNote = styled.span`
+  ${secondaryFontStyle};
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: ${({ theme }) => theme.text};
+  opacity: 0.3;
+`;
+
 // ─── Calendly Banner ─────────────────────────────────────────────────────────
 
 const CALENDLY_LINK =
@@ -904,6 +970,33 @@ const QuotePage = () => {
               Thanks, {form.name.split(' ')[0]}. We&apos;ve received your quote
               request and will get back to you with a detailed proposal soon.
             </SuccessText>
+
+            <SuccessCalendlyBox>
+              <SuccessCalendlyHeading>
+                Don&apos;t want to wait?
+              </SuccessCalendlyHeading>
+              <SuccessCalendlyDesc>
+                Book a free 30-minute discovery call — we can discuss your
+                project directly and get you a faster turnaround.
+              </SuccessCalendlyDesc>
+              <SuccessCalendlyBtn
+                onClick={() => {
+                  if (
+                    window.Calendly &&
+                    !window.matchMedia('(max-width: 768px)').matches
+                  ) {
+                    window.Calendly.initPopupWidget({ url: CALENDLY_LINK });
+                  } else {
+                    window.open(CALENDLY_LINK, '_blank', 'noopener,noreferrer');
+                  }
+                }}
+                onMouseEnter={addCursorBorder}
+                onMouseLeave={removeCursorBorder}
+              >
+                Book a call now &#8594;
+              </SuccessCalendlyBtn>
+              <SuccessCalendlyNote>No commitment required</SuccessCalendlyNote>
+            </SuccessCalendlyBox>
           </SuccessWrapper>
         )}
       </PageWrapper>
