@@ -272,7 +272,9 @@ const CtaButton = styled.a`
   padding: 20px 48px;
   display: inline-block;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
   text-decoration: none;
 
   &:hover {
@@ -292,7 +294,9 @@ const SecondaryLink = styled.a`
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: opacity 0.2s ease, gap 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    gap 0.2s ease;
 
   &:hover {
     opacity: 0.8;

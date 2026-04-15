@@ -24,7 +24,9 @@ const Btn = styled.button`
   animation: ${float} 2.4s ease-in-out infinite;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   pointer-events: ${({ $visible }) => ($visible ? 'auto' : 'none')};
-  transition: opacity 0.35s ease, background 0.2s ease;
+  transition:
+    opacity 0.35s ease,
+    background 0.2s ease;
   box-shadow: 0 4px 20px ${({ theme }) => theme.colors.red}44;
 
   &:hover {

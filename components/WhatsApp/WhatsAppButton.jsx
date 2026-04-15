@@ -18,7 +18,9 @@ const Wrap = styled.a`
   padding: 10px 16px 10px 12px;
   background: #25d366;
   text-decoration: none;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);

@@ -354,7 +354,9 @@ const CtaButton = styled.a`
   padding: 20px 48px;
   display: inline-block;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
   text-decoration: none;
   flex-shrink: 0;
 

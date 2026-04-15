@@ -20,7 +20,9 @@ export const Button = styled.button`
     display: block;
     height: 2px;
     background: ${({ theme }) => theme.text};
-    transition: width 0.2s ease, transform 0.2s ease;
+    transition:
+      width 0.2s ease,
+      transform 0.2s ease;
     border-radius: 1px;
   }
 

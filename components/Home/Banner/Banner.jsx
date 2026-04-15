@@ -53,7 +53,8 @@ const BubbleLink = styled.a`
   text-decoration: none;
   cursor: pointer;
   animation: ${pulseKf} 2.6s ease-in-out infinite;
-  transition: transform 0.18s cubic-bezier(0.23, 1, 0.32, 1),
+  transition:
+    transform 0.18s cubic-bezier(0.23, 1, 0.32, 1),
     background 0.18s ease;
 
   &:hover {

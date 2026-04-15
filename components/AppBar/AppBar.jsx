@@ -3,8 +3,14 @@ import Link from 'next/link';
 import Logo from '../Icons/Logo';
 import MenuButton from '../MenuButton';
 import useMediaQuery from '../../hooks/useMediaQuery';
-import { Slider, Container, StyledLink, MenuWrapper, MobileNav, MobileNavLink } from './styles';
-import routes from '../../utils/constants/routes';
+import {
+  Slider,
+  Container,
+  StyledLink,
+  MenuWrapper,
+  MobileNav,
+  MobileNavLink,
+} from './styles';
 import useCursorStyle from '../../hooks/useCursorStyle';
 
 const variants = {
@@ -13,12 +19,7 @@ const variants = {
 };
 
 const AppBar = props => {
-  const {
-    direction = 'down',
-    logoProps = {},
-    style: styleProp = {},
-    ...rootProps
-  } = props;
+  const { logoProps = {}, style: styleProp = {}, ...rootProps } = props;
 
   const [scrolled, setScrolled] = React.useState(false);
   const { addCursorBorder, removeCursorBorder } = useCursorStyle();

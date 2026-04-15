@@ -309,7 +309,9 @@ const PrimaryButton = styled.button`
   border: none;
   padding: 18px 40px;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
   flex-shrink: 0;
 
   &:hover {

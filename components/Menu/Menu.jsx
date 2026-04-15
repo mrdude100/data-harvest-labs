@@ -49,7 +49,6 @@ const Menu = () => {
     resetCursorColor();
   }, [resetCursorColor]);
 
-
   return (
     <AnimatePresence onExitComplete={handleExitComplete}>
       {isMenuOpen && (
@@ -60,12 +59,7 @@ const Menu = () => {
               <CloseButton title="Close" />
             </Header>
             <Navigation>
-              <List
-                variants={listVariants}
-                initial="hidden"
-                animate="show"
-                
-              >
+              <List variants={listVariants} initial="hidden" animate="show">
                 {routes.map(route => (
                   <motion.li
                     key={route.id}
@@ -75,19 +69,16 @@ const Menu = () => {
                       ease: transition.ease,
                     }}
                   >
-                      <NextLink href={route.path}>
-
+                    <NextLink href={route.path}>
                       <Link
                         key={`${route.id}_${isMobile}`}
                         name={route.id}
-                        
                         custom={{ isMobile, color: theme.text }}
                         initial="initial"
                         whileHover="hover"
                         variants={linkVariants}
                         transition={transition}
                         onClick={() => dispatch({ type: 'TOGGLE_MENU' })}
-
                       >
                         <ArrowContainer>
                           <Arrow fillColor={theme.background} />

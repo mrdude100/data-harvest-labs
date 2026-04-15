@@ -12,7 +12,9 @@ export const Slider = styled(({ renderAs, scrolled, ...props }) => {
   right: 0;
   left: 0;
   z-index: ${({ theme }) => theme.zIndex.slider};
-  transition: background 0.3s ease, backdrop-filter 0.3s ease,
+  transition:
+    background 0.3s ease,
+    backdrop-filter 0.3s ease,
     box-shadow 0.3s ease;
   background: ${({ scrolled, theme }) =>
     scrolled ? `${theme.background}e6` : 'transparent'};

@@ -211,7 +211,10 @@ const NavButton = styled.button`
   color: ${({ theme }) => theme.text};
   padding: 10px 18px;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
   flex-shrink: 0;
 
   &:hover {
@@ -243,7 +246,10 @@ const Dot = styled.button`
   border: none;
   padding: 0;
   cursor: pointer;
-  transition: width 0.3s ease, opacity 0.2s ease, background 0.2s ease;
+  transition:
+    width 0.3s ease,
+    opacity 0.2s ease,
+    background 0.2s ease;
 
   &:focus-visible {
     outline: 2px solid ${({ theme }) => theme.colors.red};

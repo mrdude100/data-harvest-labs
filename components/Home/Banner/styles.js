@@ -44,7 +44,8 @@ export const GradientBackground = styled.div`
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(
+  background:
+    radial-gradient(
       ellipse 75% 55% at 72% 18%,
       #6b1212 0%,
       rgba(50, 5, 5, 0) 62%
@@ -73,7 +74,9 @@ export const ScrollArrow = styled.button`
   justify-content: center;
   cursor: pointer;
   color: ${({ theme }) => theme.text};
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
 
   svg {
     animation: ${arrowPulse} 1.6s ease-in-out infinite;

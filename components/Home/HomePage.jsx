@@ -306,7 +306,9 @@ const ServiceIconWrap = styled.div`
   color: ${({ theme }) => theme.text};
   opacity: 0.35;
   flex-shrink: 0;
-  transition: color 0.22s ease, opacity 0.22s ease;
+  transition:
+    color 0.22s ease,
+    opacity 0.22s ease;
 
   svg {
     width: 100%;
@@ -448,7 +450,9 @@ const MarqueeItem = styled.span`
   padding: 0 28px;
   white-space: nowrap;
   cursor: default;
-  transition: opacity 0.15s ease, color 0.15s ease;
+  transition:
+    opacity 0.15s ease,
+    color 0.15s ease;
   display: flex;
   align-items: center;
   gap: 28px;
@@ -554,7 +558,10 @@ const WhoTag = styled(motion.span)`
   border-radius: 999px;
   padding: 12px 28px;
   cursor: default;
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
 
   &:hover {
     border-color: ${({ theme }) => theme.colors.red};
@@ -869,7 +876,9 @@ const CtaButton = styled.a`
   padding: 20px 48px;
   display: inline-block;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
   text-decoration: none;
   flex-shrink: 0;
 
@@ -954,7 +963,9 @@ const ImpactCtaLink = styled.a`
   gap: 8px;
   margin-top: 8px;
   opacity: 0.65;
-  transition: opacity 0.2s ease, gap 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    gap 0.2s ease;
 
   &:hover {
     opacity: 1;
@@ -1035,7 +1046,9 @@ const EstimatorCta = styled.a`
   padding: 20px 40px;
   display: inline-block;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
   align-self: flex-start;
 
   &:hover {
@@ -1067,7 +1080,9 @@ const EstimatorStep = styled.div`
   padding: 20px 24px;
   background: rgba(255, 255, 255, 0.08);
   border-left: 2px solid rgba(255, 255, 255, 0.2);
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
 
   &:hover {
     border-color: #fff;

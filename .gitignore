@@ -30,6 +30,11 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
+#google places api keys
+GOOGLE_PLACES_API_KEY=your_key_here
+GOOGLE_PLACE_ID=your_place_id_here
+
+
 # vercel
 .vercel
 

@@ -163,7 +163,9 @@ const NextButton = styled.button`
   border: none;
   padding: 18px 40px;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 
   &:hover {
     background: ${({ theme }) => theme.colors.red};
@@ -360,7 +362,9 @@ const PrimaryCtaButton = styled.a`
   padding: 20px 48px;
   display: inline-block;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
   text-decoration: none;
 
   &:hover {
@@ -491,8 +495,8 @@ const getEstimate = answers => {
   let dataNote = isDataReady
     ? 'Data is ready — we can start immediately after agreement.'
     : noData
-    ? 'We can advise on data collection as part of the discovery call.'
-    : 'Some preparation time may be needed before analysis begins.';
+      ? 'We can advise on data collection as part of the discovery call.'
+      : 'Some preparation time may be needed before analysis begins.';
 
   return { tier, duration, includes, dataNote };
 };

@@ -90,7 +90,9 @@ const SocialLink = styled.a`
   color: ${({ theme }) => theme.text};
   opacity: 0.65;
   text-decoration: none;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -185,7 +187,9 @@ const ContactValue = styled.a`
   color: ${({ theme }) => theme.text};
   opacity: 0.65;
   text-decoration: none;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    color 0.2s ease;
   display: inline-block;
 
   &:hover {

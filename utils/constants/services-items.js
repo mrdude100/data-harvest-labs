@@ -1,7 +1,1 @@
-export default [
-  [
-    'Data Analysis',
-    ['PCA', 'Big Data'],
-  ],
-
-];
+export default [['Data Analysis', ['PCA', 'Big Data']]];

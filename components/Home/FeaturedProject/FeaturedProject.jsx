@@ -98,7 +98,6 @@ const FeaturedProject = () => {
                   </span>
                 </ProjectTitle>
               </ProjectInfo>
-              
             </ProjectAnchor>
           </Link>
         </motion.div>

@@ -12,7 +12,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xkopjrgj'; // formspree endpo
 
 const SERVICES = [
   'Data Analysis',
-  'PCA', 
+  'PCA',
   'Clustering',
   'Classification',
   'Regression',
@@ -82,7 +82,8 @@ const StepDot = styled.button`
   gap: 10px;
   background: none;
   border: none;
-  cursor: ${({ $active, $done }) => ($done ? 'pointer' : $active ? 'default' : 'not-allowed')};
+  cursor: ${({ $active, $done }) =>
+    $done ? 'pointer' : $active ? 'default' : 'not-allowed'};
   padding: 0;
 
   &:focus-visible {
@@ -98,8 +99,9 @@ const DotCircle = styled.span`
   border-radius: 50%;
   background: ${({ theme, $active, $done }) =>
     $active || $done ? theme.colors.red : 'transparent'};
-  border: 2px solid ${({ theme, $active, $done }) =>
-    $active || $done ? theme.colors.red : theme.text};
+  border: 2px solid
+    ${({ theme, $active, $done }) =>
+      $active || $done ? theme.colors.red : theme.text};
   opacity: ${({ $active, $done }) => ($active || $done ? 1 : 0.3)};
   transition: all 0.3s ease;
   flex-shrink: 0;
@@ -180,7 +182,7 @@ const StyledInput = styled.input`
   ${inputBase};
   color: ${({ theme }) => theme.text};
   border-color: ${({ theme }) => theme.text};
-  opacity: ${({ theme }) => 0.85};
+  opacity: 0.85;
 
   &::placeholder {
     color: ${({ theme }) => theme.text};
@@ -224,12 +226,11 @@ const ServiceChip = styled.button`
   font-size: 0.875rem;
   padding: 10px 20px;
   border-radius: 0;
-  border: 1px solid ${({ theme, $selected }) =>
-    $selected ? theme.colors.red : theme.text};
+  border: 1px solid
+    ${({ theme, $selected }) => ($selected ? theme.colors.red : theme.text)};
   background: ${({ theme, $selected }) =>
     $selected ? theme.colors.red : 'transparent'};
-  color: ${({ theme, $selected }) =>
-    $selected ? '#fff' : theme.text};
+  color: ${({ theme, $selected }) => ($selected ? '#fff' : theme.text)};
   cursor: pointer;
   transition: all 0.2s ease;
   opacity: ${({ $selected }) => ($selected ? 1 : 0.5)};
@@ -262,7 +263,9 @@ const PrimaryButton = styled.button`
   border: none;
   padding: 18px 40px;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
   flex-shrink: 0;
 
   &:hover {
@@ -351,10 +354,13 @@ const ContactPage = () => {
     message: '',
   });
 
-  const goTo = React.useCallback((next) => {
-    setDirection(next > step ? 1 : -1);
-    setStep(next);
-  }, [step]);
+  const goTo = React.useCallback(
+    next => {
+      setDirection(next > step ? 1 : -1);
+      setStep(next);
+    },
+    [step],
+  );
 
   const validate = React.useCallback(() => {
     const newErrors = {};
@@ -383,7 +389,7 @@ const ContactPage = () => {
     goTo(step - 1);
   }, [goTo, step]);
 
-  const toggleService = React.useCallback((service) => {
+  const toggleService = React.useCallback(service => {
     setForm(prev => ({
       ...prev,
       services: prev.services.includes(service)
@@ -393,10 +399,13 @@ const ContactPage = () => {
     setErrors(prev => ({ ...prev, services: undefined }));
   }, []);
 
-  const handleChange = React.useCallback((field) => (e) => {
-    setForm(prev => ({ ...prev, [field]: e.target.value }));
-    setErrors(prev => ({ ...prev, [field]: undefined }));
-  }, []);
+  const handleChange = React.useCallback(
+    field => e => {
+      setForm(prev => ({ ...prev, [field]: e.target.value }));
+      setErrors(prev => ({ ...prev, [field]: undefined }));
+    },
+    [],
+  );
 
   const handleSubmit = React.useCallback(async () => {
     if (!validate()) return;
@@ -404,7 +413,10 @@ const ContactPage = () => {
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
@@ -427,10 +439,10 @@ const ContactPage = () => {
   return (
     <>
       <SEO
-  title="Get in Touch"
-  description="Contact Data Harvest Labs for data analysis, statistical consulting, and research services. Founded in Srinagar, Kashmir."
-  path="/contact"
-/>
+        title="Get in Touch"
+        description="Contact Data Harvest Labs for data analysis, statistical consulting, and research services. Founded in Srinagar, Kashmir."
+        path="/contact"
+      />
 
       <PageWrapper>
         <TopLabel>Contact</TopLabel>
@@ -530,7 +542,9 @@ const ContactPage = () => {
                             </ServiceChip>
                           ))}
                         </ServiceGrid>
-                        {errors.services && <ErrorText>{errors.services}</ErrorText>}
+                        {errors.services && (
+                          <ErrorText>{errors.services}</ErrorText>
+                        )}
                       </FieldWrapper>
                     </FieldGroup>
                   </StepPanel>
@@ -548,7 +562,9 @@ const ContactPage = () => {
                   >
                     <FieldGroup>
                       <FieldWrapper>
-                        <Label htmlFor="message">Tell us about your project</Label>
+                        <Label htmlFor="message">
+                          Tell us about your project
+                        </Label>
                         <StyledTextarea
                           id="message"
                           placeholder="Describe what you need, timeline, goals..."
@@ -556,7 +572,9 @@ const ContactPage = () => {
                           onChange={handleChange('message')}
                           rows={5}
                         />
-                        {errors.message && <ErrorText>{errors.message}</ErrorText>}
+                        {errors.message && (
+                          <ErrorText>{errors.message}</ErrorText>
+                        )}
                       </FieldWrapper>
                       {errors.submit && <ErrorText>{errors.submit}</ErrorText>}
                     </FieldGroup>
@@ -602,9 +620,10 @@ const ContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0, 0.7, 0.29, 0.97] }}
           >
-            <SuccessTitle>We'll be{'\u00A0'}in touch</SuccessTitle>
+            <SuccessTitle>We&apos;ll be{'\u00A0'}in touch</SuccessTitle>
             <SuccessText>
-              Thanks, {form.name.split(' ')[0]}. We&apos;ve received your message and will get back to you soon.
+              Thanks, {form.name.split(' ')[0]}. We&apos;ve received your
+              message and will get back to you soon.
             </SuccessText>
           </SuccessWrapper>
         )}
