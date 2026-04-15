@@ -571,9 +571,16 @@ const QuotePage = () => {
           </CalendlyText>
           <CalendlyLink
             href={CALENDLY_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={e => {
-              e.preventDefault();
-              window.Calendly?.initPopupWidget({ url: CALENDLY_LINK });
+              if (
+                window.Calendly &&
+                !window.matchMedia('(max-width: 768px)').matches
+              ) {
+                e.preventDefault();
+                window.Calendly.initPopupWidget({ url: CALENDLY_LINK });
+              }
             }}
             onMouseEnter={addCursorBorder}
             onMouseLeave={removeCursorBorder}

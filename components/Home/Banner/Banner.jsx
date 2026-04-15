@@ -244,11 +244,18 @@ const Banner = () => {
         <BubbleLink
           ref={bubbleRef}
           href="https://calendly.com/d/cvpd-6ms-9j3/30-minute-consultation"
+          target="_blank"
+          rel="noopener noreferrer"
           onClick={e => {
-            e.preventDefault();
-            window.Calendly?.initPopupWidget({
-              url: 'https://calendly.com/d/cvpd-6ms-9j3/30-minute-consultation',
-            });
+            if (
+              window.Calendly &&
+              !window.matchMedia('(max-width: 768px)').matches
+            ) {
+              e.preventDefault();
+              window.Calendly.initPopupWidget({
+                url: 'https://calendly.com/d/cvpd-6ms-9j3/30-minute-consultation',
+              });
+            }
           }}
           style={{
             transform: `translate(${magnetOffset.x}px, ${magnetOffset.y}px)`,
