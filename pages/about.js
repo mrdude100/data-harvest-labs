@@ -266,8 +266,8 @@ const STATS = [
 const TEAM = [
   {
     name: 'Dr. Zafir Ahmad Naik',
-    role: 'Co-Founder · PhD in Quantitative Genetics',
-    bio: 'PhD in Genetics & Plant Breeding from SKUAST-K, Zafir is the analytical core of DataHarvestLabs. A quantitative geneticist and bioinformatician, he specializes in GWAS, PCA, predictive modeling, and statistical analysis using R and Python. He has served 100+ researchers across agriculture, biotech, and academia.',
+    role: 'Co-Founder · Data Scientist',
+    bio: 'PhD in Quantitative Genetics from SKUAST-K, Zafir is the analytical core of DataHarvestLabs. A quantitative geneticist and bioinformatician, he specializes in GWAS, PCA, predictive modeling, and statistical analysis using R and Python. He has served 100+ researchers across agriculture, biotech, and academia.',
     tags: ['R', 'Python', 'GWAS', 'Biostatistics', 'PCA', 'Genomics'],
     linkedin: 'https://in.linkedin.com/in/zafir-naik',
   },
