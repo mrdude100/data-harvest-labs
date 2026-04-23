@@ -15,6 +15,7 @@ import Cursor from '../components/Cursor';
 import Footer from '../components/Home/Footer';
 import Menu from '../components/Menu';
 import WhatsAppButton from '../components/WhatsApp/WhatsAppButton';
+import BookCallButton from '../components/BookCallButton';
 
 const themes = {
   dark: darkTheme,
@@ -79,6 +80,7 @@ const App = ({ Component, pageProps }) => {
               <Footer />
               <BackToTop />
               <WhatsAppButton />
+              <BookCallButton />
               <Cursor />
             </ThemedApp>
           </CursorContextProvider>

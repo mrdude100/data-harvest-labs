@@ -365,8 +365,22 @@ const QuoteSep = styled.span`
 // ─── Stats ────────────────────────────────────────────────────────────────────
 
 const StatsWrapper = styled.div`
-  background: #c0201a;
-  padding: 64px 0;
+  background: #000;
+  padding: 72px 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 90% 55% at 50% 0%,
+      rgba(192, 32, 26, 0.18) 0%,
+      transparent 65%
+    );
+    pointer-events: none;
+  }
 `;
 
 const StatsInner = styled.div`
@@ -374,7 +388,9 @@ const StatsInner = styled.div`
   padding: 0 32px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
 
   ${({ theme }) => theme.breakpoints.small`
     grid-template-columns: repeat(2, 1fr);
@@ -382,15 +398,42 @@ const StatsInner = styled.div`
 
   ${({ theme }) => theme.breakpoints.tablet`
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    padding: 0 24px;
+    gap: 14px;
+    padding: 0 20px;
   `};
 `;
 
 const StatItem = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  padding: 32px 24px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(192, 32, 26, 0.6),
+      transparent
+    );
+  }
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    padding: 24px 18px;
+    border-radius: 16px;
+  `};
 `;
 
 const StatNumber = styled.div`
@@ -399,6 +442,7 @@ const StatNumber = styled.div`
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1;
   color: #fff;
+  text-shadow: 0 0 48px rgba(192, 32, 26, 0.45);
 `;
 
 const StatLabel = styled.div`

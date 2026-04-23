@@ -4,10 +4,14 @@ import styled, { keyframes } from 'styled-components';
 import {
   BannerSection,
   BannerTitle,
-  GradientBackground,
   Leaf,
   LeafContainer,
   ScrollArrow,
+  AuroraBlob1,
+  AuroraBlob2,
+  AuroraBlob3,
+  GridOverlay,
+  BottomVignette,
 } from './styles';
 
 // ─── Bubble animations ────────────────────────────────────────────────────────
@@ -33,7 +37,7 @@ const BubbleWrap = styled.div`
   position: absolute;
   bottom: 30%;
   right: 8%;
-  z-index: 4;
+  z-index: 5;
   animation: ${floatKf} 3.8s ease-in-out infinite;
 
   ${({ theme }) => theme.breakpoints.small`
@@ -47,7 +51,9 @@ const BubbleLink = styled.a`
   width: 148px;
   height: 148px;
   border-radius: 50%;
-  background: #c0201a;
+  background: rgba(192, 32, 26, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   position: relative;
   text-decoration: none;
   cursor: pointer;
@@ -66,8 +72,7 @@ const BubbleLink = styled.a`
   }
 
   &:hover {
-    background: #d42520;
-    animation-play-state: paused;
+    background: rgba(210, 40, 34, 0.9);
   }
 
   &:hover .bubble-ring {
@@ -138,16 +143,17 @@ const BubbleTextSvg = () => (
 
 const titleAnimation = {
   animate: {
-    transition: { staggerChildren: 0.08 },
+    transition: { staggerChildren: 0.1 },
   },
 };
 
 const itemTitleAnimation = {
-  initial: { y: '100%', opacity: 0 },
+  initial: { y: '110%', opacity: 0, skewY: 2 },
   animate: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+    skewY: 0,
+    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -167,7 +173,6 @@ const LEAVES = [
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const Banner = () => {
-  // Magnetic bubble effect
   const bubbleRef = React.useRef(null);
   const [magnetOffset, setMagnetOffset] = React.useState({ x: 0, y: 0 });
 
@@ -205,7 +210,15 @@ const Banner = () => {
       onMouseMove={handleBannerMouseMove}
       onMouseLeave={handleBannerMouseLeave}
     >
-      <GradientBackground />
+      {/* Aurora blobs */}
+      <AuroraBlob1 />
+      <AuroraBlob2 />
+      <AuroraBlob3 />
+
+      {/* Grid overlay */}
+      <GridOverlay />
+
+      {/* Falling maple leaves */}
       <LeafContainer aria-hidden="true">
         {LEAVES.map((leaf, i) => (
           <Leaf
@@ -220,16 +233,8 @@ const Banner = () => {
         ))}
       </LeafContainer>
 
-      {/* Canvas eraser disabled — kept for future re-enable */}
-      {/* isDesktop && (
-        <CanvasEraser
-          ref={canvasRef}
-          width={windowSize.width}
-          height={windowSize.height}
-          size={120}
-          background={theme.background}
-        />
-      ) */}
+      {/* Bottom fade to black */}
+      <BottomVignette />
 
       <ScrollArrow onClick={handleScrollDown} aria-label="Scroll down">
         <svg
