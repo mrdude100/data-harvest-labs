@@ -1428,22 +1428,8 @@ const COURSES = [
 const INSTITUTIONS = [
   'SKUAST-K',
   'SKUAST-J',
-  'ICAR-IVRI',
   'University of Kashmir',
-  'NIT Srinagar',
-  'AIIMS Delhi',
-  'JIPMER Puducherry',
-  'CMC Vellore',
-  'ICMR',
-  'NDRI Karnal',
-  'Punjab Agricultural University',
-  'GBPUAT Pantnagar',
-  'HAU Hisar',
-  'Central Asia Crop Research Centre',
-  'National Livestock Improvement Programme',
-  'NIMHANS Bengaluru',
-  'University of Veterinary Sciences',
-  'College of Agriculture & Life Sciences',
+  'Kashmir Biotech',
 ];
 
 const QUOTE_SNIPPETS = [
@@ -1461,26 +1447,6 @@ const QUOTE_SNIPPETS = [
     text: 'Outstanding analysis with fully reproducible R code.',
     name: 'Dr. Suresh Patel',
     role: 'Principal Investigator',
-  },
-  {
-    text: 'Flagged issues we had completely overlooked ourselves.',
-    name: 'Dr. Farida Yusupova',
-    role: 'Genomics Researcher',
-  },
-  {
-    text: 'By the end I could run a full GWAS independently.',
-    name: 'Bilal Qureshi',
-    role: 'PhD Student',
-  },
-  {
-    text: 'Compelling slides — several compliments from the audience.',
-    name: 'Dr. Nadia Al-Rashid',
-    role: 'Associate Professor',
-  },
-  {
-    text: 'Both the statistics and biological context — a big difference.',
-    name: "James O'Brien",
-    role: 'Lead Geneticist',
   },
 ];
 
