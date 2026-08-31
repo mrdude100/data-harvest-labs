@@ -451,8 +451,7 @@ const SuccessCalendlyNote = styled.span`
 
 // ─── Calendly Banner ─────────────────────────────────────────────────────────
 
-const CALENDLY_LINK =
-  'https://calendly.com/d/cvpd-6ms-9j3/30-minute-consultation';
+const CALENDLY_LINK = 'https://calendly.com/faraznaik673/30min';
 
 const CalendlyBanner = styled.div`
   display: flex;

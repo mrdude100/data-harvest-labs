@@ -253,7 +253,7 @@ const Banner = () => {
       <BubbleWrap>
         <BubbleLink
           ref={bubbleRef}
-          href="https://calendly.com/d/cvpd-6ms-9j3/30-minute-consultation"
+          href="https://calendly.com/faraznaik673/30min"
           target="_blank"
           rel="noopener noreferrer"
           onClick={e => {
@@ -263,7 +263,7 @@ const Banner = () => {
             ) {
               e.preventDefault();
               window.Calendly.initPopupWidget({
-                url: 'https://calendly.com/d/cvpd-6ms-9j3/30-minute-consultation',
+                url: 'https://calendly.com/faraznaik673/30min',
               });
             }
           }}
